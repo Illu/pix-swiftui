@@ -6,11 +6,29 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                List {
+                    PostCard()
+                }
+            LoginScreen()
+            }
+            .navigationBarTitle(Text("Trending"))
+            .navigationBarItems(leading:
+                HStack {
+                    Text("Pix Logo").bold()
+                }, trailing:
+                HStack {
+                    Button("Settings") {
+                        print("Settings tapped!")
+                    }
+                }
+            )
+        }
     }
 }
 
