@@ -10,24 +10,33 @@ import UIKit
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    PostCard()
+        
+        TabView() {
+            HomeScreen()
+                .tabItem{
+                    Label("Home", systemImage: "house")
+                        .environment(\.symbolVariants, .none)
                 }
-            LoginScreen()
-            }
-            .navigationBarTitle(Text("Trending"))
-            .navigationBarItems(leading:
-                HStack {
-                    Text("Pix Logo").bold()
-                }, trailing:
-                HStack {
-                    Button("Settings") {
-                        print("Settings tapped!")
-                    }
+            HomeScreen()
+                .tabItem {
+                    Label("Challenges", systemImage: "crown")
+                        .environment(\.symbolVariants, .none)
                 }
-            )
+            HomeScreen()
+                .tabItem {
+                    Label("Create", systemImage: "plus.square")
+                        .environment(\.symbolVariants, .none)
+                }
+            HomeScreen()
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                        .environment(\.symbolVariants, .none)
+                }
+            HomeScreen()
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape")
+                        .environment(\.symbolVariants, .none)
+                }
         }
     }
 }
@@ -35,5 +44,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        ContentView().preferredColorScheme(.dark)
     }
 }

@@ -9,10 +9,6 @@ import Firebase
 import SwiftUI
 
 struct LoginScreen: View {
-    init() {
-        print("hi")
-    }
-    
     @State var email = ""
     @State var password = ""
 

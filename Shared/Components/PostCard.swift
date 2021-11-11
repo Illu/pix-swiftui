@@ -13,8 +13,7 @@ struct PostCard: View {
             HStack {
                 Text("Username")
                 Spacer()
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.black)
+                Button(action: {print("tap ellipsis")}) { Image(systemName: "ellipsis").foregroundColor(.black) }
             }.padding(.bottom, 10)
             HStack {
                 
@@ -45,8 +44,6 @@ struct PostCard: View {
                     .fontWeight(.light)
                     .font(.footnote)
                     .foregroundColor(Color.gray)
-                    
-                    
                 Spacer()
             }
         }
@@ -62,6 +59,6 @@ struct PostCard_Previews: PreviewProvider {
             Spacer()
             PostCard()
             Spacer()
-        }.background(Color.red)
+        }.background(.green)
     }
 }

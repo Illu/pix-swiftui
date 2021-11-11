@@ -28,6 +28,12 @@
 		BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B27273C5C880062AF1C /* LoginScreen.swift */; };
 		BDC10B2B273C637F0062AF1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */; };
 		BDC10B2C273C637F0062AF1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */; };
+		BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */; };
+		BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */; };
+		BDC10B31273C986B0062AF1C /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B30273C986B0062AF1C /* FeedModel.swift */; };
+		BDC10B32273C986B0062AF1C /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B30273C986B0062AF1C /* FeedModel.swift */; };
+		BDC10B35273C992A0062AF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B34273C992A0062AF1C /* Constants.swift */; };
+		BDC10B36273C992A0062AF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B34273C992A0062AF1C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +70,9 @@
 		BDC10B1D273C4F300062AF1C /* PostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCard.swift; sourceTree = "<group>"; };
 		BDC10B27273C5C880062AF1C /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		BDC10B30273C986B0062AF1C /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		BDC10B34273C992A0062AF1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +131,7 @@
 				BD7B2F86273C43F90032B055 /* pixApp.swift */,
 				BD7B2F87273C43F90032B055 /* ContentView.swift */,
 				BD7B2F88273C43FB0032B055 /* Assets.xcassets */,
+				BDC10B34273C992A0062AF1C /* Constants.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -168,6 +178,7 @@
 			children = (
 				BDC10B19273C4B390062AF1C /* HomeScreen.swift */,
 				BDC10B27273C5C880062AF1C /* LoginScreen.swift */,
+				BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -175,6 +186,7 @@
 		BD7B2FC3273C447C0032B055 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BDC10B30273C986B0062AF1C /* FeedModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -359,7 +371,10 @@
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
+				BDC10B31273C986B0062AF1C /* FeedModel.swift in Sources */,
+				BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDC10B28273C5C880062AF1C /* LoginScreen.swift in Sources */,
+				BDC10B35273C992A0062AF1C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +386,10 @@
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,
+				BDC10B32273C986B0062AF1C /* FeedModel.swift in Sources */,
+				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
+				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
