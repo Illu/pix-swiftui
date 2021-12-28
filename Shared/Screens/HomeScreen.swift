@@ -9,40 +9,32 @@ import SwiftUI
 
 struct HomeScreen: View {
     
-    @StateObject private var feed = FeedModel()
-    
     private var screenTitle: [Sorting : String] = [.top: "Top", .new: "New"]
     
+    @ObservedObject private var viewModel = FeedViewModel()
+    
     var body: some View {
-        NavigationView {
             VStack {
-                List {
-                    PostCard()
-                }
-            LoginScreen()
-            }
-            .navigationBarTitle(Text(screenTitle[feed.sortMethod] ?? "Error"))
-            .navigationBarItems(leading:
-                HStack {
-                Text("Pix")
-                    .font(.title)
-                        .bold()
-                }, trailing:
-                HStack {
-                Button(action: {
-                    feed.changeSorting(newSorting: .new)
-                }) {
-                        Image(systemName: "arrow.up.arrow.down")
+                ScrollView {
+                    ForEach(viewModel.posts) { post in
+                        PostCard(
+                            desc: post.desc,
+                            username: post.user.displayName,
+                            likesCount: post.likes.count,
+                            comments: post.comments
+                        )
                     }
                 }
-            )
-        }
-        .environmentObject(feed)
+            }
+            .onAppear() {
+                self.viewModel.fetchData()
+            }
     }
 }
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
+        HomeScreen().preferredColorScheme(.dark)
     }
 }

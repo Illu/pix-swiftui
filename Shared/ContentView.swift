@@ -9,41 +9,26 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
+    
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    #endif
+    
     var body: some View {
-        
-        TabView() {
-            HomeScreen()
-                .tabItem{
-                    Label("Home", systemImage: "house")
-                        .environment(\.symbolVariants, .none)
-                }
-            HomeScreen()
-                .tabItem {
-                    Label("Challenges", systemImage: "crown")
-                        .environment(\.symbolVariants, .none)
-                }
-            HomeScreen()
-                .tabItem {
-                    Label("Create", systemImage: "plus.square")
-                        .environment(\.symbolVariants, .none)
-                }
-            HomeScreen()
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                        .environment(\.symbolVariants, .none)
-                }
-            HomeScreen()
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape")
-                        .environment(\.symbolVariants, .none)
-                }
+        #if os(iOS)
+        if horizontalSizeClass == .compact {
+            TabBar()
+        } else {
+            Sidebar()
         }
+        #else // MacOS
+            Sidebar()
+        #endif
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        ContentView().preferredColorScheme(.dark)
     }
 }

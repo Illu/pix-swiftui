@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct PostCard: View {
+    
+    var desc: String?
+    var username: String
+    var likesCount: Int
+    var comments: [Comment]
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Username")
+                Text("\(username)")
                 Spacer()
-                Button(action: {print("tap ellipsis")}) { Image(systemName: "ellipsis").foregroundColor(.black) }
+                Button(action: {print("tap ellipsis")}) { Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText) }
             }.padding(.bottom, 10)
             HStack {
                 
@@ -22,16 +28,16 @@ struct PostCard: View {
             .background(.gray)
             HStack {
                 Image(systemName: "heart")
-                    .foregroundColor(.black)
-                Text("19")
+                    .foregroundColor(ColorManager.primaryText)
+                Text("\(likesCount)")
                 Image(systemName: "bubble.left")
-                    .foregroundColor(.black)
-                Text("4")
+                    .foregroundColor(ColorManager.primaryText)
+                Text("\(comments.count)")
                 Spacer()
             }
             .padding(.vertical, 5)
             HStack {
-                Text("Pixelated Grogu 🛸💫")
+                Text("\(desc ?? "Default Description")")
                     .font(.body)
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.leading)
@@ -48,7 +54,7 @@ struct PostCard: View {
             }
         }
         .padding()
-        .background(Color.white)
+        .background(ColorManager.card)
         .cornerRadius(8)
     }
 }
@@ -57,8 +63,8 @@ struct PostCard_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Spacer()
-            PostCard()
+            PostCard(username: "Test username", likesCount: 2, comments: [])
             Spacer()
-        }.background(.green)
+        }.background(.gray)
     }
 }
