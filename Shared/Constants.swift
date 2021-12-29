@@ -29,3 +29,5 @@ let Tabs = [
 ]
 
 let PAGE_ITEMS = 5 // how many items are fetched in the feed
+let ART_SIZE: Double = 16 // the size of the artworks in pixels (for height and width, as they are always a square)
+let PIXEL_SIZE: Double = 10 // how big each individual pixel will be displayed on the screen

@@ -13,6 +13,7 @@ struct PostCard: View {
     var username: String
     var likesCount: Int
     var comments: [Comment]
+    var data: PostData
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,11 +22,7 @@ struct PostCard: View {
                 Spacer()
                 Button(action: {print("tap ellipsis")}) { Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText) }
             }.padding(.bottom, 10)
-            HStack {
-                
-            }
-            .frame(maxWidth: .infinity, maxHeight: 300.0)
-            .background(.gray)
+            PixelArt(data: data)
             HStack {
                 Image(systemName: "heart")
                     .foregroundColor(ColorManager.primaryText)
@@ -63,7 +60,17 @@ struct PostCard_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Spacer()
-            PostCard(username: "Test username", likesCount: 2, comments: [])
+            PostCard(
+                username: "Test username",
+                likesCount: 2,
+                comments: [],
+                data: PostData(
+                    backgroundColor: "FF00FF",
+                    pixels: [
+                        Pixel(color: "#BADA55")
+                    ]
+                )
+            )
             Spacer()
         }.background(.gray)
     }

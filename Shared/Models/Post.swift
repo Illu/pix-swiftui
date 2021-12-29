@@ -14,9 +14,9 @@ struct Post: Identifiable, Codable {
     var desc: String
     var likes: [String]
     var likesCount: Int
-    var tag: String
+    var tag: String?
     var timestamp: Int
-    var comments: [Comment]
+    var comments: [Comment]?
     var userRef: DocumentReference
     var data: PostData
     var user: User

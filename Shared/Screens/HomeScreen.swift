@@ -21,7 +21,8 @@ struct HomeScreen: View {
                             desc: post.desc,
                             username: post.user.displayName,
                             likesCount: post.likes.count,
-                            comments: post.comments
+                            comments: post.comments ?? [],
+                            data: post.data
                         )
                     }
                 }

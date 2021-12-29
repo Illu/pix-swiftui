@@ -31,6 +31,10 @@
 		BD7B9D3527444E70005C5B4E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B9D3327444E70005C5B4E /* Sidebar.swift */; };
 		BD7B9D3727444E9E005C5B4E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B9D3627444E9E005C5B4E /* TabBar.swift */; };
 		BD7B9D3827444E9E005C5B4E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B9D3627444E9E005C5B4E /* TabBar.swift */; };
+		BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A57D277BDAB200E5D680 /* PixelArt.swift */; };
+		BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A57D277BDAB200E5D680 /* PixelArt.swift */; };
+		BDA2A581277BE06B00E5D680 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A580277BE06B00E5D680 /* Utils.swift */; };
+		BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A580277BE06B00E5D680 /* Utils.swift */; };
 		BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B19273C4B390062AF1C /* HomeScreen.swift */; };
 		BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B19273C4B390062AF1C /* HomeScreen.swift */; };
 		BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B1D273C4F300062AF1C /* PostCard.swift */; };
@@ -86,6 +90,8 @@
 		BD7B2FAC273C43FB0032B055 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		BD7B9D3327444E70005C5B4E /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		BD7B9D3627444E9E005C5B4E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		BDA2A57D277BDAB200E5D680 /* PixelArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArt.swift; sourceTree = "<group>"; };
+		BDA2A580277BE06B00E5D680 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BDC10B19273C4B390062AF1C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		BDC10B1D273C4F300062AF1C /* PostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCard.swift; sourceTree = "<group>"; };
 		BDC10B27273C5C880062AF1C /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 				BD7B2F87273C43F90032B055 /* ContentView.swift */,
 				BD7B2F88273C43FB0032B055 /* Assets.xcassets */,
 				BDC10B34273C992A0062AF1C /* Constants.swift */,
+				BDA2A580277BE06B00E5D680 /* Utils.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -247,6 +254,7 @@
 			children = (
 				BD374FE5277BBBCC00D56C0A /* Navigation */,
 				BDC10B1D273C4F300062AF1C /* PostCard.swift */,
+				BDA2A57D277BDAB200E5D680 /* PixelArt.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -437,12 +445,14 @@
 			files = (
 				BD7B9D3427444E70005C5B4E /* Sidebar.swift in Sources */,
 				BD7B2FB0273C43FB0032B055 /* ContentView.swift in Sources */,
+				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BDD00B48277BC61600ABE649 /* User.swift in Sources */,
 				BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
+				BDA2A581277BE06B00E5D680 /* Utils.swift in Sources */,
 				BDF4AFFA273F29D100622F85 /* ColorManager.swift in Sources */,
 				BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */,
 				BD7B9D3727444E9E005C5B4E /* TabBar.swift in Sources */,
@@ -463,10 +473,12 @@
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
+				BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BDF4AFFB273F29D100622F85 /* ColorManager.swift in Sources */,
 				BD7B9D3827444E9E005C5B4E /* TabBar.swift in Sources */,
 				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
 				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
+				BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
