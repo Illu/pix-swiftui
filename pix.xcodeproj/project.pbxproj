@@ -60,6 +60,10 @@
 		BDDCE77D277E079600CD62F0 /* ChallengesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */; };
 		BDDCE77F277E1C9C00CD62F0 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE77E277E1C9C00CD62F0 /* Empty.swift */; };
 		BDDCE780277E1C9C00CD62F0 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE77E277E1C9C00CD62F0 /* Empty.swift */; };
+		BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE781277E411100CD62F0 /* EditorScreen.swift */; };
+		BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE781277E411100CD62F0 /* EditorScreen.swift */; };
+		BDDCE786277E469200CD62F0 /* PixelEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE785277E469200CD62F0 /* PixelEditor.swift */; };
+		BDDCE787277E469200CD62F0 /* PixelEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE785277E469200CD62F0 /* PixelEditor.swift */; };
 		BDF4AFF6273F28A000622F85 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF4AFF5273F28A000622F85 /* Colors.xcassets */; };
 		BDF4AFF7273F28A000622F85 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF4AFF5273F28A000622F85 /* Colors.xcassets */; };
 		BDF4AFFA273F29D100622F85 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF4AFF9273F29D100622F85 /* ColorManager.swift */; };
@@ -116,6 +120,8 @@
 		BDDCE777277D5E9600CD62F0 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesScreen.swift; sourceTree = "<group>"; };
 		BDDCE77E277E1C9C00CD62F0 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		BDDCE781277E411100CD62F0 /* EditorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorScreen.swift; sourceTree = "<group>"; };
+		BDDCE785277E469200CD62F0 /* PixelEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelEditor.swift; sourceTree = "<group>"; };
 		BDF4AFF5273F28A000622F85 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BDF4AFF9273F29D100622F85 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,6 +259,7 @@
 				BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */,
 				BDDCE774277D5DE200CD62F0 /* ProfileScreen.swift */,
 				BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */,
+				BDDCE781277E411100CD62F0 /* EditorScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -270,6 +277,7 @@
 		BDC10B1C273C4F210062AF1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BDDCE784277E467E00CD62F0 /* Editor */,
 				BD374FE5277BBBCC00D56C0A /* Navigation */,
 				BDC10B1D273C4F300062AF1C /* PostCard.swift */,
 				BDC10B27273C5C880062AF1C /* Login.swift */,
@@ -285,6 +293,14 @@
 				BDDCE777277D5E9600CD62F0 /* CurrentUser.swift */,
 			);
 			path = Observables;
+			sourceTree = "<group>";
+		};
+		BDDCE784277E467E00CD62F0 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				BDDCE785277E469200CD62F0 /* PixelEditor.swift */,
+			);
+			path = Editor;
 			sourceTree = "<group>";
 		};
 		BDF4AFF8273F29B100622F85 /* Colors */ = {
@@ -475,6 +491,7 @@
 				BD7B9D3427444E70005C5B4E /* Sidebar.swift in Sources */,
 				BD7B2FB0273C43FB0032B055 /* ContentView.swift in Sources */,
 				BDDCE775277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
+				BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
@@ -483,6 +500,7 @@
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BDD00B48277BC61600ABE649 /* User.swift in Sources */,
 				BDDCE77C277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
+				BDDCE786277E469200CD62F0 /* PixelEditor.swift in Sources */,
 				BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDA2A581277BE06B00E5D680 /* Utils.swift in Sources */,
 				BDF4AFFA273F29D100622F85 /* ColorManager.swift in Sources */,
@@ -504,6 +522,8 @@
 				BDDCE776277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
 				BDDCE773277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */,
 				BD7B2FB1273C43FB0032B055 /* ContentView.swift in Sources */,
+				BDDCE787277E469200CD62F0 /* PixelEditor.swift in Sources */,
+				BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,

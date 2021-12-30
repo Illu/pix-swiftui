@@ -15,6 +15,8 @@ struct PostCard: View {
     var comments: [Comment]
     var data: PostData
     
+    @State private var cardWidth: Double = 0.0
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -22,7 +24,11 @@ struct PostCard: View {
                 Spacer()
                 Button(action: {print("tap ellipsis")}) { Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText) }
             }.padding(.bottom, 10)
-            PixelArt(data: data)
+            GeometryReader { geometry in
+                HStack{}.onAppear{ self.cardWidth = geometry.size.width}
+            }
+            PixelArt(data: data, pixelSize: cardWidth / ART_SIZE)
+                .frame(height: cardWidth)
             HStack {
                 Image(systemName: "heart")
                     .foregroundColor(ColorManager.primaryText)
@@ -50,7 +56,7 @@ struct PostCard: View {
                 Spacer()
             }
         }
-        .padding()
+        .padding(16)
         .background(ColorManager.cardBackground)
         .cornerRadius(8)
         .buttonStyle(PlainButtonStyle())
@@ -59,7 +65,7 @@ struct PostCard: View {
 
 struct PostCard_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
+        ScrollView {
             Color(.gray)
             VStack {
             PostCard(
