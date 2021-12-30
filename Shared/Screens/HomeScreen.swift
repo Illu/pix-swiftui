@@ -14,17 +14,21 @@ struct HomeScreen: View {
     @ObservedObject private var viewModel = FeedViewModel()
     
     var body: some View {
+        ZStack {
+            ColorManager.screenBackground
             VStack {
-                ScrollView {
-                    ForEach(viewModel.posts) { post in
-                        PostCard(
-                            desc: post.desc,
-                            username: post.user.displayName,
-                            likesCount: post.likes.count,
-                            comments: post.comments ?? [],
-                            data: post.data
-                        ).padding(.horizontal, 16.0)
-                    }
+                List(viewModel.posts) { post in
+                    PostCard(
+                        desc: post.desc,
+                        username: post.user.displayName,
+                        likesCount: post.likes.count,
+                        comments: post.comments ?? [],
+                        data: post.data
+                    )
+                }
+                .listStyle(.sidebar)
+                .refreshable {
+                    self.viewModel.fetchData()
                 }
             }
             .background(ColorManager.screenBackground)
@@ -41,6 +45,7 @@ struct HomeScreen: View {
                 }
             }
         }
+    }
 }
 
 struct HomeScreen_Previews: PreviewProvider {

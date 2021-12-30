@@ -11,7 +11,11 @@ struct TabBar: View {
     var body: some View {
         TabView() {
             ForEach(Tabs) { tab in
-                tab.view.tabItem{
+                NavigationView {
+                    tab.view
+                }
+                .background(ColorManager.screenBackground)
+                .tabItem{
                     Label(tab.name, systemImage: tab.systemImage)
                         .environment(\.symbolVariants, .none)
                 }
