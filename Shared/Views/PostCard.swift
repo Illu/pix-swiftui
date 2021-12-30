@@ -36,7 +36,7 @@ struct PostCard: View {
             HStack {
                 Text("\(desc ?? "Default Description")")
                     .font(.body)
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(ColorManager.secondaryText)
                     .multilineTextAlignment(.leading)
                     
                 Spacer()
@@ -46,12 +46,12 @@ struct PostCard: View {
                 Text("6 Feb 2021")
                     .fontWeight(.light)
                     .font(.footnote)
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(ColorManager.secondaryText)
                 Spacer()
             }
         }
         .padding()
-        .background(ColorManager.card)
+        .background(ColorManager.cardBackground)
         .cornerRadius(8)
     }
 }
@@ -72,6 +72,6 @@ struct PostCard_Previews: PreviewProvider {
                 )
             )
             Spacer()
-        }.background(.gray)
+        }
     }
 }

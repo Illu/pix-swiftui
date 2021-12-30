@@ -16,11 +16,11 @@ struct PixelArt: View {
         LazyVGrid(columns: columns, spacing: 0) {
             ForEach(0..<data.pixels.count) { index in
                 Rectangle()
-                    .fill(Color.init(data.pixels[index].color) ?? Color.clear)
+                    .fill(Color.init(hex: data.pixels[index].color) ?? Color.clear)
                    .frame(width: PIXEL_SIZE, height: PIXEL_SIZE)
             }
         }.frame(width: PIXEL_SIZE * ART_SIZE, height: PIXEL_SIZE * ART_SIZE)
-            .background(Color.init(data.backgroundColor) ?? Color.white)
+            .background(Color.init(hex: data.backgroundColor) ?? Color.white)
     }
 }
 

@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ColorManager {
-    static let card = Color("Card")
+public struct ColorManager {
+    static let cardBackground = Color("CardBackground")
     static let primaryText = Color("PrimaryText")
+    static let secondaryText = Color("SecondaryText")
+    static let screenBackground = Color("ScreenBackground")
 }

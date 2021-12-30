@@ -23,13 +23,14 @@ struct HomeScreen: View {
                             likesCount: post.likes.count,
                             comments: post.comments ?? [],
                             data: post.data
-                        )
+                        ).padding(.horizontal, 16.0)
                     }
                 }
             }
             .onAppear() {
                 self.viewModel.fetchData()
             }
+            .background(ColorManager.screenBackground)
     }
 }
 

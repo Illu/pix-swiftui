@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsScreen: View {
     var body: some View {
         VStack{
-            Text("test")
+            Text("🚧 Settings")
         }.navigationBarTitle(Text("Settings"))
     }
 }
