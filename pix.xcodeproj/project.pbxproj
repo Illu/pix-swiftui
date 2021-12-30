@@ -39,8 +39,8 @@
 		BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B19273C4B390062AF1C /* HomeScreen.swift */; };
 		BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B1D273C4F300062AF1C /* PostCard.swift */; };
 		BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B1D273C4F300062AF1C /* PostCard.swift */; };
-		BDC10B28273C5C880062AF1C /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B27273C5C880062AF1C /* LoginScreen.swift */; };
-		BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B27273C5C880062AF1C /* LoginScreen.swift */; };
+		BDC10B28273C5C880062AF1C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B27273C5C880062AF1C /* Login.swift */; };
+		BDC10B29273C5C880062AF1C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B27273C5C880062AF1C /* Login.swift */; };
 		BDC10B2B273C637F0062AF1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */; };
 		BDC10B2C273C637F0062AF1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */; };
 		BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */; };
@@ -50,6 +50,14 @@
 		BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B45277BC4F900ABE649 /* Comment.swift */; };
 		BDD00B48277BC61600ABE649 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B47277BC61600ABE649 /* User.swift */; };
 		BDD00B4A277BCB2000ABE649 /* PostCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */; };
+		BDDCE772277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */; };
+		BDDCE773277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */; };
+		BDDCE775277D5DE200CD62F0 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE774277D5DE200CD62F0 /* ProfileScreen.swift */; };
+		BDDCE776277D5DE200CD62F0 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE774277D5DE200CD62F0 /* ProfileScreen.swift */; };
+		BDDCE778277D5E9600CD62F0 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE777277D5E9600CD62F0 /* CurrentUser.swift */; };
+		BDDCE779277D5E9600CD62F0 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE777277D5E9600CD62F0 /* CurrentUser.swift */; };
+		BDDCE77C277E079600CD62F0 /* ChallengesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */; };
+		BDDCE77D277E079600CD62F0 /* ChallengesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */; };
 		BDF4AFF6273F28A000622F85 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF4AFF5273F28A000622F85 /* Colors.xcassets */; };
 		BDF4AFF7273F28A000622F85 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF4AFF5273F28A000622F85 /* Colors.xcassets */; };
 		BDF4AFFA273F29D100622F85 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF4AFF9273F29D100622F85 /* ColorManager.swift */; };
@@ -94,13 +102,17 @@
 		BDA2A580277BE06B00E5D680 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BDC10B19273C4B390062AF1C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		BDC10B1D273C4F300062AF1C /* PostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCard.swift; sourceTree = "<group>"; };
-		BDC10B27273C5C880062AF1C /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		BDC10B27273C5C880062AF1C /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		BDC10B34273C992A0062AF1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BDD00B45277BC4F900ABE649 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		BDD00B47277BC61600ABE649 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardViewModel.swift; sourceTree = "<group>"; };
+		BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsScreen.swift; sourceTree = "<group>"; };
+		BDDCE774277D5DE200CD62F0 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		BDDCE777277D5E9600CD62F0 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesScreen.swift; sourceTree = "<group>"; };
 		BDF4AFF5273F28A000622F85 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BDF4AFF9273F29D100622F85 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +190,7 @@
 		BD7B2F85273C43F90032B055 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BDDCE77A277DFD5800CD62F0 /* Observables */,
 				BDF4AFF8273F29B100622F85 /* Colors */,
 				BD374FE4277BBB7500D56C0A /* ViewModels */,
 				BDC10B1C273C4F210062AF1C /* Views */,
@@ -233,8 +246,10 @@
 			isa = PBXGroup;
 			children = (
 				BDC10B19273C4B390062AF1C /* HomeScreen.swift */,
-				BDC10B27273C5C880062AF1C /* LoginScreen.swift */,
 				BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */,
+				BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */,
+				BDDCE774277D5DE200CD62F0 /* ProfileScreen.swift */,
+				BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -254,9 +269,18 @@
 			children = (
 				BD374FE5277BBBCC00D56C0A /* Navigation */,
 				BDC10B1D273C4F300062AF1C /* PostCard.swift */,
+				BDC10B27273C5C880062AF1C /* Login.swift */,
 				BDA2A57D277BDAB200E5D680 /* PixelArt.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BDDCE77A277DFD5800CD62F0 /* Observables */ = {
+			isa = PBXGroup;
+			children = (
+				BDDCE777277D5E9600CD62F0 /* CurrentUser.swift */,
+			);
+			path = Observables;
 			sourceTree = "<group>";
 		};
 		BDF4AFF8273F29B100622F85 /* Colors */ = {
@@ -443,20 +467,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDCE772277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */,
 				BD7B9D3427444E70005C5B4E /* Sidebar.swift in Sources */,
 				BD7B2FB0273C43FB0032B055 /* ContentView.swift in Sources */,
+				BDDCE775277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BDD00B48277BC61600ABE649 /* User.swift in Sources */,
+				BDDCE77C277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDA2A581277BE06B00E5D680 /* Utils.swift in Sources */,
 				BDF4AFFA273F29D100622F85 /* ColorManager.swift in Sources */,
 				BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */,
+				BDDCE778277D5E9600CD62F0 /* CurrentUser.swift in Sources */,
 				BD7B9D3727444E9E005C5B4E /* TabBar.swift in Sources */,
-				BDC10B28273C5C880062AF1C /* LoginScreen.swift in Sources */,
+				BDC10B28273C5C880062AF1C /* Login.swift in Sources */,
 				BDC10B35273C992A0062AF1C /* Constants.swift in Sources */,
 				BDD00B4A277BCB2000ABE649 /* PostCardViewModel.swift in Sources */,
 				BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */,
@@ -468,15 +496,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD7B9D3527444E70005C5B4E /* Sidebar.swift in Sources */,
+				BDDCE776277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
+				BDDCE773277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */,
 				BD7B2FB1273C43FB0032B055 /* ContentView.swift in Sources */,
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,
+				BDDCE77D277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */,
+				BDDCE779277D5E9600CD62F0 /* CurrentUser.swift in Sources */,
 				BDF4AFFB273F29D100622F85 /* ColorManager.swift in Sources */,
 				BD7B9D3827444E9E005C5B4E /* TabBar.swift in Sources */,
-				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
+				BDC10B29273C5C880062AF1C /* Login.swift in Sources */,
 				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
 				BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */,
 			);

@@ -27,16 +27,27 @@ struct HomeScreen: View {
                     }
                 }
             }
-            .onAppear() {
-                self.viewModel.fetchData()
-            }
             .background(ColorManager.screenBackground)
-    }
+            .navigationTitle("Trending")
+            .toolbar {
+                HStack {
+                    Button(action: {print("tap search")}) { Image(systemName: "magnifyingglass") }
+                    Button(action: {print("tap bell")}) { Image(systemName: "bell.badge") }
+                }
+            }
+            .onAppear {
+                if viewModel.posts.isEmpty {
+                    self.viewModel.fetchData()
+                }
+            }
+        }
 }
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
-        HomeScreen().preferredColorScheme(.dark)
+        HomeScreen()
+            .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch)"))
+            .previewDisplayName("iPad Pro")
     }
 }

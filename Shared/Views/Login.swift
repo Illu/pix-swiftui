@@ -1,5 +1,5 @@
 //
-//  LoginScreen.swift
+//  Login.swift
 //  pix
 //
 //  Created by Maxime Nory on 2021-11-10.
@@ -8,7 +8,10 @@
 import Firebase
 import SwiftUI
 
-struct LoginScreen: View {
+struct Login: View {
+    
+    @EnvironmentObject var currentUser: CurrentUser
+    
     @State var email = ""
     @State var password = ""
 
@@ -16,29 +19,18 @@ struct LoginScreen: View {
         VStack {
             TextField("Email", text: $email)
             SecureField("Password", text: $password)
-            Button(action: { login() }) {
+            Button(action: { currentUser.login(email: email, password: password) }) {
                 Text("Sign in")
             }
         }
         .padding()
-    }
-
-    func login() {
-        print("login!")
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-            } else {
-                print("success")
-            }
-        }
     }
 }
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LoginScreen()
+            Login()
         }
     }
 }

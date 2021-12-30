@@ -14,7 +14,9 @@ class FeedViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
     func fetchData() {
-        db.collection("Posts").addSnapshotListener { (querySnapshot, error ) in
+        db.collection("Posts")
+            .limit(to: 2)
+            .addSnapshotListener { (querySnapshot, error ) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents in Posts")
                 return

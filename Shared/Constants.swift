@@ -22,9 +22,9 @@ struct Tab: Identifiable {
 
 let Tabs = [
     Tab(name: "Home", systemImage: "house", view: AnyView(HomeScreen())),
-    Tab(name: "Challenges", systemImage: "crown", view: AnyView(HomeScreen())),
+    Tab(name: "Challenges", systemImage: "crown", view: AnyView(ChallengesScreen())),
     Tab(name: "Create", systemImage: "plus.square", view: AnyView(HomeScreen())),
-    Tab(name: "Profile", systemImage: "person", view: AnyView(LoginScreen())),
+    Tab(name: "Profile", systemImage: "person", view: AnyView(ProfileScreen())),
     Tab(name: "Settings", systemImage: "gearshape", view: AnyView(SettingsScreen()))
 ]
 

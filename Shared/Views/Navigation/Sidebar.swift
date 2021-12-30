@@ -26,7 +26,7 @@ struct Sidebar: View {
                     self.selection = 0
                 }
             }
-            .navigationTitle("Logo")
+            .navigationTitle("Pix")
         }
     }
 }
