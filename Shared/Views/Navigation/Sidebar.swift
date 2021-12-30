@@ -21,6 +21,7 @@ struct Sidebar: View {
                     }
                 }
             }
+            .listStyle(.sidebar)
             .onAppear {
                 if self.selection == nil {
                     self.selection = 0

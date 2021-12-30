@@ -26,7 +26,6 @@ struct HomeScreen: View {
                         data: post.data
                     )
                 }
-                .listStyle(.sidebar)
                 .refreshable {
                     self.viewModel.fetchData()
                 }
@@ -51,8 +50,5 @@ struct HomeScreen: View {
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
-        HomeScreen()
-            .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch)"))
-            .previewDisplayName("iPad Pro")
     }
 }

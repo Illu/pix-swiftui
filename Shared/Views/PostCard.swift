@@ -53,13 +53,15 @@ struct PostCard: View {
         .padding()
         .background(ColorManager.cardBackground)
         .cornerRadius(8)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
 struct PostCard_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            Spacer()
+        ZStack {
+            Color(.gray)
+            VStack {
             PostCard(
                 username: "Test username",
                 likesCount: 2,
@@ -71,7 +73,18 @@ struct PostCard_Previews: PreviewProvider {
                     ]
                 )
             )
-            Spacer()
+            PostCard(
+                username: "Test username",
+                likesCount: 2,
+                comments: [],
+                data: PostData(
+                    backgroundColor: "FF00FF",
+                    pixels: [
+                        Pixel(color: "#BADA55")
+                    ]
+                )
+            )
+            }
         }
     }
 }
