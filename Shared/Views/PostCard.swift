@@ -6,21 +6,46 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct PostCard: View {
     
     var desc: String?
     var username: String
+    var userId: String
     var likesCount: Int
     var comments: [Comment]
     var data: PostData
     
+    var db = Firestore.firestore()
+
     @State private var cardWidth: Double = 0.0
+    @State private var userData: UserData?
+    
+    func loadUserData () {
+        let docRef = self.db.collection("Users").document(userId)
+        docRef.getDocument { document, error in
+            if let error = error as NSError? {
+                print ("error: \(error.localizedDescription)")
+            }
+            else {
+                if let document = document {
+                    do {
+                        self.userData = try document.data(as: UserData.self)
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
+            }
+        }
+    }
     
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("\(username)")
+                RoundedAvatar(name: userData?.avatar ?? "", size: 40)
+                Text(userData?.displayName ?? username)
                 Spacer()
                 Button(action: {print("tap ellipsis")}) { Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText) }
             }.padding(.bottom, 10)
@@ -60,6 +85,7 @@ struct PostCard: View {
         .background(ColorManager.cardBackground)
         .cornerRadius(8)
         .frame(maxWidth: 400)
+        .onAppear(perform: loadUserData)
     }
 }
 
@@ -70,7 +96,7 @@ struct PostCard_Previews: PreviewProvider {
             VStack {
                 PostCard(
                     username: "Test username",
-                    likesCount: 2,
+                    userId: "", likesCount: 2,
                     comments: [],
                     data: PostData(
                         backgroundColor: "FF00FF",
@@ -81,6 +107,7 @@ struct PostCard_Previews: PreviewProvider {
                 )
                 PostCard(
                     username: "Test username",
+                    userId: "",
                     likesCount: 2,
                     comments: [],
                     data: PostData(

@@ -26,6 +26,7 @@ struct HomeScreen: View {
                             PostCard(
                                 desc: post.desc,
                                 username: post.user.displayName,
+                                userId: post.user.id,
                                 likesCount: post.likes.count,
                                 comments: post.comments ?? [],
                                 data: post.data
