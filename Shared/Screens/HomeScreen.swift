@@ -53,7 +53,7 @@ struct HomeScreen: View {
         .background(ColorManager.screenBackground)
         .fullScreenCover(
             isPresented: $showLoginSheet,
-            onDismiss: { showLoginSheet = false }
+            onDismiss: { self.showLoginSheet = false }
         ) {
             NavigationView {
                 LoginMenuScreen()

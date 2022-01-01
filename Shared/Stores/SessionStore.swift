@@ -25,34 +25,35 @@ class SessionStore: ObservableObject {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 // if we have a user, create a new user model
-                print("Got user: \(user)")
                 self.session = SessionUser(
                     uid: user.uid,
                     displayName: user.displayName,
                     email: user.email
                 )
-                
-                let docRef = self.db.collection("Users").document(user.uid)
-                docRef.getDocument { document, error in
-                    if let error = error as NSError? {
-                        print ("error: \(error.localizedDescription)")
-                    }
-                    else {
-                        if let document = document {
-                            do {
-                                self.userData = try document.data(as: UserData.self)
-                            }
-                            catch {
-                                print(error)
-                            }
-                        }
-                    }
-                }
-                
+                self.loadUserData()
             } else {
                 // if we don't have a user, set our session to nil
                 self.session = nil
                 self.userData = nil
+            }
+        }
+    }
+    
+    func loadUserData () {
+        let docRef = self.db.collection("Users").document(self.session!.uid)
+        docRef.getDocument { document, error in
+            if let error = error as NSError? {
+                print ("error: \(error.localizedDescription)")
+            }
+            else {
+                if let document = document {
+                    do {
+                        self.userData = try document.data(as: UserData.self)
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
             }
         }
     }

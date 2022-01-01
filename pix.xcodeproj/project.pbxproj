@@ -23,6 +23,10 @@
 		BD2520E42780D770004C3CDE /* RoundedAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520E22780D770004C3CDE /* RoundedAvatar.swift */; };
 		BD2520E62780D9D1004C3CDE /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520E52780D9D1004C3CDE /* UserData.swift */; };
 		BD2520E72780D9D1004C3CDE /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520E52780D9D1004C3CDE /* UserData.swift */; };
+		BD29E8B12780E07F00335989 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B02780E07F00335989 /* EditProfile.swift */; };
+		BD29E8B22780E07F00335989 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B02780E07F00335989 /* EditProfile.swift */; };
+		BD29E8B42780FBCA00335989 /* AvatarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B32780FBCA00335989 /* AvatarList.swift */; };
+		BD29E8B52780FBCA00335989 /* AvatarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B32780FBCA00335989 /* AvatarList.swift */; };
 		BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */; };
 		BD374FE3277BBB3800D56C0A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE2277BBB3800D56C0A /* Post.swift */; };
 		BD374FE8277BBF3F00D56C0A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD374FE7277BBF3F00D56C0A /* FirebaseAnalytics */; };
@@ -111,6 +115,8 @@
 		BD2520DF2780C4FA004C3CDE /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		BD2520E22780D770004C3CDE /* RoundedAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedAvatar.swift; sourceTree = "<group>"; };
 		BD2520E52780D9D1004C3CDE /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		BD29E8B02780E07F00335989 /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		BD29E8B32780FBCA00335989 /* AvatarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarList.swift; sourceTree = "<group>"; };
 		BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		BD374FE2277BBB3800D56C0A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BD7B2F86273C43F90032B055 /* pixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixApp.swift; sourceTree = "<group>"; };
@@ -295,6 +301,7 @@
 				BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */,
 				BDDCE781277E411100CD62F0 /* EditorScreen.swift */,
 				BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */,
+				BD29E8B02780E07F00335989 /* EditProfile.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -322,6 +329,7 @@
 				BDDCE77E277E1C9C00CD62F0 /* Empty.swift */,
 				BD2520CE277FAD77004C3CDE /* LargeButton.swift */,
 				BD2520E22780D770004C3CDE /* RoundedAvatar.swift */,
+				BD29E8B32780FBCA00335989 /* AvatarList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -532,6 +540,7 @@
 				BDDCE772277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */,
 				BD7B9D3427444E70005C5B4E /* Sidebar.swift in Sources */,
 				BD2520E02780C4FA004C3CDE /* Avatar.swift in Sources */,
+				BD29E8B12780E07F00335989 /* EditProfile.swift in Sources */,
 				BD7B2FB0273C43FB0032B055 /* ContentView.swift in Sources */,
 				BD2520CC277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */,
 				BDDCE775277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
@@ -545,6 +554,7 @@
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BDD00B48277BC61600ABE649 /* User.swift in Sources */,
 				BDDCE77C277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
+				BD29E8B42780FBCA00335989 /* AvatarList.swift in Sources */,
 				BDDCE786277E469200CD62F0 /* PixelEditor.swift in Sources */,
 				BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BD2520E32780D770004C3CDE /* RoundedAvatar.swift in Sources */,
@@ -575,6 +585,7 @@
 				BDDCE787277E469200CD62F0 /* PixelEditor.swift in Sources */,
 				BD2520D92780B33A004C3CDE /* ImagesStore.swift in Sources */,
 				BD2520E12780C4FA004C3CDE /* Avatar.swift in Sources */,
+				BD29E8B22780E07F00335989 /* EditProfile.swift in Sources */,
 				BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
@@ -592,6 +603,7 @@
 				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
 				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
 				BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */,
+				BD29E8B52780FBCA00335989 /* AvatarList.swift in Sources */,
 				BDDCE780277E1C9C00CD62F0 /* Empty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

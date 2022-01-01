@@ -37,8 +37,7 @@ class ImagesStore: ObservableObject {
                         // transform the image name (xxx-n.png) to the name (xxx-n)
                         imageName.removeSubrange(dotRange.lowerBound..<imageName.endIndex)
                     }
-                    let category = "\(imageName)"
-                    let avatar = Avatar(name: imageName, cloudPath: item, category: category, url: URL!.absoluteString)
+                    let avatar = Avatar(name: imageName, cloudPath: item, category: imageCategory, url: URL!.absoluteString)
                     self.avatars.append(avatar)
                 }
             }

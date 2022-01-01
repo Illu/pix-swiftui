@@ -9,27 +9,33 @@ import SwiftUI
 
 struct RoundedAvatar: View {
     
-    @EnvironmentObject var images: ImagesStore
+    @EnvironmentObject private var images: ImagesStore
     
     var name: String?
+    var url: String? // sometimes this component is used in a context where it does not have access to the ImagesStore. with url, it can display the avatar directly from the URL instead.
     var size: CGFloat? = 50
     
     func getAvatarUrl () -> String {
-        return images.avatars.first(where: {$0.name == name})?.url ?? ""
+        if (url == nil) {
+            return images.avatars.first(where: {$0.name == name})?.url ?? ""
+        } else {
+            return url!
+        }
     }
     
     var body: some View {
-        if (name != nil) {
+        if (name != nil || url != nil) {
             AsyncImage(
                 url: URL(string: getAvatarUrl()),
                 content: { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: size, maxHeight: size)
+                        .frame(width: size, height: size)
                         .clipShape(Circle())
                 },
                 placeholder: {
                     ProgressView()
+                        .frame(width: size, height: size)
                 }
             )
         } else {

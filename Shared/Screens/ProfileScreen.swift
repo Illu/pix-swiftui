@@ -29,6 +29,9 @@ struct ProfileScreen: View {
                             Text("TODO: X Post(s)")
                         }
                     }
+                    NavigationLink("Edit Profile") {
+                        EditProfile()
+                    }
                 }
             }
         }
