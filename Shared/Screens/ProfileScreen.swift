@@ -10,18 +10,24 @@ import SwiftUI
 struct ProfileScreen: View {
     
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var images: ImagesStore
     
     var body: some View {
         VStack {
-            Text("🚧 Profile Screen")
             if session.session == nil {
                 Text("User is not logged in")
                 LoginScreen()
             } else {
-                HStack {
-                Text("User is logged in! id: \(session.session?.uid ?? "error")")
+                VStack {
                     Button("Logout") {
                         session.signOut()
+                    }
+                    HStack {
+                        RoundedAvatar(name: session.userData?.avatar, size: 100)
+                        VStack {
+                            Text(session.userData?.displayName ?? "Name Error")
+                            Text("TODO: X Post(s)")
+                        }
                     }
                 }
             }

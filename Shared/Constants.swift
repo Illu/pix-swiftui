@@ -13,6 +13,13 @@ enum Sorting : String {
     case new = "timestamp"
 }
 
+enum States {
+    case IDLE
+    case LOADING
+    case SUCCESS
+    case ERROR
+}
+
 struct Tab: Identifiable {
     var id = UUID()
     var name: String

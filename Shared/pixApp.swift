@@ -19,6 +19,7 @@ struct pixApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(SessionStore())
+                .environmentObject(ImagesStore())
         }
     }
 }

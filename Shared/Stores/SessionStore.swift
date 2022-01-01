@@ -9,11 +9,17 @@ import Foundation
 import FirebaseAuth
 import SwiftUI
 import Combine
+import FirebaseFirestore
 
 class SessionStore: ObservableObject {
     var didChange = PassthroughSubject<SessionStore, Never>()
+    
     @Published var session: SessionUser? { didSet { self.didChange.send(self) }}
+    @Published var userData: UserData?
+    
     var handle: AuthStateDidChangeListenerHandle?
+    
+    private var db = Firestore.firestore()
     
     func listen () {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -25,9 +31,28 @@ class SessionStore: ObservableObject {
                     displayName: user.displayName,
                     email: user.email
                 )
+                
+                let docRef = self.db.collection("Users").document(user.uid)
+                docRef.getDocument { document, error in
+                    if let error = error as NSError? {
+                        print ("error: \(error.localizedDescription)")
+                    }
+                    else {
+                        if let document = document {
+                            do {
+                                self.userData = try document.data(as: UserData.self)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                }
+                
             } else {
                 // if we don't have a user, set our session to nil
                 self.session = nil
+                self.userData = nil
             }
         }
     }

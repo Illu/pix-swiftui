@@ -11,14 +11,17 @@ import UIKit
 struct ContentView: View {
     
     @EnvironmentObject var session: SessionStore
-    
+    @EnvironmentObject var images: ImagesStore
+
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     #endif
     
-    func getUser () {
-        print("Initializing user")
+    func loadRemoteContent () {
+        // init user listener for the session
         session.listen()
+        // load remote images from firebase storage
+        images.loadAvatarsURLs()
     }
     
     var body: some View {
@@ -33,7 +36,7 @@ struct ContentView: View {
                 Sidebar()
             #endif
         }
-        .onAppear(perform: getUser)
+        .onAppear(perform: loadRemoteContent)
     }
 }
 
