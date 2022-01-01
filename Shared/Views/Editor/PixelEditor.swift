@@ -42,7 +42,7 @@ struct PixelEditor: View {
                         }
                 )
         }
-        
+        .frame(maxWidth: 400, maxHeight: 400)
     }
 }
 

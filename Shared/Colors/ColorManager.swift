@@ -12,4 +12,5 @@ public struct ColorManager {
     static let primaryText = Color("PrimaryText")
     static let secondaryText = Color("SecondaryText")
     static let screenBackground = Color("ScreenBackground")
+    static let inputBackground = Color("InputBackground")
 }

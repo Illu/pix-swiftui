@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct ChallengesScreen: View {
+    
     var body: some View {
         ZStack {
-            ColorManager.screenBackground
             VStack {
                 Text("🚧 Challenges")
                 Empty()
             }
         }
         .navigationTitle("Challenges")
-        .background(ColorManager.screenBackground)
     }
 }
 

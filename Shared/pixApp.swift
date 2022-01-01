@@ -18,6 +18,7 @@ struct pixApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(SessionStore())
         }
     }
 }

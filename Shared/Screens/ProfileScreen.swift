@@ -9,19 +9,23 @@ import SwiftUI
 
 struct ProfileScreen: View {
     
-    @StateObject var currentUser = CurrentUser()
+    @EnvironmentObject var session: SessionStore
     
     var body: some View {
         VStack {
             Text("🚧 Profile Screen")
-            if currentUser.user == nil {
+            if session.session == nil {
                 Text("User is not logged in")
-                Login()
+                LoginScreen()
             } else {
-                Text("User is logged in! id: \(currentUser.user?.uid ?? "error")")
+                HStack {
+                Text("User is logged in! id: \(session.session?.uid ?? "error")")
+                    Button("Logout") {
+                        session.signOut()
+                    }
+                }
             }
         }
-        .environmentObject(currentUser)
     }
 }
 

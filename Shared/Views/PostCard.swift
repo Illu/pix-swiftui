@@ -28,7 +28,7 @@ struct PostCard: View {
                 HStack{}.onAppear{ self.cardWidth = geometry.size.width}
             }
             PixelArt(data: data, pixelSize: cardWidth / ART_SIZE)
-                .frame(height: cardWidth)
+                .frame(width: cardWidth, height: cardWidth)
             HStack {
                 Image(systemName: "heart")
                     .foregroundColor(ColorManager.primaryText)
@@ -59,7 +59,7 @@ struct PostCard: View {
         .padding(16)
         .background(ColorManager.cardBackground)
         .cornerRadius(8)
-        .buttonStyle(PlainButtonStyle())
+        .frame(maxWidth: 400)
     }
 }
 
@@ -68,28 +68,28 @@ struct PostCard_Previews: PreviewProvider {
         ScrollView {
             Color(.gray)
             VStack {
-            PostCard(
-                username: "Test username",
-                likesCount: 2,
-                comments: [],
-                data: PostData(
-                    backgroundColor: "FF00FF",
-                    pixels: [
-                        Pixel(color: "#BADA55")
-                    ]
+                PostCard(
+                    username: "Test username",
+                    likesCount: 2,
+                    comments: [],
+                    data: PostData(
+                        backgroundColor: "FF00FF",
+                        pixels: [
+                            Pixel(color: "#BADA55")
+                        ]
+                    )
                 )
-            )
-            PostCard(
-                username: "Test username",
-                likesCount: 2,
-                comments: [],
-                data: PostData(
-                    backgroundColor: "FF00FF",
-                    pixels: [
-                        Pixel(color: "#BADA55")
-                    ]
+                PostCard(
+                    username: "Test username",
+                    likesCount: 2,
+                    comments: [],
+                    data: PostData(
+                        backgroundColor: "FF00FF",
+                        pixels: [
+                            Pixel(color: "#BADA55")
+                        ]
+                    )
                 )
-            )
             }
         }
     }

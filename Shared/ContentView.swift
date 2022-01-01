@@ -10,20 +10,30 @@ import UIKit
 
 struct ContentView: View {
     
+    @EnvironmentObject var session: SessionStore
+    
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     #endif
     
+    func getUser () {
+        print("Initializing user")
+        session.listen()
+    }
+    
     var body: some View {
-        #if os(iOS)
-        if horizontalSizeClass == .compact {
-            TabBar()
-        } else {
-            Sidebar()
+        HStack {
+            #if os(iOS)
+            if horizontalSizeClass == .compact {
+                TabBar()
+            } else {
+                Sidebar()
+            }
+            #else // MacOS
+                Sidebar()
+            #endif
         }
-        #else // MacOS
-            Sidebar()
-        #endif
+        .onAppear(perform: getUser)
     }
 }
 

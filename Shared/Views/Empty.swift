@@ -22,19 +22,9 @@ struct Empty: View {
                 .foregroundColor(ColorManager.secondaryText)
                 .padding(20.0)
             if (action != nil) && (actionTitle != nil) {
-                Button(action: {
-                    action!()
-                }) {
-                    Text(actionTitle!)
-                        .frame(width: BUTTON_WIDTH)
-                        .padding(10.0)
-                        .foregroundColor(ColorManager.secondaryText)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4.0)
-                                .stroke(ColorManager.secondaryText, lineWidth: 1)
-                        )
+                Button(action: action!) {
+                    LargeButton(title: actionTitle!)
                 }
-                .cornerRadius(4.0)
             }
         }
     }
