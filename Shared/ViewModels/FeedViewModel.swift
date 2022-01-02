@@ -10,15 +10,30 @@ import FirebaseFirestore
 
 class FeedViewModel: ObservableObject {
     @Published var posts = [Post]()
+    @Published var state = States.IDLE
     
     private var db = Firestore.firestore()
     
-    func fetchData() {
-        db.collection("Posts")
-            .limit(to: 2)
+    func fetchData(maxTimestamp: Int64? = nil, byNew: Bool? = false) {
+        self.state = States.LOADING
+        self.posts = []
+        
+        let collection = byNew == true ? (
+            db.collection("Posts")
+                .order(by: "timestamp", descending: true)
+        ) : (
+            db.collection("Posts")
+                .order(by: "likesCount", descending: true)
+                // here, we should have: .whereField("timestamp", isGreaterThan: maxTimestamp ?? 0)
+                // but Firestore doesn't support a where query with an order on a different value,
+                // so the timestamp filtering will happen on the client-side. :(
+        )
+        collection
+            .limit(to: PAGE_ITEMS)
             .addSnapshotListener { (querySnapshot, error ) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents in Posts")
+                self.state = States.SUCCESS
                 return
             }
             
@@ -29,8 +44,10 @@ class FeedViewModel: ObservableObject {
                 }
                 catch {
                     print(error)
+                    self.state = States.ERROR
                 }
             }
+            self.state = States.SUCCESS
         }
     }
     

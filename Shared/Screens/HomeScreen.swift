@@ -13,8 +13,28 @@ struct HomeScreen: View {
     
     @State private var searchText = ""
     @State private var showLoginSheet = false
+    @State private var sortMethod = SORTING.MONTH
     
     @ObservedObject private var viewModel = FeedViewModel()
+    
+    func setNewSorting (_ newSort: SORTING) {
+        self.sortMethod = newSort
+        
+        switch(newSort) {
+        case SORTING.NEW :
+            viewModel.fetchData(byNew: true)
+            break;
+        case SORTING.MONTH :
+            viewModel.fetchData(maxTimestamp: convertDateToTimestamp(date: Calendar.current.date(byAdding: .month, value: -1, to: Date.now)!))
+            break;
+        case SORTING.YEAR:
+            viewModel.fetchData(maxTimestamp: convertDateToTimestamp(date: Calendar.current.date(byAdding: .year, value: -1, to: Date.now)!))
+            break;
+        case SORTING.ALL:
+            viewModel.fetchData(maxTimestamp: 0)
+            break;
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -30,24 +50,34 @@ struct HomeScreen: View {
                                 likesCount: post.likes.count,
                                 comments: post.comments ?? [],
                                 data: post.data
-                            )
+                            ).contextMenu {
+                                Text(post.id ?? "")
+                            }
                             Spacer()
                         }
                         .padding([.leading, .bottom, .trailing], 10.0)
                     }
                 } // TODO: make this scroll view refreshable
             }
-            .navigationTitle("Trending")
+            .navigationTitle(self.sortMethod == SORTING.NEW ? "Latest" : "Trending")
             .toolbar {
                 HStack {
-                    Button(action: {showLoginSheet.toggle()}) { Image(systemName: "magnifyingglass") }
-                    Button(action: {print("tap bell")}) { Image(systemName: "bell.badge") }
+                    Menu {
+                        Text("Sort by...")
+                        Button(action: {setNewSorting(SORTING.NEW)}) { HStack {Text("New posts"); Spacer(); if sortMethod == SORTING.NEW { Image(systemName: "checkmark") } }}
+//                        Button(action: {setNewSorting(SORTING.MONTH)}) { HStack {Text("Top of the month"); Spacer(); if sortMethod == SORTING.MONTH { Image(systemName: "checkmark") } }}
+//                        Button(action: {setNewSorting(SORTING.YEAR)}) { HStack {Text("Top of the year"); Spacer(); if sortMethod == SORTING.YEAR { Image(systemName: "checkmark") } }}
+                        Button(action: {setNewSorting(SORTING.ALL)}) { HStack {Text("Top of all time"); Spacer(); if sortMethod == SORTING.ALL { Image(systemName: "checkmark") } }}
+                    } label: {
+                        Image(systemName: "clock")
+                    }
+                    Button(action: {showLoginSheet.toggle()}) { Image(systemName: "bell.badge") }
                 }
             }
             .searchable(text: $searchText, prompt: "Search for anything")
             .onAppear {
-                if viewModel.posts.isEmpty {
-                    self.viewModel.fetchData()
+                if (viewModel.posts.isEmpty && viewModel.state == States.IDLE) {
+                    self.setNewSorting(SORTING.ALL)
                 }
             }
         }

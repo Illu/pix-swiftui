@@ -47,3 +47,13 @@ extension Color {
     }
   }
 }
+
+extension Date {
+    static var currentTimeStamp: Int64{
+        return Int64(Date().timeIntervalSince1970 * 1000)
+    }
+}
+
+func convertDateToTimestamp (date: Date) -> Int64 {
+    return Int64(date.timeIntervalSince1970 * 1000)
+}

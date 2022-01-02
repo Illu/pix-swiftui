@@ -47,7 +47,13 @@ struct PostCard: View {
                 RoundedAvatar(name: userData?.avatar ?? "", size: 40)
                 Text(userData?.displayName ?? username)
                 Spacer()
-                Button(action: {print("tap ellipsis")}) { Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText) }
+                Menu {
+                    Button(action: {print("tap")}) { HStack {Text("View post details"); Spacer(); Image(systemName: "chevron.right") }}
+                    Button(action: {print("tap")}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "chevron.right") }}
+                    Button(action: {print("tap")}) { HStack {Text("Report this post"); Spacer(); Image(systemName: "exclamationmark.shield") }}
+                } label: {
+                    Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText)
+                }
             }.padding(.bottom, 10)
             GeometryReader { geometry in
                 HStack{}.onAppear{ self.cardWidth = geometry.size.width}

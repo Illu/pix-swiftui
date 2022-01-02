@@ -13,6 +13,13 @@ enum Sorting : String {
     case new = "timestamp"
 }
 
+enum SORTING {
+    case NEW
+    case MONTH
+    case YEAR
+    case ALL
+}
+
 enum States {
     case IDLE
     case LOADING
