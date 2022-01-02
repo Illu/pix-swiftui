@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct Comment: Codable {
+struct Comment: Codable, Hashable {
     var text: String
     var timestamp: Int
     var userRef: DocumentReference

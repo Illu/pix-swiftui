@@ -27,6 +27,10 @@
 		BD29E8B22780E07F00335989 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B02780E07F00335989 /* EditProfile.swift */; };
 		BD29E8B42780FBCA00335989 /* AvatarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B32780FBCA00335989 /* AvatarList.swift */; };
 		BD29E8B52780FBCA00335989 /* AvatarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B32780FBCA00335989 /* AvatarList.swift */; };
+		BD29E8BA2781414A00335989 /* CommentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B92781414A00335989 /* CommentsScreen.swift */; };
+		BD29E8BB2781414A00335989 /* CommentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B92781414A00335989 /* CommentsScreen.swift */; };
+		BD29E8BD278146F700335989 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8BC278146F700335989 /* CommentView.swift */; };
+		BD29E8BE278146F700335989 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8BC278146F700335989 /* CommentView.swift */; };
 		BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */; };
 		BD374FE3277BBB3800D56C0A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE2277BBB3800D56C0A /* Post.swift */; };
 		BD374FE8277BBF3F00D56C0A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD374FE7277BBF3F00D56C0A /* FirebaseAnalytics */; };
@@ -117,6 +121,8 @@
 		BD2520E52780D9D1004C3CDE /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BD29E8B02780E07F00335989 /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		BD29E8B32780FBCA00335989 /* AvatarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarList.swift; sourceTree = "<group>"; };
+		BD29E8B92781414A00335989 /* CommentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsScreen.swift; sourceTree = "<group>"; };
+		BD29E8BC278146F700335989 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		BD374FE2277BBB3800D56C0A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BD7B2F86273C43F90032B055 /* pixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixApp.swift; sourceTree = "<group>"; };
@@ -302,6 +308,7 @@
 				BDDCE781277E411100CD62F0 /* EditorScreen.swift */,
 				BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */,
 				BD29E8B02780E07F00335989 /* EditProfile.swift */,
+				BD29E8B92781414A00335989 /* CommentsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -330,6 +337,7 @@
 				BD2520CE277FAD77004C3CDE /* LargeButton.swift */,
 				BD2520E22780D770004C3CDE /* RoundedAvatar.swift */,
 				BD29E8B32780FBCA00335989 /* AvatarList.swift */,
+				BD29E8BC278146F700335989 /* CommentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -547,6 +555,7 @@
 				BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
+				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
 				BDDCE77F277E1C9C00CD62F0 /* Empty.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
@@ -556,6 +565,7 @@
 				BDDCE77C277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BD29E8B42780FBCA00335989 /* AvatarList.swift in Sources */,
 				BDDCE786277E469200CD62F0 /* PixelEditor.swift in Sources */,
+				BD29E8BA2781414A00335989 /* CommentsScreen.swift in Sources */,
 				BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BD2520E32780D770004C3CDE /* RoundedAvatar.swift in Sources */,
 				BD2520E62780D9D1004C3CDE /* UserData.swift in Sources */,
@@ -602,8 +612,10 @@
 				BD7B9D3827444E9E005C5B4E /* TabBar.swift in Sources */,
 				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
 				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
+				BD29E8BE278146F700335989 /* CommentView.swift in Sources */,
 				BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */,
 				BD29E8B52780FBCA00335989 /* AvatarList.swift in Sources */,
+				BD29E8BB2781414A00335989 /* CommentsScreen.swift in Sources */,
 				BDDCE780277E1C9C00CD62F0 /* Empty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

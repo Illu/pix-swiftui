@@ -49,7 +49,9 @@ struct HomeScreen: View {
                                 userId: post.user.id,
                                 likesCount: post.likes.count,
                                 comments: post.comments ?? [],
-                                data: post.data
+                                id: post.id ?? "",
+                                data: post.data,
+                                likes: post.likes
                             ).contextMenu {
                                 Text(post.id ?? "")
                             }

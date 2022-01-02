@@ -15,12 +15,24 @@ struct PostCard: View {
     var userId: String
     var likesCount: Int
     var comments: [Comment]
+    var id: String
     var data: PostData
+    var likes: [String]
     
     var db = Firestore.firestore()
 
+    @State private var showCommentsSheet = false
     @State private var cardWidth: Double = 0.0
     @State private var userData: UserData?
+    @State private var localLikesCount: Int = 0
+    @State private var localLikes: [String] = []
+    
+    @EnvironmentObject var session: SessionStore
+    
+    func setLocalVariables () {
+        self.localLikes = likes
+        self.localLikesCount = likesCount
+    }
     
     func loadUserData () {
         let docRef = self.db.collection("Users").document(userId)
@@ -41,6 +53,33 @@ struct PostCard: View {
         }
     }
     
+    func onLikePost () {
+        let docRef = self.db.collection("Posts").document(id)
+        let userId = session.session?.uid ?? nil
+        if (userId != nil) {
+            if (isLiked()) {
+                self.localLikesCount -= 1
+                self.localLikes.removeAll(where: {$0 == userId})
+                docRef.updateData([
+                    "likes": FieldValue.arrayRemove([userId!]),
+                    "likesCount": FirebaseFirestore.FieldValue.increment(Int64(-1))
+                ])
+            } else {
+                self.localLikesCount += 1
+                self.localLikes.append(userId!)
+                docRef.updateData([
+                    "likes": FieldValue.arrayUnion([userId!]),
+                    "likesCount": FirebaseFirestore.FieldValue.increment(Int64(1))
+                ])
+            }
+            
+        }
+    }
+    
+    func isLiked () -> Bool {
+        return localLikes.contains(session.session?.uid ?? "")
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -48,7 +87,7 @@ struct PostCard: View {
                 Text(userData?.displayName ?? username)
                 Spacer()
                 Menu {
-                    Button(action: {print("tap")}) { HStack {Text("View post details"); Spacer(); Image(systemName: "chevron.right") }}
+                    Button(action: {self.showCommentsSheet = true}) { HStack {Text("View comments"); Spacer(); Image(systemName: "chevron.right") }}
                     Button(action: {print("tap")}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "chevron.right") }}
                     Button(action: {print("tap")}) { HStack {Text("Report this post"); Spacer(); Image(systemName: "exclamationmark.shield") }}
                 } label: {
@@ -61,15 +100,25 @@ struct PostCard: View {
             PixelArt(data: data, pixelSize: cardWidth / ART_SIZE)
                 .frame(width: cardWidth, height: cardWidth)
             HStack {
-                Image(systemName: "heart")
-                    .foregroundColor(ColorManager.primaryText)
-                Text("\(likesCount)")
-                Image(systemName: "bubble.left")
-                    .foregroundColor(ColorManager.primaryText)
-                Text("\(comments.count)")
+                HStack {
+                    Image(systemName: isLiked() ? "heart.fill" : "heart")
+                        .foregroundColor(isLiked() ? .red : ColorManager.primaryText)
+                    Text("\(localLikesCount)")
+                }
+                .padding(.trailing, 5)
+                .onTapGesture {
+                    self.onLikePost()
+                }
+                HStack {
+                    Image(systemName: "bubble.left")
+                        .foregroundColor(ColorManager.primaryText)
+                    Text("\(comments.count)")
+                }.onTapGesture {
+                    self.showCommentsSheet = true
+                }
                 Spacer()
             }
-            .padding(.vertical, 5)
+            .padding(.top, 10)
             HStack {
                 Text("\(desc ?? "Default Description")")
                     .font(.body)
@@ -91,11 +140,28 @@ struct PostCard: View {
         .background(ColorManager.cardBackground)
         .cornerRadius(8)
         .frame(maxWidth: 400)
-        .onAppear(perform: loadUserData)
+        .onAppear{
+            setLocalVariables()
+            loadUserData()
+        }
+        .sheet(
+            isPresented: $showCommentsSheet,
+            onDismiss: { self.showCommentsSheet = false }
+        ) {
+            NavigationView {
+                CommentsScreen(postId: id)
+                    .toolbar {
+                        HStack {
+                            Button(action: {self.showCommentsSheet = false}) { Text("Close") }
+                        }
+                    }
+            }
+        }
     }
 }
 
 struct PostCard_Previews: PreviewProvider {
+    static var previewAction : () -> Void = { }
     static var previews: some View {
         ScrollView {
             Color(.gray)
@@ -104,24 +170,26 @@ struct PostCard_Previews: PreviewProvider {
                     username: "Test username",
                     userId: "", likesCount: 2,
                     comments: [],
-                    data: PostData(
+                    id: "", data: PostData(
                         backgroundColor: "FF00FF",
                         pixels: [
                             Pixel(color: "#BADA55")
                         ]
-                    )
+                    ),
+                    likes: []
                 )
                 PostCard(
                     username: "Test username",
                     userId: "",
                     likesCount: 2,
                     comments: [],
-                    data: PostData(
+                    id: "", data: PostData(
                         backgroundColor: "FF00FF",
                         pixels: [
                             Pixel(color: "#BADA55")
                         ]
-                    )
+                    ),
+                    likes: []
                 )
             }
         }
