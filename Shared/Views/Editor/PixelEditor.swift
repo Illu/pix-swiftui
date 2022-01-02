@@ -19,11 +19,12 @@ struct PixelEditor: View {
     @State var history: [[Pixel]] = []
     
     @State private var pixelData = [Pixel](repeating: Pixel(color: "none"), count: Int(ART_SIZE * ART_SIZE))
-    @State var currentColor: String = "#333"
+    @State var currentColor = Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
     @State var currentTool: TOOLS = TOOLS.PENCIL
     @State var showGrid: Bool = true
     @State var menuMode: MENU_MODES = MENU_MODES.DRAW
     @State var backgroundColor: String = DEFAULT_EDITOR_BACKGROUND_COLOR
+    
     
     func getPixelSize(screenWidth: CGFloat) -> Double {
         return (screenWidth / ART_SIZE)
@@ -48,12 +49,12 @@ struct PixelEditor: View {
                                 }
                                 
                                 if (self.currentTool == TOOLS.PENCIL) {
-                                    if (pixelData[arrayPosition].color != currentColor) {
+                                    if (pixelData[arrayPosition].color != currentColor.toHexString()) {
                                         history.append(pixelData)
                                         if history.count > 10 {
                                             history.removeFirst()
                                         }
-                                        self.pixelData[arrayPosition].color = currentColor
+                                        self.pixelData[arrayPosition].color = currentColor.toHexString()
                                     }
                                 }
                                 if (self.currentTool == TOOLS.ERASER) {
@@ -66,12 +67,12 @@ struct PixelEditor: View {
                                     }
                                 }
                                 if (self.currentTool == TOOLS.BUCKET) {
-                                    if (pixelData[arrayPosition].color != currentColor) {
+                                    if (pixelData[arrayPosition].color != currentColor.toHexString()) {
                                         history.append(pixelData)
                                         if history.count > 10 {
                                             history.removeFirst()
                                         }
-                                        self.pixelData = dropBucket(data: pixelData, dropIndex: arrayPosition, color: currentColor, initialColor: pixelData[arrayPosition].color, initialData: pixelData)
+                                        self.pixelData = dropBucket(data: pixelData, dropIndex: arrayPosition, color: currentColor.toHexString(), initialColor: pixelData[arrayPosition].color, initialData: pixelData)
                                     }
                                 }
                             }
@@ -112,6 +113,7 @@ struct PixelEditor: View {
                 }
             }
             LargeButton(title: "Change color palette")
+            ColorPicker("", selection: $currentColor, supportsOpacity: false)
         }
     }
 }
