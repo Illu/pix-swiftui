@@ -10,8 +10,11 @@ import UIKit
 
 struct ContentView: View {
     
+    @State private var showLoginSheet = false
+    
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var images: ImagesStore
+    @EnvironmentObject var app: AppStore
 
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -37,6 +40,19 @@ struct ContentView: View {
             #endif
         }
         .onAppear(perform: loadRemoteContent)
+        .fullScreenCover(
+            isPresented: $app.loginSheetVisible,
+            onDismiss: { app.hideLoginSheet() }
+        ) {
+            NavigationView {
+                LoginMenuScreen()
+                    .toolbar {
+                        HStack {
+                            Button(action: {app.hideLoginSheet()}) { Text("Cancel") }
+                        }
+                    }
+            }
+        }
     }
 }
 

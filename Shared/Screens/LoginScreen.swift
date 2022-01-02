@@ -11,7 +11,8 @@ import SwiftUI
 struct LoginScreen: View {
     
     @EnvironmentObject var session: SessionStore
-    
+    @EnvironmentObject var app: AppStore
+
     @State var email = ""
     @State var password = ""
     @State var loading = false
@@ -27,6 +28,7 @@ struct LoginScreen: View {
             } else {
                 self.email = ""
                 self.password = ""
+                app.hideLoginSheet()
             }
         }
     }

@@ -31,6 +31,10 @@
 		BD29E8BB2781414A00335989 /* CommentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8B92781414A00335989 /* CommentsScreen.swift */; };
 		BD29E8BD278146F700335989 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8BC278146F700335989 /* CommentView.swift */; };
 		BD29E8BE278146F700335989 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8BC278146F700335989 /* CommentView.swift */; };
+		BD29E8C0278207CC00335989 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8BF278207CC00335989 /* AppStore.swift */; };
+		BD29E8C1278207CC00335989 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8BF278207CC00335989 /* AppStore.swift */; };
+		BD29E8C32782151E00335989 /* EditorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8C22782151E00335989 /* EditorButton.swift */; };
+		BD29E8C42782151E00335989 /* EditorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8C22782151E00335989 /* EditorButton.swift */; };
 		BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */; };
 		BD374FE3277BBB3800D56C0A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE2277BBB3800D56C0A /* Post.swift */; };
 		BD374FE8277BBF3F00D56C0A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD374FE7277BBF3F00D56C0A /* FirebaseAnalytics */; };
@@ -123,6 +127,8 @@
 		BD29E8B32780FBCA00335989 /* AvatarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarList.swift; sourceTree = "<group>"; };
 		BD29E8B92781414A00335989 /* CommentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsScreen.swift; sourceTree = "<group>"; };
 		BD29E8BC278146F700335989 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		BD29E8BF278207CC00335989 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		BD29E8C22782151E00335989 /* EditorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorButton.swift; sourceTree = "<group>"; };
 		BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		BD374FE2277BBB3800D56C0A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BD7B2F86273C43F90032B055 /* pixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixApp.swift; sourceTree = "<group>"; };
@@ -347,6 +353,7 @@
 			children = (
 				BDDCE777277D5E9600CD62F0 /* SessionStore.swift */,
 				BD2520D72780B339004C3CDE /* ImagesStore.swift */,
+				BD29E8BF278207CC00335989 /* AppStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -355,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				BDDCE785277E469200CD62F0 /* PixelEditor.swift */,
+				BD29E8C22782151E00335989 /* EditorButton.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -560,7 +568,9 @@
 				BDDCE77F277E1C9C00CD62F0 /* Empty.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
 				BD2520CF277FAD77004C3CDE /* LargeButton.swift in Sources */,
+				BD29E8C0278207CC00335989 /* AppStore.swift in Sources */,
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
+				BD29E8C32782151E00335989 /* EditorButton.swift in Sources */,
 				BDD00B48277BC61600ABE649 /* User.swift in Sources */,
 				BDDCE77C277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BD29E8B42780FBCA00335989 /* AvatarList.swift in Sources */,
@@ -599,9 +609,11 @@
 				BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
+				BD29E8C1278207CC00335989 /* AppStore.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
 				BD2520CD277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,
+				BD29E8C42782151E00335989 /* EditorButton.swift in Sources */,
 				BD2520E42780D770004C3CDE /* RoundedAvatar.swift in Sources */,
 				BDDCE77D277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,

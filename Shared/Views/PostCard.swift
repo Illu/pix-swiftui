@@ -28,7 +28,8 @@ struct PostCard: View {
     @State private var localLikes: [String] = []
     
     @EnvironmentObject var session: SessionStore
-    
+    @EnvironmentObject var app: AppStore
+
     func setLocalVariables () {
         self.localLikes = likes
         self.localLikesCount = likesCount
@@ -72,7 +73,8 @@ struct PostCard: View {
                     "likesCount": FirebaseFirestore.FieldValue.increment(Int64(1))
                 ])
             }
-            
+        } else {
+            app.showLoginSheet()
         }
     }
     

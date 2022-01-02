@@ -94,7 +94,7 @@ struct EditProfile: View {
                 LargeButton(title: "Save modifications", loading: self.state == States.LOADING, withBackground: true)
             }
             .padding(.top, 40)
-            Text("ID - \(session.session!.uid)")
+            Text("ID - \(session.session?.uid ?? "??")")
                 .foregroundColor(ColorManager.secondaryText)
         }
         .onAppear(perform: {

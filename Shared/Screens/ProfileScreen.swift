@@ -15,13 +15,9 @@ struct ProfileScreen: View {
     var body: some View {
         VStack {
             if session.session == nil {
-                Text("User is not logged in")
-                LoginScreen()
+                LoginMenuScreen()
             } else {
                 VStack {
-                    Button("Logout") {
-                        session.signOut()
-                    }
                     HStack {
                         RoundedAvatar(name: session.userData?.avatar, size: 100)
                         VStack {

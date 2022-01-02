@@ -20,6 +20,7 @@ struct pixApp: App {
             ContentView()
                 .environmentObject(SessionStore())
                 .environmentObject(ImagesStore())
+                .environmentObject(AppStore())
         }
     }
 }

@@ -12,10 +12,11 @@ struct HomeScreen: View {
     private var screenTitle: [Sorting : String] = [.top: "Top", .new: "New"]
     
     @State private var searchText = ""
-    @State private var showLoginSheet = false
     @State private var sortMethod = SORTING.MONTH
     
     @ObservedObject private var viewModel = FeedViewModel()
+    
+    @EnvironmentObject var app: AppStore
     
     func setNewSorting (_ newSort: SORTING) {
         self.sortMethod = newSort
@@ -73,7 +74,7 @@ struct HomeScreen: View {
                     } label: {
                         Image(systemName: "clock")
                     }
-                    Button(action: {showLoginSheet.toggle()}) { Image(systemName: "bell.badge") }
+                    Button(action: {app.showLoginSheet()}) { Image(systemName: "bell.badge") }
                 }
             }
             .searchable(text: $searchText, prompt: "Search for anything")
@@ -84,19 +85,6 @@ struct HomeScreen: View {
             }
         }
         .background(ColorManager.screenBackground)
-        .fullScreenCover(
-            isPresented: $showLoginSheet,
-            onDismiss: { self.showLoginSheet = false }
-        ) {
-            NavigationView {
-                LoginMenuScreen()
-                    .toolbar {
-                        HStack {
-                            Button(action: {showLoginSheet = false}) { Text("Cancel") }
-                        }
-                    }
-            }
-        }
     }
 }
 

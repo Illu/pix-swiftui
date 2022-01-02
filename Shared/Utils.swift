@@ -57,3 +57,32 @@ extension Date {
 func convertDateToTimestamp (date: Date) -> Int64 {
     return Int64(date.timeIntervalSince1970 * 1000)
 }
+
+func dropBucket (data: [Pixel], dropIndex: Int, color: String, initialColor: String, initialData: [Pixel]) -> [Pixel] {
+    var newData = data
+    
+    let topIndex = dropIndex - Int(ART_SIZE)
+    let bottomIndex = dropIndex + Int(ART_SIZE)
+    let leftIndex = dropIndex - 1
+    let rightIndex = dropIndex + 1
+    
+    newData[dropIndex] = Pixel(color: color)
+    
+    if (topIndex >= 0 && newData[topIndex].color == initialColor && newData[topIndex].color != color) {
+        newData = dropBucket(data: newData, dropIndex: topIndex, color: color, initialColor: initialColor, initialData: initialData)
+    }
+    
+    if (bottomIndex < (Int(ART_SIZE * ART_SIZE)) && newData[bottomIndex].color == initialColor && newData[bottomIndex].color != color) {
+        newData = dropBucket(data: newData, dropIndex: bottomIndex, color: color, initialColor: initialColor, initialData: initialData)
+    }
+    
+    if ((leftIndex + 1) % Int(ART_SIZE) != 0 && newData[leftIndex].color == initialColor) {
+        newData = dropBucket(data: newData, dropIndex: leftIndex, color: color, initialColor: initialColor, initialData: initialData)
+    }
+    
+    if (rightIndex % Int(ART_SIZE) != 0 && newData[rightIndex].color == initialColor && newData[rightIndex].color != color) {
+        newData = dropBucket(data: newData, dropIndex: rightIndex, color: color, initialColor: initialColor, initialData: initialData)
+    }
+    
+    return newData
+}

@@ -27,6 +27,17 @@ enum States {
     case ERROR
 }
 
+enum TOOLS {
+    case PENCIL
+    case ERASER
+    case BUCKET
+}
+
+enum MENU_MODES {
+    case DRAW
+    case BACKGROUND
+}
+
 struct Tab: Identifiable {
     var id = UUID()
     var name: String
