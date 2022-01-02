@@ -21,6 +21,7 @@ struct PostCard: View {
     
     var db = Firestore.firestore()
 
+    @State private var showUserProfile = false
     @State private var showCommentsSheet = false
     @State private var cardWidth: Double = 0.0
     @State private var userData: UserData?
@@ -85,12 +86,16 @@ struct PostCard: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                RoundedAvatar(name: userData?.avatar ?? "", size: 40)
-                Text(userData?.displayName ?? username)
+                HStack {
+                    RoundedAvatar(name: userData?.avatar ?? "", size: 40)
+                    Text(userData?.displayName ?? username)
+                }.onTapGesture {
+                    self.showUserProfile = true
+                }
                 Spacer()
                 Menu {
                     Button(action: {self.showCommentsSheet = true}) { HStack {Text("View comments"); Spacer(); Image(systemName: "chevron.right") }}
-                    Button(action: {print("tap")}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "chevron.right") }}
+                    Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "chevron.right") }}
                     Button(action: {print("tap")}) { HStack {Text("Report this post"); Spacer(); Image(systemName: "exclamationmark.shield") }}
                 } label: {
                     Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText)
@@ -146,6 +151,11 @@ struct PostCard: View {
             setLocalVariables()
             loadUserData()
         }
+        .background(
+            NavigationLink(destination: ProfileData(userId: userId), isActive: $showUserProfile){
+               EmptyView()
+           }
+        )
         .sheet(
             isPresented: $showCommentsSheet,
             onDismiss: { self.showCommentsSheet = false }

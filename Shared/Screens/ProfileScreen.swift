@@ -10,25 +10,13 @@ import SwiftUI
 struct ProfileScreen: View {
     
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var images: ImagesStore
     
     var body: some View {
         VStack {
-            if session.session == nil {
+            if (session.session == nil) {
                 LoginMenuScreen()
             } else {
-                VStack {
-                    HStack {
-                        RoundedAvatar(name: session.userData?.avatar, size: 100)
-                        VStack {
-                            Text(session.userData?.displayName ?? "Name Error")
-                            Text("TODO: X Post(s)")
-                        }
-                    }
-                    NavigationLink("Edit Profile") {
-                        EditProfile()
-                    }
-                }
+                ProfileData(userId: session.session?.uid ?? "", isCurrentSessionProfile: true)
             }
         }
     }

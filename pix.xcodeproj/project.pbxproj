@@ -35,6 +35,8 @@
 		BD29E8C1278207CC00335989 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8BF278207CC00335989 /* AppStore.swift */; };
 		BD29E8C32782151E00335989 /* EditorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8C22782151E00335989 /* EditorButton.swift */; };
 		BD29E8C42782151E00335989 /* EditorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8C22782151E00335989 /* EditorButton.swift */; };
+		BD29E8C62782541600335989 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8C52782541600335989 /* ProfileData.swift */; };
+		BD29E8C72782541600335989 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8C52782541600335989 /* ProfileData.swift */; };
 		BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */; };
 		BD374FE3277BBB3800D56C0A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD374FE2277BBB3800D56C0A /* Post.swift */; };
 		BD374FE8277BBF3F00D56C0A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD374FE7277BBF3F00D56C0A /* FirebaseAnalytics */; };
@@ -129,6 +131,7 @@
 		BD29E8BC278146F700335989 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		BD29E8BF278207CC00335989 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD29E8C22782151E00335989 /* EditorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorButton.swift; sourceTree = "<group>"; };
+		BD29E8C52782541600335989 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		BD374FE2277BBB3800D56C0A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BD7B2F86273C43F90032B055 /* pixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixApp.swift; sourceTree = "<group>"; };
@@ -344,6 +347,7 @@
 				BD2520E22780D770004C3CDE /* RoundedAvatar.swift */,
 				BD29E8B32780FBCA00335989 /* AvatarList.swift */,
 				BD29E8BC278146F700335989 /* CommentView.swift */,
+				BD29E8C52782541600335989 /* ProfileData.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -562,6 +566,7 @@
 				BDDCE775277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
 				BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
+				BD29E8C62782541600335989 /* ProfileData.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
@@ -611,6 +616,7 @@
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
 				BD29E8C1278207CC00335989 /* AppStore.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
+				BD29E8C72782541600335989 /* ProfileData.swift in Sources */,
 				BD2520CD277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BD29E8C42782151E00335989 /* EditorButton.swift in Sources */,
