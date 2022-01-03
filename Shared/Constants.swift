@@ -15,8 +15,8 @@ enum Sorting : String {
 
 enum SORTING {
     case NEW
-    case MONTH
-    case YEAR
+//    case MONTH
+//    case YEAR
     case ALL
 }
 

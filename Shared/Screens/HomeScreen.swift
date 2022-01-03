@@ -12,7 +12,7 @@ struct HomeScreen: View {
     private var screenTitle: [Sorting : String] = [.top: "Top", .new: "New"]
     
     @State private var searchText = ""
-    @State private var sortMethod = SORTING.MONTH
+    @State private var sortMethod = SORTING.ALL
     
     @ObservedObject private var viewModel = FeedViewModel()
     
@@ -25,15 +25,29 @@ struct HomeScreen: View {
         case SORTING.NEW :
             viewModel.fetchData(byNew: true)
             break;
-        case SORTING.MONTH :
-            viewModel.fetchData(maxTimestamp: convertDateToTimestamp(date: Calendar.current.date(byAdding: .month, value: -1, to: Date.now)!))
-            break;
-        case SORTING.YEAR:
-            viewModel.fetchData(maxTimestamp: convertDateToTimestamp(date: Calendar.current.date(byAdding: .year, value: -1, to: Date.now)!))
-            break;
+//        case SORTING.MONTH :
+//            viewModel.fetchData(maxTimestamp: convertDateToTimestamp(date: Calendar.current.date(byAdding: .month, value: -1, to: Date.now)!))
+//            break;
+//        case SORTING.YEAR:
+//            viewModel.fetchData(maxTimestamp: convertDateToTimestamp(date: Calendar.current.date(byAdding: .year, value: -1, to: Date.now)!))
+//            break;
         case SORTING.ALL:
             viewModel.fetchData(maxTimestamp: 0)
             break;
+        }
+    }
+    
+    func onPostAppear (_ index: Int) {
+        if (index == viewModel.posts.count - 1) {
+            print("Loading more!")
+            switch(self.sortMethod) {
+            case SORTING.NEW :
+                viewModel.fetchData(byNew: true, nextPage: true)
+                break;
+            case SORTING.ALL:
+                viewModel.fetchData(maxTimestamp: 0, nextPage: true)
+                break;
+            }
         }
     }
     
@@ -41,24 +55,26 @@ struct HomeScreen: View {
         ZStack {
             VStack {
                 ScrollView {
-                    ForEach(viewModel.posts, id: \.self.id) { post in
-                        HStack {
-                            Spacer()
-                            PostCard(
-                                desc: post.desc,
-                                username: post.user.displayName,
-                                userId: post.user.id,
-                                likesCount: post.likes.count,
-                                comments: post.comments ?? [],
-                                id: post.id ?? "",
-                                data: post.data,
-                                likes: post.likes
-                            ).contextMenu {
-                                Text(post.id ?? "")
+                    LazyVStack {
+                        ForEach(viewModel.posts.indices, id: \.self) { index in
+                            HStack {
+                                Spacer()
+                                PostCard(
+                                    desc: viewModel.posts[index].desc,
+                                    username: viewModel.posts[index].user.displayName,
+                                    userId: viewModel.posts[index].user.id,
+                                    likesCount: viewModel.posts[index].likes.count,
+                                    comments: viewModel.posts[index].comments ?? [],
+                                    id: viewModel.posts[index].id ?? "",
+                                    data: viewModel.posts[index].data,
+                                    likes: viewModel.posts[index].likes
+                                )
+                                    .contextMenu { Text("ID - " + (viewModel.posts[index].id ?? "")) }
+                                    .onAppear { onPostAppear(index) }
+                                Spacer()
                             }
-                            Spacer()
+                            .padding([.leading, .bottom, .trailing], 10.0)
                         }
-                        .padding([.leading, .bottom, .trailing], 10.0)
                     }
                 } // TODO: make this scroll view refreshable
             }
@@ -68,8 +84,8 @@ struct HomeScreen: View {
                     Menu {
                         Text("Sort by...")
                         Button(action: {setNewSorting(SORTING.NEW)}) { HStack {Text("New posts"); Spacer(); if sortMethod == SORTING.NEW { Image(systemName: "checkmark") } }}
-//                        Button(action: {setNewSorting(SORTING.MONTH)}) { HStack {Text("Top of the month"); Spacer(); if sortMethod == SORTING.MONTH { Image(systemName: "checkmark") } }}
-//                        Button(action: {setNewSorting(SORTING.YEAR)}) { HStack {Text("Top of the year"); Spacer(); if sortMethod == SORTING.YEAR { Image(systemName: "checkmark") } }}
+                        //                        Button(action: {setNewSorting(SORTING.MONTH)}) { HStack {Text("Top of the month"); Spacer(); if sortMethod == SORTING.MONTH { Image(systemName: "checkmark") } }}
+                        //                        Button(action: {setNewSorting(SORTING.YEAR)}) { HStack {Text("Top of the year"); Spacer(); if sortMethod == SORTING.YEAR { Image(systemName: "checkmark") } }}
                         Button(action: {setNewSorting(SORTING.ALL)}) { HStack {Text("Top of all time"); Spacer(); if sortMethod == SORTING.ALL { Image(systemName: "checkmark") } }}
                     } label: {
                         Image(systemName: "clock")

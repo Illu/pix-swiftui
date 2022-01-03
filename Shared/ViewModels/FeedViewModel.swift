@@ -12,13 +12,19 @@ class FeedViewModel: ObservableObject {
     @Published var posts = [Post]()
     @Published var state = States.IDLE
     
+    private var lastSnapshot: QueryDocumentSnapshot? = nil
+    
     private var db = Firestore.firestore()
     
-    func fetchData(maxTimestamp: Int64? = nil, byNew: Bool? = false) {
+    func fetchData(maxTimestamp: Int64? = nil, byNew: Bool? = false, nextPage: Bool = false) {
         self.state = States.LOADING
-        self.posts = []
         
-        let collection = byNew == true ? (
+        if (!nextPage) {
+            self.lastSnapshot = nil
+            self.posts = []
+        }
+        
+        var collection = byNew == true ? (
             db.collection("Posts")
                 .order(by: "timestamp", descending: true)
         ) : (
@@ -26,8 +32,16 @@ class FeedViewModel: ObservableObject {
                 .order(by: "likesCount", descending: true)
                 // here, we should have: .whereField("timestamp", isGreaterThan: maxTimestamp ?? 0)
                 // but Firestore doesn't support a where query with an order on a different value,
-                // so the timestamp filtering will happen on the client-side. :(
+                // so the timestamp filtering must happen on the client-side. :(
         )
+        
+        if (nextPage && self.lastSnapshot != nil){
+            print("adding after..")
+            print(lastSnapshot!)
+            collection = collection.start(afterDocument: lastSnapshot!)
+        }
+        
+        
         collection
             .limit(to: PAGE_ITEMS)
             .addSnapshotListener { (querySnapshot, error ) in
@@ -36,6 +50,8 @@ class FeedViewModel: ObservableObject {
                 self.state = States.SUCCESS
                 return
             }
+                
+            self.lastSnapshot = querySnapshot?.documents.last
             
             documents.forEach { (queryDocumentSnapshot) in
                 do {
@@ -47,6 +63,8 @@ class FeedViewModel: ObservableObject {
                     self.state = States.ERROR
                 }
             }
+                print("fetched documents")
+                print(self.posts.count)
             self.state = States.SUCCESS
         }
     }
