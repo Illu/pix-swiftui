@@ -20,6 +20,9 @@ struct SettingsScreen: View {
                         Button("Log out") {
                             session.signOut()
                         }
+                        Button("Edit Profile") {
+                            
+                        }
                     } else {
                         Button("Log in") {
                             app.showLoginSheet()

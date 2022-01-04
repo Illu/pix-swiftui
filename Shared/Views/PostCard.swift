@@ -143,10 +143,10 @@ struct PostCard: View {
                 Spacer()
             }
         }
-        .padding(16)
-        .background(ColorManager.cardBackground)
+//        .padding(16)
+//        .background(ColorManager.cardBackground)
         .cornerRadius(8)
-        .frame(maxWidth: 400)
+        .frame(maxWidth: 400, minHeight: 450)
         .onAppear{
             setLocalVariables()
             loadUserData()
@@ -154,7 +154,7 @@ struct PostCard: View {
         .background(
             NavigationLink(destination: ProfileData(userId: userId), isActive: $showUserProfile){
                EmptyView()
-           }
+            }.hidden()
         )
         .sheet(
             isPresented: $showCommentsSheet,

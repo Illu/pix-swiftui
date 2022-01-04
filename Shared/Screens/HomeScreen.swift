@@ -54,29 +54,30 @@ struct HomeScreen: View {
     var body: some View {
         ZStack {
             VStack {
-                ScrollView {
-                    LazyVStack {
-                        ForEach(viewModel.posts.indices, id: \.self) { index in
-                            HStack {
-                                Spacer()
-                                PostCard(
-                                    desc: viewModel.posts[index].desc,
-                                    username: viewModel.posts[index].user.displayName,
-                                    userId: viewModel.posts[index].user.id,
-                                    likesCount: viewModel.posts[index].likes.count,
-                                    comments: viewModel.posts[index].comments ?? [],
-                                    id: viewModel.posts[index].id ?? "",
-                                    data: viewModel.posts[index].data,
-                                    likes: viewModel.posts[index].likes
-                                )
-                                    .contextMenu { Text("ID - " + (viewModel.posts[index].id ?? "")) }
-                                    .onAppear { onPostAppear(index) }
-                                Spacer()
-                            }
-                            .padding([.leading, .bottom, .trailing], 10.0)
+                List(viewModel.posts.indices, id: \.self) { index in
+                    Section {
+                        ZStack {
+                            // "fake" button to disable onTap on items of the list.
+                            Button(action: {}){}.buttonStyle(PlainButtonStyle())
+                            PostCard(
+                                desc: viewModel.posts[index].desc,
+                                username: viewModel.posts[index].user.displayName,
+                                userId: viewModel.posts[index].user.id,
+                                likesCount: viewModel.posts[index].likes.count,
+                                comments: viewModel.posts[index].comments ?? [],
+                                id: viewModel.posts[index].id ?? "",
+                                data: viewModel.posts[index].data,
+                                likes: viewModel.posts[index].likes
+                            )
+                        }
+                        .onAppear { onPostAppear(index) }
+                        .contextMenu {
+                            Text("ID - " + (viewModel.posts[index].id ?? ""))
                         }
                     }
-                } // TODO: make this scroll view refreshable
+                }
+                .refreshable(action: {setNewSorting(sortMethod)})
+                .listStyle(InsetGroupedListStyle())
             }
             .navigationTitle(self.sortMethod == SORTING.NEW ? "Latest" : "Trending")
             .toolbar {

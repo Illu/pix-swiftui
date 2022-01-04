@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
+		BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD2520CC277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */; };
 		BD2520CD277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */; };
 		BD2520CF277FAD77004C3CDE /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CE277FAD77004C3CDE /* LargeButton.swift */; };
@@ -118,6 +120,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChallengeCard.swift; sourceTree = "<group>"; };
 		BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMenuScreen.swift; sourceTree = "<group>"; };
 		BD2520CE277FAD77004C3CDE /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		BD2520D1277FC21F004C3CDE /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
@@ -348,6 +351,7 @@
 				BD29E8B32780FBCA00335989 /* AvatarList.swift */,
 				BD29E8BC278146F700335989 /* CommentView.swift */,
 				BD29E8C52782541600335989 /* ProfileData.swift */,
+				BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -595,6 +599,7 @@
 				BD2520D2277FC21F004C3CDE /* SessionUser.swift in Sources */,
 				BDD00B4A277BCB2000ABE649 /* PostCardViewModel.swift in Sources */,
 				BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */,
+				BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +634,7 @@
 				BDF4AFFB273F29D100622F85 /* ColorManager.swift in Sources */,
 				BD7B9D3827444E9E005C5B4E /* TabBar.swift in Sources */,
 				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
+				BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */,
 				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
 				BD29E8BE278146F700335989 /* CommentView.swift in Sources */,
 				BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */,

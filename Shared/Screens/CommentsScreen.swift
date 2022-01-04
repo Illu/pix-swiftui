@@ -82,10 +82,11 @@ struct CommentsScreen: View {
                 Spacer()
                 Empty()
                 Spacer()
-            }
-            ScrollView {
-                ForEach(comments, id: \.self) { comment in
-                    CommentView(comment: comment, userRef: comment.userRef)
+            } else {
+                ScrollView {
+                    ForEach(comments, id: \.self) { comment in
+                        CommentView(comment: comment, userRef: comment.userRef)
+                    }
                 }
             }
             HStack {

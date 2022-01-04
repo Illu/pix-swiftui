@@ -77,12 +77,8 @@ struct ProfileData: View {
                         VStack(alignment: .leading, spacing: 16) {
                             Text(userData?.displayName ?? "Name Error")
                                 .font(.largeTitle)
+                            Text("Badges")
                             Text("\($userPosts.count) Post\($userPosts.count != 1 ? "s" : "")")
-                        }
-                    }
-                    if (isCurrentSessionProfile) {
-                        NavigationLink("Edit Profile") {
-                            EditProfile()
                         }
                     }
                     if (userPosts.count > 0) {
@@ -99,13 +95,20 @@ struct ProfileData: View {
                 }.padding(16)
             }
         }.onAppear{
-            if (userData == nil && userPosts.count == 0) {
-                loadUserData()
+            loadUserData()
+            if (userPosts.count == 0) {
                 loadUserPosts()
             }
         }
-        .navigationTitle("Profile")
+        .navigationTitle(isCurrentSessionProfile ? "Your profile" : "Profile")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if (isCurrentSessionProfile) {
+                NavigationLink(destination: EditProfile()) {
+                    Image(systemName: "square.and.pencil")
+                }
+            }
+        }
     }
 }
 

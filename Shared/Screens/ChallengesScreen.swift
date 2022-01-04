@@ -12,7 +12,7 @@ struct ChallengesScreen: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("🚧 Challenges")
+                CurrentChallengeCard()
                 Empty()
             }
         }
