@@ -49,6 +49,10 @@
 		BD374FF2277BBF3F00D56C0A /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = BD374FF1277BBF3F00D56C0A /* FirebaseDatabaseSwift-Beta */; };
 		BD374FF4277BBF3F00D56C0A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BD374FF3277BBF3F00D56C0A /* FirebaseFirestore */; };
 		BD374FF6277BBF3F00D56C0A /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = BD374FF5277BBF3F00D56C0A /* FirebaseFirestoreSwift-Beta */; };
+		BD4910AF27851D35006B3FF2 /* Palettes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4910AE27851D35006B3FF2 /* Palettes.swift */; };
+		BD4910B027851D35006B3FF2 /* Palettes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4910AE27851D35006B3FF2 /* Palettes.swift */; };
+		BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4910B127851F73006B3FF2 /* PaletteList.swift */; };
+		BD4910B327851F73006B3FF2 /* PaletteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4910B127851F73006B3FF2 /* PaletteList.swift */; };
 		BD7B2F9F273C43FB0032B055 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B2F9E273C43FB0032B055 /* Tests_iOS.swift */; };
 		BD7B2FA1273C43FB0032B055 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B2FA0273C43FB0032B055 /* Tests_iOSLaunchTests.swift */; };
 		BD7B2FAB273C43FB0032B055 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B2FAA273C43FB0032B055 /* Tests_macOS.swift */; };
@@ -137,6 +141,8 @@
 		BD29E8C52782541600335989 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		BD374FE2277BBB3800D56C0A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BD4910AE27851D35006B3FF2 /* Palettes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palettes.swift; sourceTree = "<group>"; };
+		BD4910B127851F73006B3FF2 /* PaletteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteList.swift; sourceTree = "<group>"; };
 		BD7B2F86273C43F90032B055 /* pixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixApp.swift; sourceTree = "<group>"; };
 		BD7B2F87273C43F90032B055 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BD7B2F88273C43FB0032B055 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -371,6 +377,7 @@
 			children = (
 				BDDCE785277E469200CD62F0 /* PixelEditor.swift */,
 				BD29E8C22782151E00335989 /* EditorButton.swift */,
+				BD4910B127851F73006B3FF2 /* PaletteList.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -380,6 +387,7 @@
 			children = (
 				BDF4AFF5273F28A000622F85 /* Colors.xcassets */,
 				BDF4AFF9273F29D100622F85 /* ColorManager.swift */,
+				BD4910AE27851D35006B3FF2 /* Palettes.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -571,6 +579,7 @@
 				BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BD29E8C62782541600335989 /* ProfileData.swift in Sources */,
+				BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
@@ -580,6 +589,7 @@
 				BD29E8C0278207CC00335989 /* AppStore.swift in Sources */,
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BD29E8C32782151E00335989 /* EditorButton.swift in Sources */,
+				BD4910AF27851D35006B3FF2 /* Palettes.swift in Sources */,
 				BDD00B48277BC61600ABE649 /* User.swift in Sources */,
 				BDDCE77C277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BD29E8B42780FBCA00335989 /* AvatarList.swift in Sources */,
@@ -616,11 +626,13 @@
 				BD2520D92780B33A004C3CDE /* ImagesStore.swift in Sources */,
 				BD2520E12780C4FA004C3CDE /* Avatar.swift in Sources */,
 				BD29E8B22780E07F00335989 /* EditProfile.swift in Sources */,
+				BD4910B027851D35006B3FF2 /* Palettes.swift in Sources */,
 				BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
 				BD29E8C1278207CC00335989 /* AppStore.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
+				BD4910B327851F73006B3FF2 /* PaletteList.swift in Sources */,
 				BD29E8C72782541600335989 /* ProfileData.swift in Sources */,
 				BD2520CD277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,

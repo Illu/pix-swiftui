@@ -20,6 +20,10 @@ struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     #endif
     
+    init() {
+        UITableView.appearance().backgroundColor = UIColor(ColorManager.screenBackground)
+    }
+    
     func loadRemoteContent () {
         // init user listener for the session
         session.listen()

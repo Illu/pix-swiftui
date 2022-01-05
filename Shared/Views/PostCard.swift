@@ -100,7 +100,7 @@ struct PostCard: View {
                 } label: {
                     Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText)
                 }
-            }.padding(.bottom, 10)
+            }
             GeometryReader { geometry in
                 HStack{}.onAppear{ self.cardWidth = geometry.size.width}
             }
@@ -143,8 +143,6 @@ struct PostCard: View {
                 Spacer()
             }
         }
-//        .padding(16)
-//        .background(ColorManager.cardBackground)
         .cornerRadius(8)
         .frame(maxWidth: 400, minHeight: 450)
         .onAppear{

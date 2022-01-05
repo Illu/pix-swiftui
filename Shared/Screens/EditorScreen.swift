@@ -25,8 +25,6 @@ struct EditorScreen: View {
                     }
                 }
             }
-            
-           
         }
         .navigationTitle("Create")
         .navigationBarTitleDisplayMode(.inline)

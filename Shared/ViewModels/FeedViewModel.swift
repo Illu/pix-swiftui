@@ -16,12 +16,15 @@ class FeedViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
+    func emptyList() {
+        self.posts = []
+    }
+    
     func fetchData(maxTimestamp: Int64? = nil, byNew: Bool? = false, nextPage: Bool = false) {
         self.state = States.LOADING
         
         if (!nextPage) {
             self.lastSnapshot = nil
-            self.posts = []
         }
         
         var collection = byNew == true ? (
@@ -36,8 +39,6 @@ class FeedViewModel: ObservableObject {
         )
         
         if (nextPage && self.lastSnapshot != nil){
-            print("adding after..")
-            print(lastSnapshot!)
             collection = collection.start(afterDocument: lastSnapshot!)
         }
         
@@ -52,7 +53,9 @@ class FeedViewModel: ObservableObject {
             }
                 
             self.lastSnapshot = querySnapshot?.documents.last
-            
+            if (!nextPage) {
+                self.emptyList()
+            }
             documents.forEach { (queryDocumentSnapshot) in
                 do {
                     let post = try queryDocumentSnapshot.data(as: Post.self)
@@ -63,8 +66,6 @@ class FeedViewModel: ObservableObject {
                     self.state = States.ERROR
                 }
             }
-                print("fetched documents")
-                print(self.posts.count)
             self.state = States.SUCCESS
         }
     }

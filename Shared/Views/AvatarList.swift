@@ -38,8 +38,8 @@ struct AvatarList: View {
                     }
                 }
             }
-    }.onAppear(perform: getCategories)
-}
+        }.onAppear(perform: getCategories)
+    }
 }
 
 struct AvatarList_Previews: PreviewProvider {

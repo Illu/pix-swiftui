@@ -20,11 +20,12 @@ struct PixelArt: View {
             
             // Draw each pixel
             for (index, pixel) in data.pixels.enumerated() {
-                let y = (index / Int(ART_SIZE)) * Int(pixelSize)
-                let x = (index % Int(ART_SIZE)) * Int(pixelSize)
+                let truncatedPixelSize = Int(pixelSize.rounded())
+                let y = (index / Int(ART_SIZE)) * truncatedPixelSize
+                let x = (index % Int(ART_SIZE)) * truncatedPixelSize
                 let pixelRect = CGRect(
                     origin: CGPoint(x: x, y: y),
-                    size: CGSize(width: pixelSize, height: pixelSize)
+                    size: CGSize(width: truncatedPixelSize, height: truncatedPixelSize)
                 )
                 let path = Path(pixelRect)
                 if (showGrid) {
@@ -32,7 +33,7 @@ struct PixelArt: View {
                 }
                 context.fill(path, with: .color(Color.init(hex: pixel.color) ?? Color.clear))
             }
-        }.frame(width: pixelSize * ART_SIZE, height: pixelSize * ART_SIZE)
+        }.frame(width: pixelSize.rounded() * ART_SIZE, height: pixelSize.rounded() * ART_SIZE)
     }
 }
 
