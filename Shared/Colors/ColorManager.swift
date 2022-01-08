@@ -15,4 +15,5 @@ public struct ColorManager {
     static let inputBackground = Color("InputBackground")
     static let accent = Color("Accent")
     static let error = Color("Error")
+    static let success = Color("Success")
 }

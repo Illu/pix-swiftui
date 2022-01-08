@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
+		BD0D237127892584009017E1 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BD0D237027892584009017E1 /* AlertToast */; };
+		BD0D237327892A8C009017E1 /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237227892A8C009017E1 /* NewsScreen.swift */; };
+		BD0D237427892A8C009017E1 /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237227892A8C009017E1 /* NewsScreen.swift */; };
 		BD2520CC277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */; };
 		BD2520CD277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */; };
 		BD2520CF277FAD77004C3CDE /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CE277FAD77004C3CDE /* LargeButton.swift */; };
@@ -128,6 +131,7 @@
 /* Begin PBXFileReference section */
 		BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChallengeCard.swift; sourceTree = "<group>"; };
 		BD0D236B27892028009017E1 /* pix (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pix (iOS).entitlements"; sourceTree = "<group>"; };
+		BD0D237227892A8C009017E1 /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
 		BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMenuScreen.swift; sourceTree = "<group>"; };
 		BD2520CE277FAD77004C3CDE /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		BD2520D1277FC21F004C3CDE /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD374FF2277BBF3F00D56C0A /* FirebaseDatabaseSwift-Beta in Frameworks */,
+				BD0D237127892584009017E1 /* AlertToast in Frameworks */,
 				BD374FF0277BBF3F00D56C0A /* FirebaseDatabase in Frameworks */,
 				BD2520DC2780B48F004C3CDE /* FirebaseStorage in Frameworks */,
 				BD374FEA277BBF3F00D56C0A /* FirebaseAnalyticsSwift-Beta in Frameworks */,
@@ -330,8 +335,8 @@
 				BDDCE77B277E079600CD62F0 /* ChallengesScreen.swift */,
 				BDDCE781277E411100CD62F0 /* EditorScreen.swift */,
 				BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */,
-				BD29E8B02780E07F00335989 /* EditProfile.swift */,
 				BD29E8B92781414A00335989 /* CommentsScreen.swift */,
+				BD0D237227892A8C009017E1 /* NewsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 		BDB67608278662AB0049FE62 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				BD29E8B02780E07F00335989 /* EditProfile.swift */,
 				BDC10B27273C5C880062AF1C /* LoginScreen.swift */,
 				BDB67609278662DA0049FE62 /* AccountCreation.swift */,
 			);
@@ -433,6 +439,7 @@
 				BD374FF5277BBF3F00D56C0A /* FirebaseFirestoreSwift-Beta */,
 				BD2520DB2780B48F004C3CDE /* FirebaseStorage */,
 				BD2520DD2780B492004C3CDE /* FirebaseStorageSwift-Beta */,
+				BD0D237027892584009017E1 /* AlertToast */,
 			);
 			productName = "pix (iOS)";
 			productReference = BD7B2F8D273C43FB0032B055 /* pix.app */;
@@ -528,6 +535,7 @@
 			mainGroup = BD7B2F80273C43F90032B055;
 			packageReferences = (
 				BD374FE6277BBF3F00D56C0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BD0D236F27892584009017E1 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = BD7B2F8E273C43FB0032B055 /* Products */;
 			projectDirPath = "";
@@ -589,6 +597,7 @@
 				BD29E8B12780E07F00335989 /* EditProfile.swift in Sources */,
 				BD7B2FB0273C43FB0032B055 /* ContentView.swift in Sources */,
 				BD2520CC277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */,
+				BD0D237327892A8C009017E1 /* NewsScreen.swift in Sources */,
 				BDDCE775277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
 				BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
@@ -646,6 +655,7 @@
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
 				BD29E8C1278207CC00335989 /* AppStore.swift in Sources */,
+				BD0D237427892A8C009017E1 /* NewsScreen.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
 				BD4910B327851F73006B3FF2 /* PaletteList.swift in Sources */,
 				BD29E8C72782541600335989 /* ProfileData.swift in Sources */,
@@ -1082,6 +1092,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BD0D236F27892584009017E1 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.7;
+			};
+		};
 		BD374FE6277BBF3F00D56C0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1093,6 +1111,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BD0D237027892584009017E1 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD0D236F27892584009017E1 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
 		BD2520DB2780B48F004C3CDE /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BD374FE6277BBF3F00D56C0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -45,7 +45,7 @@ class FeedViewModel: ObservableObject {
         
         collection
             .limit(to: PAGE_ITEMS)
-            .addSnapshotListener { (querySnapshot, error ) in
+            .getDocuments() { (querySnapshot, error ) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents in Posts")
                 self.state = States.SUCCESS

@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import AlertToast
 
 class AppStore: ObservableObject {
    
     @Published var loginSheetVisible = false
+    @Published var toastVisible = false
+    @Published var toast: AlertToast = AlertToast(type: .regular, title: "")
 
     func showLoginSheet () {
         self.loginSheetVisible = true
@@ -17,5 +20,10 @@ class AppStore: ObservableObject {
     
     func hideLoginSheet () {
         self.loginSheetVisible = false
+    }
+    
+    func showToast (toast: AlertToast) {
+        self.toastVisible = true
+        self.toast = toast
     }
 }

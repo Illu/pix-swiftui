@@ -7,6 +7,7 @@
 
 import Firebase
 import SwiftUI
+import AlertToast
 
 struct LoginScreen: View {
     
@@ -26,11 +27,13 @@ struct LoginScreen: View {
             if error != nil {
                 self.error = true
                 self.loading = false
+                app.showToast(toast: AlertToast(type: .error(ColorManager.error), subTitle: error?.localizedDescription ?? "Unable to login"))
             } else {
                 self.email = ""
                 self.password = ""
                 self.loading = false
                 app.hideLoginSheet()
+                app.showToast(toast: AlertToast(type: .complete(ColorManager.success), title: "Logged in !"))
             }
         }
     }

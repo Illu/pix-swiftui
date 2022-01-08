@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import AlertToast
 
 struct ContentView: View {
     
@@ -56,6 +57,9 @@ struct ContentView: View {
                         }
                     }
             }
+        }
+        .toast(isPresenting: $app.toastVisible) {
+            app.toast
         }
     }
 }

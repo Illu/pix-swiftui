@@ -8,11 +8,13 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import AlertToast
 
 struct EditProfile: View {
     
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var images: ImagesStore
+    @EnvironmentObject var app: AppStore
     
     @State var avatar = ""
     @State var userName = ""
@@ -30,12 +32,14 @@ struct EditProfile: View {
         changeRequest?.commitChanges { error in
             if error != nil {
                 self.state = States.ERROR
+                app.showToast(toast: AlertToast(type: .error(ColorManager.error), subTitle: error?.localizedDescription))
             } else {
                 let updateReference = db.collection("Users").document(session.session!.uid)
                 updateReference.getDocument{ (document, err) in
                     if let err = err {
                         print(err.localizedDescription)
                         self.state = States.ERROR
+                        app.showToast(toast: AlertToast(type: .error(ColorManager.error), subTitle: err.localizedDescription))
                     } else {
                         document?.reference.updateData([
                             "displayName": userName,
@@ -43,6 +47,7 @@ struct EditProfile: View {
                         ])
                         session.loadUserData()
                         self.state = States.SUCCESS
+                        app.showToast(toast: AlertToast(type: .complete(ColorManager.success), title: "Saved"))
                     }
                 }
             }
@@ -96,6 +101,7 @@ struct EditProfile: View {
             .padding(.top, 40)
             Text("ID - \(session.session?.uid ?? "??")")
                 .foregroundColor(ColorManager.secondaryText)
+                .opacity(0.5)
         }
         .onAppear(perform: {
             self.userName = session.userData?.displayName ?? ""

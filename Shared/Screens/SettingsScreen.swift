@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct SettingsScreen: View {
     
@@ -18,10 +19,13 @@ struct SettingsScreen: View {
                 Section("Account") {
                     if (session.session != nil) {
                         Button("Log out") {
-                            session.signOut()
+                            if (session.signOut()) {
+                                app.showToast(toast: AlertToast(type: .regular, title: "Logged out"))
+                            }
                         }
-                        Button("Edit Profile") {
-                            
+                        NavigationLink(destination: EditProfile()) {
+                            Image(systemName: "square.and.pencil")
+                            Text("Edit Profile")
                         }
                     } else {
                         Button("Log in") {

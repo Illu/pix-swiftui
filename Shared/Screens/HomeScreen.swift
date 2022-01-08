@@ -84,7 +84,9 @@ struct HomeScreen: View {
                 } label: {
                     Image(systemName: "clock")
                 }
-                Button(action: {app.showLoginSheet()}) { Image(systemName: "bell.badge") }
+                NavigationLink(destination: NewsScreen()) {
+                    Image(systemName: "bell.badge")
+                }
             }
         }
         .searchable(text: $searchText, prompt: "Search for anything")

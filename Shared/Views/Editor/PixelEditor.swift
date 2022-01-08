@@ -18,7 +18,7 @@ struct PixelEditor: View {
     var pixelSize = 10.0
     @State var history: [[Pixel]] = []
     @State var showPalettesSheet = false
-    
+
     @State private var pixelData = [Pixel](repeating: Pixel(color: "none"), count: Int(ART_SIZE * ART_SIZE))
     @State var currentColor = Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
     @State var currentTool: TOOLS = TOOLS.PENCIL
@@ -88,11 +88,11 @@ struct PixelEditor: View {
             }
             .frame(maxWidth: 400, maxHeight: 400)
             HStack {
-                Button("Draw") {
-                    self.menuMode = MENU_MODES.DRAW
+                Button(action: {self.menuMode = MENU_MODES.DRAW}) {
+                    EditorButton(text: "Draw", active: self.menuMode == MENU_MODES.DRAW, width: 140)
                 }
-                Button("Background") {
-                    self.menuMode = MENU_MODES.BACKGROUND
+                Button(action: {self.menuMode = MENU_MODES.BACKGROUND}) {
+                    EditorButton(text: "Background", active: self.menuMode == MENU_MODES.BACKGROUND, width: 140)
                 }
             }
             if (menuMode == MENU_MODES.DRAW) {
@@ -116,8 +116,8 @@ struct PixelEditor: View {
                     }.padding(.trailing, 30)
                 }
             } else if (menuMode == MENU_MODES.BACKGROUND) {
-                Button("Show Grid") {
-                    self.showGrid.toggle()
+                Button(action: {self.showGrid.toggle()}) {
+                    EditorButton(icon: "grid", active: showGrid)
                 }
             }
             ScrollView(.horizontal) {

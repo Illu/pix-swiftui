@@ -38,6 +38,12 @@ enum MENU_MODES {
     case BACKGROUND
 }
 
+enum NOTIFICATION_TYPES {
+    case SUCCESS
+    case ERROR
+    case WARNING
+}
+
 struct Tab: Identifiable {
     var id = UUID()
     var name: String
