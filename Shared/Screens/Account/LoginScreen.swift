@@ -25,9 +25,11 @@ struct LoginScreen: View {
             self.loading = false
             if error != nil {
                 self.error = true
+                self.loading = false
             } else {
                 self.email = ""
                 self.password = ""
+                self.loading = false
                 app.hideLoginSheet()
             }
         }
@@ -56,7 +58,7 @@ struct LoginScreen: View {
             .cornerRadius(4.0)
             .frame(maxWidth: BUTTON_WIDTH)
             Button(action: signIn) {
-                LargeButton(title: "Log in")
+                LargeButton(title: "Log in", loading: loading, disabled: loading)
             }
             .padding(.top, 40)
         }

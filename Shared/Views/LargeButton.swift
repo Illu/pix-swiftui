@@ -16,6 +16,7 @@ struct LargeButton: View {
     var title: String
     var loading: Bool?
     var withBackground: Bool? = false
+    var disabled: Bool? = false
     var width: CGFloat? = BUTTON_WIDTH
     
     var body: some View {
@@ -37,6 +38,7 @@ struct LargeButton: View {
             RoundedRectangle(cornerRadius: 4.0)
                 .stroke(ColorManager.secondaryText, lineWidth: withBackground! ? 0 : 1)
         )
+        .opacity(disabled == true ? 0.6 : 1)
     }
 }
 
@@ -53,6 +55,8 @@ struct Button_Previews: PreviewProvider {
             LargeButton(title: "I have a background!", withBackground: true)
             LargeButton(title: "I should not be displayed (but I should have a colored background :)", loading: true, withBackground: true)
             LargeButton(title: "Smol button", width: 150)
+            LargeButton(title: "disabled button", disabled: true)
+            LargeButton(title: "disabled with background", withBackground: true, disabled: true)
         }
     }
 }

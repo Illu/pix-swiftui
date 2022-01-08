@@ -14,4 +14,5 @@ public struct ColorManager {
     static let screenBackground = Color("ScreenBackground")
     static let inputBackground = Color("InputBackground")
     static let accent = Color("Accent")
+    static let error = Color("Error")
 }

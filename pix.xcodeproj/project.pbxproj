@@ -71,6 +71,8 @@
 		BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A57D277BDAB200E5D680 /* PixelArt.swift */; };
 		BDA2A581277BE06B00E5D680 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A580277BE06B00E5D680 /* Utils.swift */; };
 		BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A580277BE06B00E5D680 /* Utils.swift */; };
+		BDB6760A278662DA0049FE62 /* AccountCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB67609278662DA0049FE62 /* AccountCreation.swift */; };
+		BDB6760B278662DA0049FE62 /* AccountCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB67609278662DA0049FE62 /* AccountCreation.swift */; };
 		BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B19273C4B390062AF1C /* HomeScreen.swift */; };
 		BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B19273C4B390062AF1C /* HomeScreen.swift */; };
 		BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B1D273C4F300062AF1C /* PostCard.swift */; };
@@ -125,6 +127,7 @@
 
 /* Begin PBXFileReference section */
 		BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChallengeCard.swift; sourceTree = "<group>"; };
+		BD0D236B27892028009017E1 /* pix (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pix (iOS).entitlements"; sourceTree = "<group>"; };
 		BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMenuScreen.swift; sourceTree = "<group>"; };
 		BD2520CE277FAD77004C3CDE /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		BD2520D1277FC21F004C3CDE /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 		BD7B9D3627444E9E005C5B4E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		BDA2A57D277BDAB200E5D680 /* PixelArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArt.swift; sourceTree = "<group>"; };
 		BDA2A580277BE06B00E5D680 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BDB67609278662DA0049FE62 /* AccountCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreation.swift; sourceTree = "<group>"; };
 		BDC10B19273C4B390062AF1C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		BDC10B1D273C4F300062AF1C /* PostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCard.swift; sourceTree = "<group>"; };
 		BDC10B27273C5C880062AF1C /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		BD7B2F80273C43F90032B055 = {
 			isa = PBXGroup;
 			children = (
+				BD0D236B27892028009017E1 /* pix (iOS).entitlements */,
 				BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */,
 				BD7B2F85273C43F90032B055 /* Shared */,
 				BD7B2F94273C43FB0032B055 /* macOS */,
@@ -317,7 +322,7 @@
 		BD7B2FC2273C44670032B055 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				BDC10B27273C5C880062AF1C /* LoginScreen.swift */,
+				BDB67608278662AB0049FE62 /* Account */,
 				BDC10B19273C4B390062AF1C /* HomeScreen.swift */,
 				BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */,
 				BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */,
@@ -342,6 +347,15 @@
 				BD2520E52780D9D1004C3CDE /* UserData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BDB67608278662AB0049FE62 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				BDC10B27273C5C880062AF1C /* LoginScreen.swift */,
+				BDB67609278662DA0049FE62 /* AccountCreation.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		BDC10B1C273C4F210062AF1C /* Views */ = {
@@ -601,6 +615,7 @@
 				BDA2A581277BE06B00E5D680 /* Utils.swift in Sources */,
 				BDF4AFFA273F29D100622F85 /* ColorManager.swift in Sources */,
 				BD2520D82780B339004C3CDE /* ImagesStore.swift in Sources */,
+				BDB6760A278662DA0049FE62 /* AccountCreation.swift in Sources */,
 				BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */,
 				BDDCE778277D5E9600CD62F0 /* SessionStore.swift in Sources */,
 				BD7B9D3727444E9E005C5B4E /* TabBar.swift in Sources */,
@@ -648,6 +663,7 @@
 				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
 				BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */,
 				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
+				BDB6760B278662DA0049FE62 /* AccountCreation.swift in Sources */,
 				BD29E8BE278146F700335989 /* CommentView.swift in Sources */,
 				BDA2A582277BE06B00E5D680 /* Utils.swift in Sources */,
 				BD29E8B52780FBCA00335989 /* AvatarList.swift in Sources */,
@@ -808,6 +824,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "pix (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6WD2C784QG;
@@ -838,6 +855,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "pix (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6WD2C784QG;

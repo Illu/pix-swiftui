@@ -87,7 +87,7 @@ struct HomeScreen: View {
                 Button(action: {app.showLoginSheet()}) { Image(systemName: "bell.badge") }
             }
         }
-        .searchable(text: $searchText, prompt: "Search for anything")i
+        .searchable(text: $searchText, prompt: "Search for anything")
         .onAppear {
             if (viewModel.posts.isEmpty && viewModel.state == States.IDLE) {
                 self.setNewSorting(SORTING.ALL)
