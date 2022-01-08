@@ -62,8 +62,9 @@ struct EditProfile: View {
     func formLabel (text: String) -> Text { return Text(text) }
     
     var body: some View {
+        ScrollView {
         VStack {
-            RoundedAvatar(name: avatar, size: 100)
+            RoundedAvatar(name: avatar, size: 140)
             Button(action: { showAvatarSheet.toggle()}) {
                 LargeButton(title: "Edit profile picture", width: 200)
             }
@@ -98,10 +99,10 @@ struct EditProfile: View {
             Button(action: saveModifications) {
                 LargeButton(title: "Save modifications", loading: self.state == States.LOADING, withBackground: true)
             }
-            .padding(.top, 40)
+            .padding(.vertical, 40)
             Text("ID - \(session.session?.uid ?? "??")")
                 .foregroundColor(ColorManager.secondaryText)
-                .opacity(0.5)
+                .opacity(0.2)
         }
         .onAppear(perform: {
             self.userName = session.userData?.displayName ?? ""
@@ -121,6 +122,7 @@ struct EditProfile: View {
                         Button(action: {self.showAvatarSheet = false}) { Text("Cancel") }
                     }
             }
+        }
         }
     }
 }

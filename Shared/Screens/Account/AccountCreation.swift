@@ -34,7 +34,7 @@ struct AccountCreation: View {
                 self.loading = true
                 print("email: \(email)")
                 print("pass: \(password)")
-
+                
                 auth.createUser(withEmail: email, password: password) { authResult, error in
                     if let error = error {
                         print(error)
@@ -52,18 +52,8 @@ struct AccountCreation: View {
                                 self.loading = false
                                 self.error = "Your account has been created, but somehow an error occured, some things might not work as expected"
                             } else {
-                                print("User data successfully created!")
-                                let changeRequest = auth.currentUser?.createProfileChangeRequest()
-                                changeRequest?.displayName = username
-                                changeRequest?.commitChanges { error in
-                                    if error != nil {
-                                        self.error = "Your account as been created, but something went wrong while trying to set your username"
-                                    } else {
-                                        print("SUCCESS")
-                                        // SUCCESS, NAVIGATE TO THE APP
-                                    }
-                                    self.loading = false
-                                }
+                                print("SUCCESS")
+                                self.loading = false
                             }
                         }
                     }

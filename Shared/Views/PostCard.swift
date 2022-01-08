@@ -22,7 +22,6 @@ struct PostCard: View {
     var db = Firestore.firestore()
 
     @State private var showUserProfile = false
-    @State private var showCommentsSheet = false
     @State private var cardWidth: Double = 0.0
     @State private var userData: UserData?
     @State private var localLikesCount: Int = 0
@@ -94,13 +93,14 @@ struct PostCard: View {
                 }
                 Spacer()
                 Menu {
-                    Button(action: {self.showCommentsSheet = true}) { HStack {Text("View comments"); Spacer(); Image(systemName: "chevron.right") }}
+                    Button(action: {app.showCommentsSheet(postId: id)}) { HStack {Text("View comments"); Spacer(); Image(systemName: "chevron.right") }}
                     Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "chevron.right") }}
                     Button(action: {print("tap")}) { HStack {Text("Report this post"); Spacer(); Image(systemName: "exclamationmark.shield") }}
                 } label: {
                     Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText)
                 }
             }
+            .padding(.top, 10)
             GeometryReader { geometry in
                 HStack{}.onAppear{ self.cardWidth = geometry.size.width}
             }
@@ -121,7 +121,7 @@ struct PostCard: View {
                         .foregroundColor(ColorManager.primaryText)
                     Text("\(comments.count)")
                 }.onTapGesture {
-                    self.showCommentsSheet = true
+                    app.showCommentsSheet(postId: id)
                 }
                 Spacer()
             }
@@ -141,10 +141,10 @@ struct PostCard: View {
                     .font(.footnote)
                     .foregroundColor(ColorManager.secondaryText)
                 Spacer()
-            }
+            }.padding(.bottom, 10)
         }
         .cornerRadius(8)
-        .frame(maxWidth: 400, minHeight: 450)
+        .frame(maxWidth: 400, minHeight: 400)
         .onAppear{
             setLocalVariables()
             loadUserData()
@@ -154,19 +154,6 @@ struct PostCard: View {
                EmptyView()
             }.hidden()
         )
-        .sheet(
-            isPresented: $showCommentsSheet,
-            onDismiss: { self.showCommentsSheet = false }
-        ) {
-            NavigationView {
-                CommentsScreen(postId: id)
-                    .toolbar {
-                        HStack {
-                            Button(action: {self.showCommentsSheet = false}) { Text("Close") }
-                        }
-                    }
-            }
-        }
     }
 }
 

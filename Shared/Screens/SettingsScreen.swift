@@ -24,7 +24,7 @@ struct SettingsScreen: View {
                             }
                         }
                         NavigationLink(destination: EditProfile()) {
-                            Image(systemName: "square.and.pencil")
+                            Image(systemName: "person.circle")
                             Text("Edit Profile")
                         }
                     } else {
@@ -33,9 +33,24 @@ struct SettingsScreen: View {
                         }
                     }
                 }
+                Section("Contact") {
+                    NavigationLink(destination: EditProfile()) {
+                        Image(systemName: "message")
+                        Text("Say hi")
+                    }
+                    NavigationLink(destination: EditProfile()) {
+                        Image(systemName: "dollarsign.circle")
+                        Text("Leave a tip")
+                    }
+                }
                 Section("App") {
-                    Button("About") {
-                        
+                    NavigationLink(destination: EditProfile()) {
+                        Image(systemName: "info.circle")
+                        Text("About Pix")
+                    }
+                    NavigationLink(destination: EditProfile()) {
+                        Image(systemName: "star")
+                        Text("Rate the App")
                     }
                 }
             }.listStyle(.insetGrouped)

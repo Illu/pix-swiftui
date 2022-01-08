@@ -67,32 +67,30 @@ struct ProfileData: View {
     ]
     
     var body: some View {
-        VStack {
-            if (userData == nil) {
-                ProgressView()
-            } else {
-                VStack(alignment: .leading){
-                    HStack {
-                        RoundedAvatar(name: userData?.avatar, size: 100)
-                        VStack(alignment: .leading, spacing: 16) {
-                            Text(userData?.displayName ?? "Name Error")
-                                .font(.largeTitle)
-                            Text("Badges")
-                            Text("\($userPosts.count) Post\($userPosts.count != 1 ? "s" : "")")
+        ScrollView{
+            VStack {
+                if (userData == nil) {
+                    ProgressView()
+                } else {
+                    VStack(alignment: .leading){
+                        HStack {
+                            RoundedAvatar(name: userData?.avatar, size: 100)
+                            VStack(alignment: .leading, spacing: 16) {
+                                Text("Badges")
+                                Text("\($userPosts.count) Post\($userPosts.count != 1 ? "s" : "")")
+                            }
                         }
-                    }
-                    if (userPosts.count > 0) {
-                        ScrollView{
+                        if (userPosts.count > 0) {
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(userPosts, id: \.self.id) { post in
                                     PixelArt(data: post.data)
                                 }
                             }
+                        } else {
+                            Empty()
                         }
-                    } else {
-                        Empty()
-                    }
-                }.padding(16)
+                    }.padding(16)
+                }
             }
         }.onAppear{
             loadUserData()
@@ -100,8 +98,7 @@ struct ProfileData: View {
                 loadUserPosts()
             }
         }
-        .navigationTitle(isCurrentSessionProfile ? "Your profile" : "Profile")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(userData?.displayName ?? (isCurrentSessionProfile ? "Your Profile" : "Profile"))
         .toolbar {
             if (isCurrentSessionProfile) {
                 NavigationLink(destination: EditProfile()) {

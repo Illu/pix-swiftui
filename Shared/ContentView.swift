@@ -58,6 +58,19 @@ struct ContentView: View {
                     }
             }
         }
+        .sheet(
+            isPresented: $app.commentsSheetVisible,
+            onDismiss: { app.hideCommentsSheet() }
+        ) {
+            NavigationView {
+                CommentsScreen(postId: app.commentsSheetPostId)
+                    .toolbar {
+                        HStack {
+                            Button(action: {app.hideCommentsSheet()}) { Text("Close") }
+                        }
+                    }
+            }
+        }
         .toast(isPresenting: $app.toastVisible) {
             app.toast
         }
