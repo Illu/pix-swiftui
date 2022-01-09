@@ -9,14 +9,20 @@ import SwiftUI
 
 struct ChallengesScreen: View {
     
+	@State var challenge: String? = nil
+	
+	func loadChallenge() {
+		let now = Date()
+		let currentMonthIndex = Calendar.current.component(.month, from: now)
+		self.challenge = MONTHS[currentMonthIndex - 1]
+	}
+	
     var body: some View {
         ZStack {
-            VStack {
-                CurrentChallengeCard()
-                Empty()
-            }
-        }
-        .navigationTitle("Challenges")
+			if ((challenge) != nil) {
+				Feed(challenge: challenge)
+			}
+		}.onAppear(perform: {loadChallenge()})
     }
 }
 

@@ -20,7 +20,7 @@ class FeedViewModel: ObservableObject {
         self.posts = []
     }
     
-    func fetchData(maxTimestamp: Int64? = nil, byNew: Bool? = false, nextPage: Bool = false) {
+	func fetchData(maxTimestamp: Int64? = nil, byNew: Bool? = false, nextPage: Bool = false, challenge: String? = nil) {
         self.state = States.LOADING
         
         if (!nextPage) {
@@ -38,10 +38,14 @@ class FeedViewModel: ObservableObject {
                 // so the timestamp filtering must happen on the client-side. :(
         )
         
+		if (challenge != nil) {
+			print("getting items with tag \(challenge)")
+			collection = collection.whereField("tag", isEqualTo: challenge!)
+		}
+		
         if (nextPage && self.lastSnapshot != nil){
             collection = collection.start(afterDocument: lastSnapshot!)
         }
-        
         
         collection
             .limit(to: PAGE_ITEMS)

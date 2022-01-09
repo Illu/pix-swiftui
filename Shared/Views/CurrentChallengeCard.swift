@@ -33,7 +33,6 @@ struct CurrentChallengeCard: View {
     
     var body: some View {
         VStack {
-            Text("Hello, World!")
             AsyncImage(url: challengeImageURL)
         }.onAppear(perform: loadChallengeData)
     }

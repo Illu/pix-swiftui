@@ -97,3 +97,13 @@ func dropBucket (data: [Pixel], dropIndex: Int, color: String, initialColor: Str
     
     return newData
 }
+
+extension Bundle {
+    var releaseVersionNumber: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    var buildVersionNumber: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
+    }
+}
+

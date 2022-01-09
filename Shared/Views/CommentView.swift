@@ -59,8 +59,8 @@ struct CommentView: View {
                 }
                 .padding(.all, 16)
                 Text(comment.text)
-                    .lineLimit(nil)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.horizontal, 16)
                     .padding(.bottom, 16)
             }

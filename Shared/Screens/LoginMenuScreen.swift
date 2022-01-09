@@ -16,7 +16,8 @@ struct LoginMenuScreen: View {
     @State var currentNonce:String?
     
     @EnvironmentObject var app: AppStore
-    
+    @Environment(\.colorScheme) var colorScheme
+
     //Hashing function using CryptoKit
     func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
@@ -68,7 +69,7 @@ struct LoginMenuScreen: View {
     var body: some View {
         VStack {
             Image("koala")
-            Text("Hi there !")
+            Text("Hello there")
                 .font(.largeTitle)
                 .foregroundColor(ColorManager.primaryText)
                 .multilineTextAlignment(.center)
@@ -80,7 +81,7 @@ struct LoginMenuScreen: View {
                 LargeButton(title: "Create an account")
             }
             NavigationLink(destination: LoginScreen()) {
-                LargeButton(title: "Log in")
+                LargeButton(title: "Log in", withBackground: true)
             }
             SignInWithAppleButton(
                 onRequest: { request in
@@ -148,8 +149,9 @@ struct LoginMenuScreen: View {
                         break
                     }
                 }
-            ).frame(width: BUTTON_WIDTH, height: 45, alignment: .center)
-            
+            )
+            .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+            .frame(width: BUTTON_WIDTH, height: 45, alignment: .center)
         }
         .padding(30)
     }

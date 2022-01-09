@@ -93,13 +93,15 @@ struct PostCard: View {
                 }
                 Spacer()
                 Menu {
-                    Button(action: {app.showCommentsSheet(postId: id)}) { HStack {Text("View comments"); Spacer(); Image(systemName: "chevron.right") }}
-                    Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "chevron.right") }}
+                    Button(action: {app.showCommentsSheet(postId: id)}) { HStack {Text("View comments"); Spacer(); Image(systemName: "text.bubble") }}
+                    Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "person") }}
                     Button(action: {print("tap")}) { HStack {Text("Report this post"); Spacer(); Image(systemName: "exclamationmark.shield") }}
                 } label: {
                     Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText)
+                        .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 10))
                 }
             }
+            .frame(height: 40)
             .padding(.top, 10)
             GeometryReader { geometry in
                 HStack{}.onAppear{ self.cardWidth = geometry.size.width}
@@ -129,8 +131,9 @@ struct PostCard: View {
             HStack {
                 Text("\(desc ?? "Default Description")")
                     .font(.body)
-                    .foregroundColor(ColorManager.secondaryText)
+                    .foregroundColor(ColorManager.primaryText)
                     .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
                     
                 Spacer()
             }
@@ -144,7 +147,7 @@ struct PostCard: View {
             }.padding(.bottom, 10)
         }
         .cornerRadius(8)
-        .frame(maxWidth: 400, minHeight: 400)
+        .frame(minHeight: 400)
         .onAppear{
             setLocalVariables()
             loadUserData()

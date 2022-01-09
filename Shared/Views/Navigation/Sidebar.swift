@@ -13,6 +13,7 @@ struct Sidebar: View {
     
     var body: some View {
         NavigationView {
+			VStack {
             List {
                 ForEach(Tabs.indices) { i in
                     NavigationLink(destination: Tabs[i].view, tag: i, selection: self.$selection) {
@@ -20,8 +21,10 @@ struct Sidebar: View {
                             .environment(\.symbolVariants, .none)
                     }
                 }
+				}.listStyle(.sidebar)
+				Image("birb")
             }
-            .listStyle(.sidebar)
+			.background(ColorManager.screenBackground)
             .onAppear {
                 if self.selection == nil {
                     self.selection = 0

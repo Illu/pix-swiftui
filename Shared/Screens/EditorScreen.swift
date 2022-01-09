@@ -28,11 +28,6 @@ struct EditorScreen: View {
         }
         .navigationTitle("Create")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            Button(action: {print("next")}) {
-                Image(systemName: "arrow.right")
-            }
-        }
     }
 }
 

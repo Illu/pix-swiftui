@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import AlertToast
 
 struct AccountCreation: View {
     @State var username = ""
@@ -17,6 +18,8 @@ struct AccountCreation: View {
     @State var passwordConfirmation = ""
     @State var loading = false
     @State var step = 0
+    
+    @EnvironmentObject var app: AppStore
     
     func onPressActionButton () {
         
@@ -52,7 +55,8 @@ struct AccountCreation: View {
                                 self.loading = false
                                 self.error = "Your account has been created, but somehow an error occured, some things might not work as expected"
                             } else {
-                                print("SUCCESS")
+                                app.hideLoginSheet()
+                                app.showToast(toast: AlertToast(type: .complete(ColorManager.success), title: "Welcome to Pix!", subTitle: "Your account has been created."))
                                 self.loading = false
                             }
                         }
@@ -73,6 +77,7 @@ struct AccountCreation: View {
                 Text("Create your account and enjoy the app and its community!")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: BUTTON_WIDTH)
                     .foregroundColor(ColorManager.secondaryText)
             }

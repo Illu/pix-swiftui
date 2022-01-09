@@ -9,54 +9,70 @@ import Foundation
 import SwiftUI
 
 enum Sorting : String {
-    case top = "likesCount"
-    case new = "timestamp"
+	case top = "likesCount"
+	case new = "timestamp"
 }
 
 enum SORTING {
-    case NEW
-//    case MONTH
-//    case YEAR
-    case ALL
+	case NEW
+	//    case MONTH
+	//    case YEAR
+	case ALL
 }
 
 enum States {
-    case IDLE
-    case LOADING
-    case SUCCESS
-    case ERROR
+	case IDLE
+	case LOADING
+	case SUCCESS
+	case ERROR
 }
 
 enum TOOLS {
-    case PENCIL
-    case ERASER
-    case BUCKET
+	case PENCIL
+	case RANDOM
+	case ERASER
+	case BUCKET
 }
 
 enum MENU_MODES {
-    case DRAW
-    case BACKGROUND
+	case DRAW
+	case BACKGROUND
 }
 
 enum NOTIFICATION_TYPES {
-    case SUCCESS
-    case ERROR
-    case WARNING
+	case SUCCESS
+	case ERROR
+	case WARNING
 }
 
 struct Tab: Identifiable {
-    var id = UUID()
-    var name: String
-    var systemImage: String
-    var view: AnyView
+	var id = UUID()
+	var name: String
+	var systemImage: String
+	var view: AnyView
 }
 
 let Tabs = [
-    Tab(name: "Home", systemImage: "house", view: AnyView(HomeScreen())),
-    Tab(name: "Challenges", systemImage: "crown", view: AnyView(ChallengesScreen())),
-    Tab(name: "Create", systemImage: "plus.square", view: AnyView(EditorScreen())),
-    Tab(name: "Profile", systemImage: "person", view: AnyView(ProfileScreen())),
-    Tab(name: "Settings", systemImage: "gearshape", view: AnyView(SettingsScreen()))
+	Tab(name: "Home", systemImage: "house", view: AnyView(HomeScreen())),
+	Tab(name: "Challenges", systemImage: "crown", view: AnyView(ChallengesScreen())),
+	Tab(name: "Create", systemImage: "plus.square", view: AnyView(EditorScreen())),
+	Tab(name: "Profile", systemImage: "person", view: AnyView(ProfileScreen())),
+	Tab(name: "Settings", systemImage: "gearshape", view: AnyView(SettingsScreen()))
+]
+
+let MONTHS = [
+	"Jan",
+	"Feb",
+	"Mar",
+	"Apr",
+	"May",
+	"Jun",
+	"Jul",
+	"Aug",
+	"Sep",
+	"Oct",
+	"Nov",
+	"Dec"
 ]
 
 let PAGE_ITEMS = 5 // how many items are fetched in the feed

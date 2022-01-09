@@ -12,6 +12,12 @@
 		BD0D237127892584009017E1 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BD0D237027892584009017E1 /* AlertToast */; };
 		BD0D237327892A8C009017E1 /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237227892A8C009017E1 /* NewsScreen.swift */; };
 		BD0D237427892A8C009017E1 /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237227892A8C009017E1 /* NewsScreen.swift */; };
+		BD0D237A278B4CA2009017E1 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D2379278B4CA2009017E1 /* AboutScreen.swift */; };
+		BD0D237B278B4CA2009017E1 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D2379278B4CA2009017E1 /* AboutScreen.swift */; };
+		BD0D237D278B829A009017E1 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237C278B829A009017E1 /* Detail.swift */; };
+		BD0D237E278B829A009017E1 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237C278B829A009017E1 /* Detail.swift */; };
+		BD0D2380278B8AAA009017E1 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237F278B8AAA009017E1 /* Feed.swift */; };
+		BD0D2381278B8AAA009017E1 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237F278B8AAA009017E1 /* Feed.swift */; };
 		BD2520CC277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */; };
 		BD2520CD277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */; };
 		BD2520CF277FAD77004C3CDE /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CE277FAD77004C3CDE /* LargeButton.swift */; };
@@ -132,6 +138,9 @@
 		BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChallengeCard.swift; sourceTree = "<group>"; };
 		BD0D236B27892028009017E1 /* pix (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pix (iOS).entitlements"; sourceTree = "<group>"; };
 		BD0D237227892A8C009017E1 /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
+		BD0D2379278B4CA2009017E1 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
+		BD0D237C278B829A009017E1 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		BD0D237F278B8AAA009017E1 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMenuScreen.swift; sourceTree = "<group>"; };
 		BD2520CE277FAD77004C3CDE /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		BD2520D1277FC21F004C3CDE /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
@@ -230,6 +239,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD0D2378278B4C96009017E1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BD0D2379278B4CA2009017E1 /* AboutScreen.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		BD2520DA2780B48F004C3CDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +303,7 @@
 			);
 			path = Shared;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		BD7B2F8E273C43FB0032B055 /* Products */ = {
 			isa = PBXGroup;
@@ -327,6 +345,7 @@
 		BD7B2FC2273C44670032B055 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BD0D2378278B4C96009017E1 /* Settings */,
 				BDB67608278662AB0049FE62 /* Account */,
 				BDC10B19273C4B390062AF1C /* HomeScreen.swift */,
 				BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */,
@@ -378,6 +397,8 @@
 				BD29E8BC278146F700335989 /* CommentView.swift */,
 				BD29E8C52782541600335989 /* ProfileData.swift */,
 				BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */,
+				BD0D237C278B829A009017E1 /* Detail.swift */,
+				BD0D237F278B8AAA009017E1 /* Feed.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -602,6 +623,7 @@
 				BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BD29E8C62782541600335989 /* ProfileData.swift in Sources */,
+				BD0D237D278B829A009017E1 /* Detail.swift in Sources */,
 				BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
@@ -610,6 +632,7 @@
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
 				BD2520CF277FAD77004C3CDE /* LargeButton.swift in Sources */,
 				BD29E8C0278207CC00335989 /* AppStore.swift in Sources */,
+				BD0D237A278B4CA2009017E1 /* AboutScreen.swift in Sources */,
 				BDC10B1A273C4B390062AF1C /* HomeScreen.swift in Sources */,
 				BD29E8C32782151E00335989 /* EditorButton.swift in Sources */,
 				BD4910AF27851D35006B3FF2 /* Palettes.swift in Sources */,
@@ -632,6 +655,7 @@
 				BDC10B35273C992A0062AF1C /* Constants.swift in Sources */,
 				BD2520D2277FC21F004C3CDE /* SessionUser.swift in Sources */,
 				BDD00B4A277BCB2000ABE649 /* PostCardViewModel.swift in Sources */,
+				BD0D2380278B8AAA009017E1 /* Feed.swift in Sources */,
 				BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */,
 				BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */,
 			);
@@ -641,6 +665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD0D2381278B8AAA009017E1 /* Feed.swift in Sources */,
 				BD2520E72780D9D1004C3CDE /* UserData.swift in Sources */,
 				BD7B9D3527444E70005C5B4E /* Sidebar.swift in Sources */,
 				BDDCE776277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
@@ -649,6 +674,7 @@
 				BDDCE787277E469200CD62F0 /* PixelEditor.swift in Sources */,
 				BD2520D92780B33A004C3CDE /* ImagesStore.swift in Sources */,
 				BD2520E12780C4FA004C3CDE /* Avatar.swift in Sources */,
+				BD0D237B278B4CA2009017E1 /* AboutScreen.swift in Sources */,
 				BD29E8B22780E07F00335989 /* EditProfile.swift in Sources */,
 				BD4910B027851D35006B3FF2 /* Palettes.swift in Sources */,
 				BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */,
@@ -666,6 +692,7 @@
 				BDDCE77D277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */,
+				BD0D237E278B829A009017E1 /* Detail.swift in Sources */,
 				BDDCE779277D5E9600CD62F0 /* SessionStore.swift in Sources */,
 				BD2520D3277FC21F004C3CDE /* SessionUser.swift in Sources */,
 				BDF4AFFB273F29D100622F85 /* ColorManager.swift in Sources */,

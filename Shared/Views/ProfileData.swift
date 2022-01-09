@@ -74,16 +74,23 @@ struct ProfileData: View {
                 } else {
                     VStack(alignment: .leading){
                         HStack {
-                            RoundedAvatar(name: userData?.avatar, size: 100)
-                            VStack(alignment: .leading, spacing: 16) {
-                                Text("Badges")
+                            RoundedAvatar(name: userData?.avatar, size: 120)
+                            VStack(alignment: .leading) {
+								Spacer()
+								Text(userData?.displayName ?? "Username Error 😭")
+									.fontWeight(.bold)
                                 Text("\($userPosts.count) Post\($userPosts.count != 1 ? "s" : "")")
+								Text("Badges").padding(.top, 2)
+								Spacer()
                             }
-                        }
+						}.padding(.bottom, 10)
                         if (userPosts.count > 0) {
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(userPosts, id: \.self.id) { post in
-                                    PixelArt(data: post.data)
+									NavigationLink(destination: Detail(postData: post.data, desc: post.desc)) {
+                                        PixelArt(data: post.data)
+											.cornerRadius(4)
+                                    }
                                 }
                             }
                         } else {
@@ -98,7 +105,8 @@ struct ProfileData: View {
                 loadUserPosts()
             }
         }
-        .navigationTitle(userData?.displayName ?? (isCurrentSessionProfile ? "Your Profile" : "Profile"))
+        .navigationTitle(isCurrentSessionProfile ? "Your Profile" : "Profile")
+		.navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if (isCurrentSessionProfile) {
                 NavigationLink(destination: EditProfile()) {

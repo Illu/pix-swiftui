@@ -13,14 +13,16 @@ struct EditorButton: View {
     var active: Bool
     var disabled: Bool = false
     var width: CGFloat = 50
-    
+	var height: CGFloat = 50
+	
     var body: some View {
         ZStack {
             if (text != nil) {
                 RoundedRectangle(cornerRadius: 25)
                     .fill(active ? ColorManager.accent : ColorManager.screenBackground)
-                    .frame(width: width, height: 50)
-                Text(text!)
+                    .frame(width: width, height: height)
+				Text(text!)
+					.fontWeight(.medium)
                     .foregroundColor(active ? .white : disabled ? ColorManager.secondaryText : ColorManager.primaryText)
             }
             if (icon != nil) {
@@ -41,6 +43,8 @@ struct EditorButton_Previews: PreviewProvider {
             EditorButton(icon: "bandage", active: false)
             EditorButton(text: "test", active: true, width: 200)
             EditorButton(text: "test", active: false, width: 200)
+			EditorButton(text: "with custom height", active: true, width: 200, height: 30)
+			EditorButton(text: "with custom height", active: false, width: 200, height: 30)
         }
     }
 }

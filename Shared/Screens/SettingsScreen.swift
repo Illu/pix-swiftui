@@ -20,7 +20,7 @@ struct SettingsScreen: View {
                     if (session.session != nil) {
                         Button("Log out") {
                             if (session.signOut()) {
-                                app.showToast(toast: AlertToast(type: .regular, title: "Logged out"))
+                                app.showToast(toast: AlertToast(type: .regular, title: "See you later 👋", subTitle: "Logged out successfully."))
                             }
                         }
                         NavigationLink(destination: EditProfile()) {
@@ -44,7 +44,7 @@ struct SettingsScreen: View {
                     }
                 }
                 Section("App") {
-                    NavigationLink(destination: EditProfile()) {
+                    NavigationLink(destination: AboutScreen()) {
                         Image(systemName: "info.circle")
                         Text("About Pix")
                     }
