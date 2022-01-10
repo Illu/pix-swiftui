@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseStorage
 
 struct ProfileData: View {
     
@@ -14,9 +15,25 @@ struct ProfileData: View {
     var isCurrentSessionProfile = false
     
     @State var userData: UserData? = nil
+	@State var badgesUrls = [URL]()
     @State var userPosts = [Post]()
     var db = Firestore.firestore()
-    
+	
+	func loadUserBadges () {
+		let badges = userData?.badges ?? []
+		badges.forEach { badge in
+			Storage.storage()
+				.reference(withPath: "badges/\(badge.lowercased()).png")
+				.downloadURL {url, error in
+					if let error = error {
+						print("Error retriving challenge image URL: \(error)")
+					} else {
+						self.badgesUrls.append(url!)
+					}
+				}
+		}
+	}
+	
     func loadUserData () {
         let docRef = self.db.collection("Users").document(userId)
         docRef.getDocument { document, error in
@@ -27,6 +44,7 @@ struct ProfileData: View {
                 if let document = document {
                     do {
                         self.userData = try document.data(as: UserData.self)
+						loadUserBadges()
                     }
                     catch {
                         print(error)
@@ -80,7 +98,11 @@ struct ProfileData: View {
 								Text(userData?.displayName ?? "Username Error 😭")
 									.fontWeight(.bold)
                                 Text("\($userPosts.count) Post\($userPosts.count != 1 ? "s" : "")")
-								Text("Badges").padding(.top, 2)
+								HStack {
+									ForEach(badgesUrls, id: \.self) { badgeUrl in
+										AsyncImage(url: badgeUrl)
+									}
+								}
 								Spacer()
                             }
 						}.padding(.bottom, 10)

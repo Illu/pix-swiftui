@@ -13,5 +13,5 @@ struct UserData: Codable {
     var avatar: String
     var displayName: String
     var tipped: Bool?
-    var badged: [String]?
+    var badges: [String]?
 }
