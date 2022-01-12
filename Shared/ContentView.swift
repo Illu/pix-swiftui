@@ -33,17 +33,22 @@ struct ContentView: View {
     }
     
     var body: some View {
-        HStack {
-            #if os(iOS)
-            if horizontalSizeClass == .compact {
-                TabBar()
-            } else {
-                Sidebar()
-            }
-            #else // MacOS
-                Sidebar()
-            #endif
-        }
+		ZStack {
+			HStack {
+				#if os(iOS)
+				if horizontalSizeClass == .compact {
+					TabBar()
+				} else {
+					Sidebar()
+				}
+				#else // MacOS
+					Sidebar()
+				#endif
+			}
+			if (app.postDetailsVisible) {
+				Detail(postData: app.postDetailsData, desc: "TEST REPLACE ME")
+			}
+		}
         .onAppear(perform: loadRemoteContent)
         .fullScreenCover(
             isPresented: $app.loginSheetVisible,

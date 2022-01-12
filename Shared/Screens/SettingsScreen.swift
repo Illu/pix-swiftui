@@ -18,11 +18,11 @@ struct SettingsScreen: View {
             List {
                 Section("Account") {
                     if (session.session != nil) {
-                        Button("Log out") {
-                            if (session.signOut()) {
-                                app.showToast(toast: AlertToast(type: .regular, title: "See you later 👋", subTitle: "Logged out successfully."))
-                            }
-                        }
+						Button(action: {
+							if (session.signOut()) {
+								app.showToast(toast: AlertToast(type: .regular, title: "See you later 👋", subTitle: "Logged out successfully."))
+							}
+						}) { HStack {Image(systemName: "rectangle.portrait.and.arrow.right"); Text("Log out"); Spacer() }.foregroundColor(ColorManager.primaryText)}
                         NavigationLink(destination: EditProfile()) {
                             Image(systemName: "person.circle")
                             Text("Edit Profile")
@@ -53,7 +53,17 @@ struct SettingsScreen: View {
                         Text("Rate the App")
                     }
                 }
-            }.listStyle(.insetGrouped)
+            }
+			.listStyle(.insetGrouped)
+			.overlay(
+				VStack {
+					Spacer()
+					Text("2022 - Maxime Nory")
+						.font(.footnote)
+						.foregroundColor(ColorManager.secondaryText)
+						.frame(maxWidth: .infinity)
+				}
+			)
         }.navigationBarTitle(Text("Settings"))
     }
 }

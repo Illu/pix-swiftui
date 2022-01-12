@@ -45,43 +45,50 @@ struct Feed: View {
 	
 	var body: some View {
 		VStack {
-			if (viewModel.state == States.LOADING && viewModel.posts.count == 0) {
-				ProgressView()
-			} else if (viewModel.posts.count == 0) {
-				Empty()
-			} else {
-				List {
-					if ((challenge) != nil) {
-						Section {
-							CurrentChallengeCard()
-						}
+			List {
+				if ((challenge) != nil) {
+					Section {
+						CurrentChallengeCard()
 					}
+				}
+				if (viewModel.state == States.LOADING && viewModel.posts.count == 0) {
+					ProgressView()
+				} else if (viewModel.posts.count == 0) {
+					Empty()
+				} else {
 					ForEach(viewModel.posts.indices, id: \.self) { index in
 						Section {
 							ZStack {
 								// "fake" button to disable onTap on items of the list.
 								Button(action: {}){}.buttonStyle(PlainButtonStyle())
-								PostCard(
-									desc: viewModel.posts[index].desc,
-									username: viewModel.posts[index].user.displayName,
-									userId: viewModel.posts[index].user.id,
-									likesCount: viewModel.posts[index].likes.count,
-									comments: viewModel.posts[index].comments ?? [],
-									id: viewModel.posts[index].id ?? "",
-									data: viewModel.posts[index].data,
-									likes: viewModel.posts[index].likes
-								)
+								HStack {
+									Spacer()
+									PostCard(
+										desc: viewModel.posts[index].desc,
+										username: viewModel.posts[index].user.displayName,
+										userId: viewModel.posts[index].user.id,
+										likesCount: viewModel.posts[index].likes.count,
+										comments: viewModel.posts[index].comments ?? [],
+										id: viewModel.posts[index].id ?? "",
+										data: viewModel.posts[index].data,
+										likes: viewModel.posts[index].likes
+									)
+									.contextMenu {
+										Button(action: { }) { HStack {Text("See in fullscreen"); Spacer(); Image(systemName: "arrow.up.left.and.arrow.down.right") }}
+										Button(action: {UIPasteboard.general.string = viewModel.posts[index].id ?? ""}) { HStack {Text("Copy post ID"); Spacer(); Image(systemName: "doc.on.doc")}}
+									}
+									.frame(maxWidth: 350)
+									Spacer()
+								}
 							}
 							.onAppear { onPostAppear(index) }
-							.contextMenu {
-								Text("ID - " + (viewModel.posts[index].id ?? ""))
-							}
-						}.frame( maxWidth: 500)
+						}
 					}
 				}
-				.refreshable(action: {refresh()})
-				.listStyle(InsetGroupedListStyle())
 			}
+			.refreshable(action: {refresh()})
+			.listStyle(PlainListStyle())
+			//			.listStyle(InsetGroupedListStyle()) Which one looks better ? 🤔
 		}
 		.navigationTitle(self.sortMethod == SORTING.NEW ? "Latest" : "Top Posts")
 		.toolbar {
@@ -98,7 +105,7 @@ struct Feed: View {
 				}
 			}
 		}
-//        .searchable(text: $searchText, prompt: "Search for anything")
+		//        .searchable(text: $searchText, prompt: "Search for anything")
 		.onAppear {
 			if (viewModel.posts.isEmpty && viewModel.state == States.IDLE) {
 				self.setNewSorting(SORTING.ALL)

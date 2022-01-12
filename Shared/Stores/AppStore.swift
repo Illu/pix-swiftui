@@ -8,6 +8,7 @@
 import Foundation
 import AlertToast
 import UIKit
+import SwiftUI
 
 class AppStore: ObservableObject {
    
@@ -16,7 +17,9 @@ class AppStore: ObservableObject {
     @Published var toast: AlertToast = AlertToast(type: .regular, title: "")
     @Published var commentsSheetVisible = false
     @Published var commentsSheetPostId = ""
-    
+    @Published var postDetailsVisible = true
+	@Published var postDetailsData: PostData? = nil
+	
     private var haptic: UINotificationFeedbackGenerator
     
     init() {
@@ -30,6 +33,19 @@ class AppStore: ObservableObject {
     func hideLoginSheet () {
         self.loginSheetVisible = false
     }
+	
+	func showPostDetails (postData: PostData) {
+		self.postDetailsData = postData
+		withAnimation(.easeInOut(duration: 0.5)) {
+			self.postDetailsVisible = true
+		}
+	}
+	
+	func hidePostDetails () {
+		withAnimation(.easeInOut(duration: 0.5)) {
+			self.postDetailsVisible = false
+		}
+	}
     
     func showToast (toast: AlertToast) {
         // TODO: add other haptic feedback for different notifications

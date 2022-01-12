@@ -13,7 +13,9 @@ struct ProfileData: View {
     
     var userId: String
     var isCurrentSessionProfile = false
-    
+
+	@EnvironmentObject var app: AppStore
+
     @State var userData: UserData? = nil
 	@State var badgesUrls = [URL]()
     @State var userPosts = [Post]()
@@ -21,6 +23,7 @@ struct ProfileData: View {
 	
 	func loadUserBadges () {
 		let badges = userData?.badges ?? []
+		self.badgesUrls = []
 		badges.forEach { badge in
 			Storage.storage()
 				.reference(withPath: "badges/\(badge.lowercased()).png")
@@ -98,21 +101,37 @@ struct ProfileData: View {
 								Text(userData?.displayName ?? "Username Error 😭")
 									.fontWeight(.bold)
                                 Text("\($userPosts.count) Post\($userPosts.count != 1 ? "s" : "")")
-								HStack {
-									ForEach(badgesUrls, id: \.self) { badgeUrl in
-										AsyncImage(url: badgeUrl)
+								ScrollView(.horizontal) {
+									HStack {
+										ForEach(badgesUrls, id: \.self) { badgeUrl in
+											AsyncImage(
+												url: badgeUrl,
+												content: { image in
+													image.resizable()
+														.aspectRatio(contentMode: .fit)
+														.frame(width: 30, height: 30)
+														.clipShape(Circle())
+												},
+												placeholder: {
+													ProgressView()
+														.frame(width: 30, height: 30)
+												}
+											)
+										}
 									}
 								}
 								Spacer()
                             }
 						}.padding(.bottom, 10)
+						Text(isCurrentSessionProfile ? "Your posts" : "Posts").font(.title2)
                         if (userPosts.count > 0) {
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(userPosts, id: \.self.id) { post in
-									NavigationLink(destination: Detail(postData: post.data, desc: post.desc)) {
                                         PixelArt(data: post.data)
 											.cornerRadius(4)
-                                    }
+											.onTapGesture {
+												app.showPostDetails(postData: post.data)
+											}
                                 }
                             }
                         } else {
