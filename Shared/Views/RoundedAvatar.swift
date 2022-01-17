@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct RoundedAvatar: View {
     
@@ -25,7 +26,7 @@ struct RoundedAvatar: View {
     
     var body: some View {
         if (name != nil || url != nil) {
-            AsyncImage(
+            CachedAsyncImage(
                 url: URL(string: getAvatarUrl()),
                 content: { image in
                     image.resizable()

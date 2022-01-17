@@ -87,8 +87,8 @@ struct Feed: View {
 				}
 			}
 			.refreshable(action: {refresh()})
-			.listStyle(PlainListStyle())
-			//			.listStyle(InsetGroupedListStyle()) Which one looks better ? 🤔
+//			.listStyle(PlainListStyle()) Which one looks better ? 🤔
+			.listStyle(InsetGroupedListStyle())
 		}
 		.navigationTitle(self.sortMethod == SORTING.NEW ? "Latest" : "Top Posts")
 		.toolbar {

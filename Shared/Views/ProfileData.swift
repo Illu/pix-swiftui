@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseFirestore
 import FirebaseStorage
+import CachedAsyncImage
 
 struct ProfileData: View {
     
@@ -104,7 +105,7 @@ struct ProfileData: View {
 								ScrollView(.horizontal) {
 									HStack {
 										ForEach(badgesUrls, id: \.self) { badgeUrl in
-											AsyncImage(
+											CachedAsyncImage(
 												url: badgeUrl,
 												content: { image in
 													image.resizable()

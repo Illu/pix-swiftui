@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseStorage
+import CachedAsyncImage
 
 struct CurrentChallengeCard: View {
     
@@ -33,7 +34,7 @@ struct CurrentChallengeCard: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: challengeImageURL)
+            CachedAsyncImage(url: challengeImageURL)
         }.onAppear(perform: loadChallengeData)
     }
 }
