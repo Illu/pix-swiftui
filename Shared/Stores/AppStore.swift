@@ -17,7 +17,7 @@ class AppStore: ObservableObject {
     @Published var toast: AlertToast = AlertToast(type: .regular, title: "")
     @Published var commentsSheetVisible = false
     @Published var commentsSheetPostId = ""
-    @Published var postDetailsVisible = true
+    @Published var postDetailsVisible = false
 	@Published var postDetailsData: PostData? = nil
 	
     private var haptic: UINotificationFeedbackGenerator

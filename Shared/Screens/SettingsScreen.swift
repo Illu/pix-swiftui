@@ -8,11 +8,22 @@
 import SwiftUI
 import AlertToast
 
+struct SettingsIcon: View {
+	var iconName: String
+	var color: Color?
+	
+	var body: some View {
+		HStack {
+			Image(systemName: iconName).foregroundColor(.white)
+		}.frame(width: 36, height: 36).background(color).cornerRadius(5).padding(.trailing, 6)
+	}
+}
+
 struct SettingsScreen: View {
     
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var app: AppStore
-
+	
     var body: some View {
         VStack{
             List {
@@ -22,10 +33,10 @@ struct SettingsScreen: View {
 							if (session.signOut()) {
 								app.showToast(toast: AlertToast(type: .regular, title: "See you later 👋", subTitle: "Logged out successfully."))
 							}
-						}) { HStack {Image(systemName: "rectangle.portrait.and.arrow.right"); Text("Log out"); Spacer() }.foregroundColor(ColorManager.primaryText)}
+						}) { HStack {SettingsIcon(iconName: "rectangle.portrait.and.arrow.right", color: .red); Text("Log out"); Spacer() }.foregroundColor(ColorManager.primaryText)}
                         NavigationLink(destination: EditProfile()) {
-                            Image(systemName: "person.circle")
-                            Text("Edit Profile")
+							SettingsIcon(iconName: "person.circle", color: .blue)
+                            Text("Account")
                         }
                     } else {
                         Button("Log in") {
@@ -35,23 +46,31 @@ struct SettingsScreen: View {
                 }
                 Section("Contact") {
                     NavigationLink(destination: EditProfile()) {
-                        Image(systemName: "message")
+						SettingsIcon(iconName: "message", color: .green)
                         Text("Say hi")
                     }
                     NavigationLink(destination: EditProfile()) {
-                        Image(systemName: "dollarsign.circle")
+						SettingsIcon(iconName: "dollarsign.circle", color: .yellow)
                         Text("Leave a tip")
                     }
                 }
                 Section("App") {
                     NavigationLink(destination: AboutScreen()) {
-                        Image(systemName: "info.circle")
+						SettingsIcon(iconName: "info.circle", color: .orange)
                         Text("About Pix")
                     }
-                    NavigationLink(destination: EditProfile()) {
-                        Image(systemName: "star")
-                        Text("Rate the App")
-                    }
+					NavigationLink(destination: EditProfile()) {
+						SettingsIcon(iconName: "star", color: .blue)
+						Text("Rate the App")
+					}
+					NavigationLink(destination: RequestNewFeatureScreen()) {
+						SettingsIcon(iconName: "sparkles", color: .yellow)
+						Text("Suggest new features")
+					}
+					NavigationLink(destination: EditProfile()) {
+						SettingsIcon(iconName: "chevron.left.forwardslash.chevron.right", color: .purple)
+						Text("Source Code")
+					}
                 }
             }
 			.listStyle(.insetGrouped)

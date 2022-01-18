@@ -129,8 +129,8 @@ struct PostCard: View {
             }
             .padding(.top, 10)
             HStack {
-                Text("\(desc ?? "Default Description")")
-                    .font(.body)
+                Text("\(desc ?? "No description 😢")")
+					.font(.system(size: 14))
                     .foregroundColor(ColorManager.primaryText)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
@@ -147,7 +147,7 @@ struct PostCard: View {
             }.padding(.bottom, 10)
         }
         .cornerRadius(8)
-        .frame(minHeight: 400)
+        .frame(minHeight: 420)
         .onAppear{
             setLocalVariables()
             loadUserData()
