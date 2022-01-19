@@ -129,11 +129,10 @@ struct ProfileData: View {
 						if (userPosts.count > 0) {
 							LazyVGrid(columns: columns, spacing: 20) {
 								ForEach(userPosts, id: \.self.id) { post in
-									PixelArt(data: post.data)
-										.cornerRadius(4)
-										.onTapGesture {
-											// Do something ?
-										}
+									NavigationLink(destination: Detail(post: post)) {
+										PixelArt(data: post.data)
+											.cornerRadius(4)
+									}
 								}
 							}
 						} else {

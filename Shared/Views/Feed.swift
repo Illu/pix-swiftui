@@ -14,7 +14,7 @@ struct Feed: View {
 	var screenTitle: [Sorting : String] = [.top: "Top", .new: "New"]
 	
 	@State private var searchText = ""
-	@State private var sortMethod = SORTING.ALL
+	@State private var sortMethod = SORTING.NEW
 	
 	@ObservedObject private var viewModel = FeedViewModel()
 	
@@ -49,6 +49,7 @@ struct Feed: View {
 				if ((challenge) != nil) {
 					Section {
 						CurrentChallengeCard()
+							.listRowInsets(EdgeInsets())
 					}
 				}
 				if (viewModel.state == States.LOADING && viewModel.posts.count == 0) {
@@ -108,7 +109,7 @@ struct Feed: View {
 		//        .searchable(text: $searchText, prompt: "Search for anything")
 		.onAppear {
 			if (viewModel.posts.isEmpty && viewModel.state == States.IDLE) {
-				self.setNewSorting(SORTING.ALL)
+				self.setNewSorting(SORTING.NEW)
 			}
 		}
 	}

@@ -17,13 +17,15 @@ struct EditorScreen: View {
                 PixelEditor()
             } else {
                 VStack {
-                    Text("You must log in to create an artwork")
+                    Text("You must log in to create an artwork.")
+						.font(.title)
                     Text("Don't worry, it only takes a few seconds")
                         .foregroundColor(ColorManager.secondaryText)
-                    Button("Log in") {
-                        app.showLoginSheet()
-                    }
-                }
+						.font(.subheadline)
+					Button(action: {app.showLoginSheet()}) {
+						LargeButton(title: "Log in", withBackground: true).padding(.top, 10)
+					}
+				}
             }
         }
         .navigationTitle("Create")

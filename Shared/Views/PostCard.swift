@@ -108,6 +108,9 @@ struct PostCard: View {
             }
             PixelArt(data: data, pixelSize: cardWidth / ART_SIZE)
                 .frame(width: cardWidth, height: cardWidth)
+				.onTapGesture {
+					app.showCommentsSheet(postId: id)
+				}
             HStack {
                 HStack {
                     Image(systemName: isLiked() ? "heart.fill" : "heart")

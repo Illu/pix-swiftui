@@ -41,7 +41,7 @@ struct AccountCreation: View {
                 auth.createUser(withEmail: email, password: password) { authResult, error in
                     if let error = error {
                         print(error)
-                        self.error = "There was an error while creating your account: \(error)"
+						self.error = "\(error.localizedDescription)"
                         self.loading = false
                     } else {
                         print("User account created & signed in!, setting username...")
@@ -51,7 +51,7 @@ struct AccountCreation: View {
                             "avatar": "cat-1"
                         ]) { err in
                             if let err = err {
-                                print("Error creating user document: \(err)")
+								print("Error creating user document: \(err.localizedDescription)")
                                 self.loading = false
                                 self.error = "Your account has been created, but somehow an error occured, some things might not work as expected"
                             } else {
@@ -68,7 +68,6 @@ struct AccountCreation: View {
     
     var body: some View {
         VStack {
-            Spacer()
             VStack {
                 Image("birb")
                 Text("Welcome to Pix!")
@@ -90,7 +89,8 @@ struct AccountCreation: View {
                 VStack {
                     Text("First, choose your username")
                         .fontWeight(.medium)
-                        .frame(maxWidth: BUTTON_WIDTH, alignment: .leading)
+						.fixedSize(horizontal: true, vertical: false)
+						.frame(maxWidth: BUTTON_WIDTH, alignment: .leading)
                     HStack {
                         TextField("Your username", text: $username)
                             .padding(10)
@@ -149,7 +149,9 @@ struct AccountCreation: View {
                 .opacity(self.step == 0 ? 0 : 1)
                 HStack {
                     Text("Already have an account ?")
-                    Button("Log in !") {}
+					NavigationLink(destination: LoginScreen()) {
+						Text("Log in !").foregroundColor(.blue)
+					}
                 }
                 .font(.footnote)
                 .padding(.top, 10)

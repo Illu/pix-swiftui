@@ -65,6 +65,8 @@
 		BD49D5102796382F003EAAFA /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = BD49D50F2796382F003EAAFA /* CachedAsyncImage */; };
 		BD7315E227965B2500E04686 /* RequestNewFeatureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7315E127965B2500E04686 /* RequestNewFeatureScreen.swift */; };
 		BD7315E327965B2500E04686 /* RequestNewFeatureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7315E127965B2500E04686 /* RequestNewFeatureScreen.swift */; };
+		BD74070C2797BA1F0069D990 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74070B2797BA1F0069D990 /* Challenge.swift */; };
+		BD74070D2797BA1F0069D990 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74070B2797BA1F0069D990 /* Challenge.swift */; };
 		BD7B2F9F273C43FB0032B055 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B2F9E273C43FB0032B055 /* Tests_iOS.swift */; };
 		BD7B2FA1273C43FB0032B055 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B2FA0273C43FB0032B055 /* Tests_iOSLaunchTests.swift */; };
 		BD7B2FAB273C43FB0032B055 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B2FAA273C43FB0032B055 /* Tests_macOS.swift */; };
@@ -163,6 +165,7 @@
 		BD4910AE27851D35006B3FF2 /* Palettes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palettes.swift; sourceTree = "<group>"; };
 		BD4910B127851F73006B3FF2 /* PaletteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteList.swift; sourceTree = "<group>"; };
 		BD7315E127965B2500E04686 /* RequestNewFeatureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNewFeatureScreen.swift; sourceTree = "<group>"; };
+		BD74070B2797BA1F0069D990 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		BD7B2F86273C43F90032B055 /* pixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixApp.swift; sourceTree = "<group>"; };
 		BD7B2F87273C43F90032B055 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BD7B2F88273C43FB0032B055 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -375,6 +378,7 @@
 				BD2520D1277FC21F004C3CDE /* SessionUser.swift */,
 				BD2520DF2780C4FA004C3CDE /* Avatar.swift */,
 				BD2520E52780D9D1004C3CDE /* UserData.swift */,
+				BD74070B2797BA1F0069D990 /* Challenge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -633,6 +637,7 @@
 				BD29E8C62782541600335989 /* ProfileData.swift in Sources */,
 				BD0D237D278B829A009017E1 /* Detail.swift in Sources */,
 				BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */,
+				BD74070C2797BA1F0069D990 /* Challenge.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
@@ -689,6 +694,7 @@
 				BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
+				BD74070D2797BA1F0069D990 /* Challenge.swift in Sources */,
 				BD29E8C1278207CC00335989 /* AppStore.swift in Sources */,
 				BD0D237427892A8C009017E1 /* NewsScreen.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
@@ -891,6 +897,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximenory.pix;
 				PRODUCT_NAME = pix;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -922,6 +929,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximenory.pix;
 				PRODUCT_NAME = pix;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

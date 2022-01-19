@@ -33,15 +33,15 @@ struct SettingsScreen: View {
 							if (session.signOut()) {
 								app.showToast(toast: AlertToast(type: .regular, title: "See you later 👋", subTitle: "Logged out successfully."))
 							}
-						}) { HStack {SettingsIcon(iconName: "rectangle.portrait.and.arrow.right", color: .red); Text("Log out"); Spacer() }.foregroundColor(ColorManager.primaryText)}
+						}) { HStack {SettingsIcon(iconName: "rectangle.portrait.and.arrow.right", color: .red); Text("Log me out"); Spacer() }.foregroundColor(ColorManager.primaryText)}
                         NavigationLink(destination: EditProfile()) {
 							SettingsIcon(iconName: "person.circle", color: .blue)
                             Text("Account")
                         }
                     } else {
-                        Button("Log in") {
-                            app.showLoginSheet()
-                        }
+						Button(action: {
+							app.showLoginSheet()
+						}) { HStack {SettingsIcon(iconName: "arrow.right.circle", color: .blue); Text("Log in"); Spacer() }.foregroundColor(ColorManager.primaryText)}
                     }
                 }
                 Section("Contact") {

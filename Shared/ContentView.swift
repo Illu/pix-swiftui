@@ -45,9 +45,6 @@ struct ContentView: View {
 					Sidebar()
 				#endif
 			}
-			if (app.postDetailsVisible) {
-				Detail(postData: app.postDetailsData, desc: "TEST REPLACE ME")
-			}
 		}
         .onAppear(perform: loadRemoteContent)
         .fullScreenCover(

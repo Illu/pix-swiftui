@@ -100,9 +100,13 @@ struct EditProfile: View {
                 LargeButton(title: "Save modifications", loading: self.state == States.LOADING, withBackground: true)
             }
             .padding(.vertical, 40)
+			
             Text("ID - \(session.session?.uid ?? "??")")
                 .foregroundColor(ColorManager.secondaryText)
                 .opacity(0.2)
+				.contextMenu {
+					Button(action: {UIPasteboard.general.string = session.session?.uid ?? ""}) { HStack {Text("Copy ID"); Spacer(); Image(systemName: "doc.on.doc")}}
+				}
         }
         .onAppear(perform: {
             self.userName = session.userData?.displayName ?? ""

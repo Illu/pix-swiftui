@@ -61,8 +61,8 @@ struct LoginScreen: View {
             .cornerRadius(4.0)
             .frame(maxWidth: BUTTON_WIDTH)
             Button(action: signIn) {
-                LargeButton(title: "Log in", loading: loading, disabled: loading)
-            }
+                LargeButton(title: "Log in", loading: loading, disabled: (loading || (email == "" && password == "")))
+			}.disabled((loading || (email == "" && password == "")))
             .padding(.top, 40)
         }
         .padding()

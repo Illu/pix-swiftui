@@ -9,11 +9,11 @@ import SwiftUI
 
 struct Detail: View {
 
-	var postData: PostData?
-	var desc: String
+	var post: Post
+//	var postData: PostData?
+//	var desc: String
 
-	@EnvironmentObject var app: AppStore
-
+	
 	@State private var offset: CGSize = .zero
 
 	func getMaxPixelSize (screenWidth: CGFloat) -> CGFloat {
@@ -25,35 +25,19 @@ struct Detail: View {
 	}
 
 	var body: some View {
-		VStack {
+		ScrollView {
 			VStack {
-				if (postData != nil) {
-					GeometryReader { geometry in
-						PixelArt(data: postData!, pixelSize: getMaxPixelSize(screenWidth: geometry.size.width))
-						Text(desc)
-							.foregroundColor(.white)
-					}
+				GeometryReader { geometry in
+					PixelArt(data: post.data, pixelSize: getMaxPixelSize(screenWidth: geometry.size.width))
+						.frame(height: geometry.size.width)
+					Text(post.desc)
+						.foregroundColor(.white)
+					CommentsScreen(postId: post.id!)
 				}
 			}
-			.offset(x: offset.width, y: offset.height)
-			.animation(.interactiveSpring(), value: offset)
-			.simultaneousGesture(
-				DragGesture()
-					.onChanged { gesture in
-						if (gesture.translation.width < 50 || gesture.translation.height < 50) {
-							offset = gesture.translation
-						}
-					}
-					.onEnded { _ in
-						if (abs(offset.height) > 100 || abs(offset.width) > 100 ) {
-							print("HIDE!")
-							app.hidePostDetails()
-						} else {
-							offset = .zero
-						}
-					}
-			)
+			
 		}
-		.background(.black)
+		.navigationTitle("Details")
+		.navigationBarTitleDisplayMode(.inline)
 	}
 }

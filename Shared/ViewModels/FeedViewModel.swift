@@ -39,7 +39,6 @@ class FeedViewModel: ObservableObject {
         )
         
 		if (challenge != nil) {
-			print("getting items with tag \(challenge)")
 			collection = collection.whereField("tag", isEqualTo: challenge!)
 		}
 		
