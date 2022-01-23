@@ -57,18 +57,30 @@ struct CurrentChallengeCard: View {
     var body: some View {
         ZStack {
             CachedAsyncImage(url: challengeImageURL)
-			VStack {
-				Text("\(getCurrentMonth()) Challenge")
-				Text("\(challengeTitle)")
+			VStack {}
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+			.background(
+				LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+					.padding(0)
+			)
+			VStack(alignment: .leading) {
+				Text("\(getCurrentMonth()) Challenge").fontWeight(.semibold)
+				HStack {
+					Text("\(challengeTitle)").foregroundColor(.black).padding(.horizontal, 20).padding(.vertical, 5)
+				}.background(RoundedRectangle(cornerRadius: 6)).padding(4)
 				Text("Participate in our challenge to win this month unique badge and get a chance to enter the hall of fame !")
-				Button("Create your entry now!") {}
 			}
-        }.onAppear(perform: loadChallengeData)
+			.padding(15)
+			.foregroundColor(.white)
+        }
+		.onAppear(perform: loadChallengeData)
     }
 }
 
 struct CurrentChallengeCard_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentChallengeCard()
+		List {
+			CurrentChallengeCard()
+		}
     }
 }
