@@ -29,6 +29,8 @@ struct PixelEditor: View {
 	@State var backgroundColor: String = DEFAULT_EDITOR_BACKGROUND_COLOR
 	@State var currentColorPalette: Palette = Palettes[0]
 	
+	@State private var isDrawing = false // if the user is currently drawing (holding its finger on the canvas)
+	
 	func getPixelSize(screenWidth: CGFloat) -> Double {
 		return (screenWidth / ART_SIZE).rounded()
 	}
@@ -47,6 +49,16 @@ struct PixelEditor: View {
 		}
 	}
 	
+	func addToHistory() {
+		if (!isDrawing) {
+			self.isDrawing = true
+			history.append(pixelData)
+			if history.count > 10 {
+				history.removeFirst()
+			}
+		}
+	}
+	
 	var body: some View {
 		VStack {
 			GeometryReader { geometry in
@@ -58,7 +70,7 @@ struct PixelEditor: View {
 					)
 						.gesture(
 							DragGesture(minimumDistance: 0)
-								.onChanged {value in
+								.onChanged { value in
 									let px = trunc(value.location.x / getPixelSize(screenWidth: geometry.size.width))
 									let py = trunc(value.location.y / getPixelSize(screenWidth: geometry.size.width))
 									let arrayPosition = Int(py * ART_SIZE + px)
@@ -68,31 +80,25 @@ struct PixelEditor: View {
 									
 									if (self.currentTool == TOOLS.PENCIL) {
 										if (pixelData[arrayPosition].color != currentColor.toHexString()) {
-											history.append(pixelData)
-											if history.count > 10 {
-												history.removeFirst()
-											}
+											addToHistory()
 											self.pixelData[arrayPosition].color = currentColor.toHexString()
 										}
 									}
 									if (self.currentTool == TOOLS.ERASER) {
 										if (pixelData[arrayPosition].color != "none") {
-											history.append(pixelData)
-											if history.count > 10 {
-												history.removeFirst()
-											}
+											addToHistory()
 											self.pixelData[arrayPosition].color = "none"
 										}
 									}
 									if (self.currentTool == TOOLS.BUCKET) {
 										if (pixelData[arrayPosition].color != currentColor.toHexString()) {
-											history.append(pixelData)
-											if history.count > 10 {
-												history.removeFirst()
-											}
+											addToHistory()
 											self.pixelData = dropBucket(data: pixelData, dropIndex: arrayPosition, color: currentColor.toHexString(), initialColor: pixelData[arrayPosition].color, initialData: pixelData)
 										}
 									}
+								}
+								.onEnded { value in
+									self.isDrawing = false
 								}
 						)
 				}.frame(width: geometry.size.width)
@@ -145,9 +151,13 @@ struct PixelEditor: View {
 							.background(Circle().fill(Color(hex: color) ?? .clear))
 							.onTapGesture {
 								if (menuMode == MENU_MODES.DRAW) {
-									self.currentColor = Color(hex: color) ?? .clear
+									withAnimation(.easeInOut(duration: 0.2)) {
+										self.currentColor = Color(hex: color) ?? .clear
+									}
 								} else {
-									self.backgroundColor = color
+									withAnimation(.easeInOut(duration: 0.2)) {
+										self.backgroundColor = color
+									}
 								}
 							}
 							.frame(width: 50, height: 50)

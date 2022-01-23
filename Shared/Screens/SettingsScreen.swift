@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AlertToast
+import StoreKit
 
 struct SettingsIcon: View {
 	var iconName: String
@@ -45,9 +46,11 @@ struct SettingsScreen: View {
                     }
                 }
                 Section("Contact") {
-                    NavigationLink(destination: EditProfile()) {
-						SettingsIcon(iconName: "message", color: .green)
-                        Text("Say hi")
+                    Link(destination: URL(string: "https://www.twitter.com/maximenory")!) {
+						HStack {
+							SettingsIcon(iconName: "message", color: .green)
+							Text("Say hi").foregroundColor(ColorManager.primaryText)
+						}
                     }
                     NavigationLink(destination: EditProfile()) {
 						SettingsIcon(iconName: "dollarsign.circle", color: .yellow)
@@ -59,17 +62,23 @@ struct SettingsScreen: View {
 						SettingsIcon(iconName: "info.circle", color: .orange)
                         Text("About Pix")
                     }
-					NavigationLink(destination: EditProfile()) {
-						SettingsIcon(iconName: "star", color: .blue)
-						Text("Rate the App")
+					Button(action: {
+						SKStoreReviewController.requestReview()
+					}) {
+						HStack {
+							SettingsIcon(iconName: "star", color: .blue)
+							Text("Rate the App").foregroundColor(ColorManager.primaryText)
+						}
 					}
 					NavigationLink(destination: RequestNewFeatureScreen()) {
 						SettingsIcon(iconName: "sparkles", color: .yellow)
 						Text("Suggest new features")
 					}
-					NavigationLink(destination: EditProfile()) {
-						SettingsIcon(iconName: "chevron.left.forwardslash.chevron.right", color: .purple)
-						Text("Source Code")
+					Link(destination: URL(string: "https://www.github.com/illu/pix")!) {
+						HStack {
+							SettingsIcon(iconName: "chevron.left.forwardslash.chevron.right", color: .purple)
+							Text("Source Code").foregroundColor(ColorManager.primaryText)
+						}
 					}
                 }
             }

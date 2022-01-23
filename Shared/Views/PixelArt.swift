@@ -28,14 +28,29 @@ struct PixelArt: View {
                     size: CGSize(width: truncatedPixelSize, height: truncatedPixelSize)
                 )
                 let path = Path(pixelRect)
+				context.fill(path, with: .color(Color.init(hex: pixel.color) ?? Color.clear))
                 if (showGrid) {
                     context.stroke(path, with: .color(Color.init(hex: DEFAULT_GRID_COLOR)!), lineWidth: 1)
                 }
-                context.fill(path, with: .color(Color.init(hex: pixel.color) ?? Color.clear))
+                
             }
         }.frame(width: pixelSize.rounded() * ART_SIZE, height: pixelSize.rounded() * ART_SIZE)
     }
 }
+
+//context.fill(Path(pixelRect), with: .color(Color.init(hex: pixel.color) ?? Color.clear))
+//if (showGrid) {
+//	let pixelTopBorder = CGRect(
+//		origin: CGPoint(x: x, y: y),
+//		size: CGSize(width: truncatedPixelSize, height: 1)
+//	)
+//	let pixelRightBorder = CGRect(
+//		origin: CGPoint(x: x, y: y),
+//		size: CGSize(width: 1, height: truncatedPixelSize)
+//	)
+//	context.stroke(Path(pixelTopBorder), with: .color(Color.init(hex: DEFAULT_GRID_COLOR)!), lineWidth: 1)
+//	context.stroke(Path(pixelRightBorder), with: .color(Color.init(hex: DEFAULT_GRID_COLOR)!), lineWidth: 1)
+//}
 
 struct PixelArt_Previews: PreviewProvider {
     
