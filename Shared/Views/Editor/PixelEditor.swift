@@ -20,14 +20,14 @@ struct PixelEditor: View {
 	var pixelSize = 10.0
 	@State var history: [[Pixel]] = []
 	@State var showPalettesSheet = false
-	
+	@State private var showingPublishScreen = false
 	@State private var pixelData = [Pixel](repeating: Pixel(color: "none"), count: Int(ART_SIZE * ART_SIZE))
-	@State var currentColor = Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
 	@State var currentTool: TOOLS = TOOLS.PENCIL
 	@State var showGrid: Bool = true
 	@State var menuMode: MENU_MODES = MENU_MODES.DRAW
 	@State var backgroundColor: String = DEFAULT_EDITOR_BACKGROUND_COLOR
 	@State var currentColorPalette: Palette = Palettes[0]
+	@State var currentColor = Color(.clear)
 	
 	@State private var isDrawing = false // if the user is currently drawing (holding its finger on the canvas)
 	
@@ -43,9 +43,9 @@ struct PixelEditor: View {
 	
 	func onGoToNextStep () {
 		if (pixelData.contains { $0.color != "none" }) {
-			// OK, go to next step
+			self.showingPublishScreen = true
 		} else {
-			app.showToast(toast: AlertToast(type: .error(ColorManager.error), subTitle: "You cannot submit an empty artwork!"))
+			app.showToast(toast: AlertToast(type: .systemImage("exclamationmark.triangle", Color.orange), subTitle: "You cannot submit an empty artwork!"))
 		}
 	}
 	
@@ -61,6 +61,9 @@ struct PixelEditor: View {
 	
 	var body: some View {
 		VStack {
+			NavigationLink(destination: SubmitScreen(postData: PostData(backgroundColor: backgroundColor, pixels: pixelData)), isActive: $showingPublishScreen) {
+				EmptyView()
+			}
 			GeometryReader { geometry in
 				HStack {
 					PixelArt(
@@ -168,6 +171,9 @@ struct PixelEditor: View {
 			Button(action: {self.showPalettesSheet.toggle()}) {
 				LargeButton(title: "Change color palette")
 			}
+		}
+		.onAppear {
+			self.currentColor = Color(hex: currentColorPalette.colors.first ?? "#000000") ?? Color.black
 		}
 		.toolbar {
 			Button(action: {onGoToNextStep()}) {

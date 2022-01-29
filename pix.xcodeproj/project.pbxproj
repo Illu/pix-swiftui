@@ -99,6 +99,8 @@
 		BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */; };
 		BDC10B35273C992A0062AF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B34273C992A0062AF1C /* Constants.swift */; };
 		BDC10B36273C992A0062AF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10B34273C992A0062AF1C /* Constants.swift */; };
+		BDCB0E81279DFEC600133DDF /* SubmitScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB0E80279DFEC600133DDF /* SubmitScreen.swift */; };
+		BDCB0E82279DFEC600133DDF /* SubmitScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB0E80279DFEC600133DDF /* SubmitScreen.swift */; };
 		BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B45277BC4F900ABE649 /* Comment.swift */; };
 		BDD00B48277BC61600ABE649 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B47277BC61600ABE649 /* User.swift */; };
 		BDD00B4A277BCB2000ABE649 /* PostCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */; };
@@ -189,6 +191,7 @@
 		BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BDC10B2D273C7C1F0062AF1C /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		BDC10B34273C992A0062AF1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BDCB0E80279DFEC600133DDF /* SubmitScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitScreen.swift; sourceTree = "<group>"; };
 		BDD00B45277BC4F900ABE649 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		BDD00B47277BC61600ABE649 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardViewModel.swift; sourceTree = "<group>"; };
@@ -365,6 +368,7 @@
 				BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */,
 				BD29E8B92781414A00335989 /* CommentsScreen.swift */,
 				BD0D237227892A8C009017E1 /* NewsScreen.swift */,
+				BDCB0E80279DFEC600133DDF /* SubmitScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -638,6 +642,7 @@
 				BD0D237D278B829A009017E1 /* Detail.swift in Sources */,
 				BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */,
 				BD74070C2797BA1F0069D990 /* Challenge.swift in Sources */,
+				BDCB0E81279DFEC600133DDF /* SubmitScreen.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
@@ -696,6 +701,7 @@
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
 				BD74070D2797BA1F0069D990 /* Challenge.swift in Sources */,
 				BD29E8C1278207CC00335989 /* AppStore.swift in Sources */,
+				BDCB0E82279DFEC600133DDF /* SubmitScreen.swift in Sources */,
 				BD0D237427892A8C009017E1 /* NewsScreen.swift in Sources */,
 				BD7B2FAF273C43FB0032B055 /* pixApp.swift in Sources */,
 				BD4910B327851F73006B3FF2 /* PaletteList.swift in Sources */,

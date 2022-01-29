@@ -72,7 +72,8 @@ struct Feed: View {
 										comments: viewModel.posts[index].comments ?? [],
 										id: viewModel.posts[index].id ?? "",
 										data: viewModel.posts[index].data,
-										likes: viewModel.posts[index].likes
+										likes: viewModel.posts[index].likes,
+										timestamp: viewModel.posts[index].timestamp
 									)
 									.contextMenu {
 										Button(action: { }) { HStack {Text("See in fullscreen"); Spacer(); Image(systemName: "arrow.up.left.and.arrow.down.right") }}
@@ -82,8 +83,9 @@ struct Feed: View {
 									Spacer()
 								}
 							}
+							.listRowInsets(EdgeInsets())
 							.onAppear { onPostAppear(index) }
-						}
+						}.listSectionSeparator(.hidden) // TODO: this doesn't seem to work, try something else to reduce space between posts
 					}
 				}
 			}

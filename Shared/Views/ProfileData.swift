@@ -129,7 +129,14 @@ struct ProfileData: View {
 						if (userPosts.count > 0) {
 							LazyVGrid(columns: columns, spacing: 20) {
 								ForEach(userPosts, id: \.self.id) { post in
-									NavigationLink(destination: Detail(post: post)) {
+									Menu {
+										Button(action: {app.showCommentsSheet(postId: post.id!)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
+										Menu("Delete Post...") {
+											Button(action: {}) { HStack {Text("Confirm"); Spacer(); Image(systemName: "trash") }}
+											Button(action: {}) { HStack {Text("Cancel"); Spacer(); Image(systemName: "arrow.uturn.left") }}
+										}
+										
+									} label: {
 										PixelArt(data: post.data)
 											.cornerRadius(4)
 									}

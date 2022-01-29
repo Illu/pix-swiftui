@@ -81,18 +81,18 @@ struct SettingsScreen: View {
 						}
 					}
                 }
-            }
-			.listStyle(.insetGrouped)
-			.overlay(
 				VStack {
-					Spacer()
 					Text("2022 - Maxime Nory")
 						.font(.footnote)
 						.foregroundColor(ColorManager.secondaryText)
 						.frame(maxWidth: .infinity)
-				}
-			)
-        }.navigationBarTitle(Text("Settings"))
+						.listRowInsets(EdgeInsets())
+				}.listRowBackground(Color.clear)
+            }
+			.listStyle(.insetGrouped)
+        }
+		.navigationBarTitle(Text("Settings"))
+		.navigationBarTitleDisplayMode(.inline)
     }
 }
 

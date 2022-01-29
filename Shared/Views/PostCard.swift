@@ -18,6 +18,7 @@ struct PostCard: View {
     var id: String
     var data: PostData
     var likes: [String]
+	var timestamp: Int
     
     var db = Firestore.firestore()
 
@@ -81,6 +82,12 @@ struct PostCard: View {
     func isLiked () -> Bool {
         return localLikes.contains(session.session?.uid ?? "")
     }
+	
+	func generateReadableDate (time: Int) -> String {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "MMM d, yyyy"
+		return formatter.string(from: NSDate(timeIntervalSince1970: TimeInterval(time / 1000)) as Date)
+	}
     
     var body: some View {
         VStack(spacing: 0) {
@@ -142,7 +149,7 @@ struct PostCard: View {
             }
             .padding(.vertical, 5)
             HStack {
-                Text("6 Feb 2021")
+				Text(generateReadableDate(time: timestamp))
                     .fontWeight(.light)
                     .font(.footnote)
                     .foregroundColor(ColorManager.secondaryText)
@@ -150,6 +157,7 @@ struct PostCard: View {
             }.padding(.bottom, 10)
         }
         .cornerRadius(8)
+		.padding(5)
         .frame(minHeight: 420)
         .onAppear{
             setLocalVariables()
@@ -179,7 +187,8 @@ struct PostCard_Previews: PreviewProvider {
                             Pixel(color: "#BADA55")
                         ]
                     ),
-                    likes: []
+                    likes: [],
+					timestamp: 0
                 )
                 PostCard(
                     username: "Test username",
@@ -192,7 +201,8 @@ struct PostCard_Previews: PreviewProvider {
                             Pixel(color: "#BADA55")
                         ]
                     ),
-                    likes: []
+                    likes: [],
+					timestamp: 0
                 )
             }
         }
