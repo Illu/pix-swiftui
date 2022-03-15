@@ -121,7 +121,7 @@ struct EditProfile: View {
         ) {
             NavigationView {
                 AvatarList(onSelectAvatar: onSelectAvatar)
-                    .navigationTitle("Choose an avatar")
+                    .navigationTitle("Avatars")
                     .toolbar {
                         Button(action: {self.showAvatarSheet = false}) { Text("Cancel") }
                     }

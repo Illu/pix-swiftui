@@ -10,5 +10,5 @@ import FirebaseFirestore
 
 struct News: Codable, Hashable {
 	var desc: String
-	var title: Int
+	var title: String
 }

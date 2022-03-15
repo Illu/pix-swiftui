@@ -14,7 +14,7 @@ struct Feed: View {
 	var screenTitle: [Sorting : String] = [.top: "Top", .new: "New"]
 	
 	@State private var searchText = ""
-	@State private var sortMethod = SORTING.NEW
+	@State var sortMethod = SORTING.NEW
 	
 	@ObservedObject private var viewModel = FeedViewModel()
 	

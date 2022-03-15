@@ -45,14 +45,25 @@ struct NewsScreen: View {
 			if (state == States.LOADING) {
 				ProgressView()
 			} else if (newsData == nil) {
-				Text("Something went wrong while retrieving the latest news 😥")
+				Text("Something went wrong while retrieving the latest news 😥").padding(.bottom, 30)
+				Button(action: {self.loadData()}) {
+					LargeButton(title: "Try again", withBackground: true)
+				}
 			}
 			if (newsData != nil) {
-				Text("\(newsData!.title)")
-				Text("\(newsData!.desc)")
+				VStack {
+					Text("\(newsData!.title)").frame(maxWidth: .infinity, alignment: .leading).padding(16).font(.title)
+					Text("\(newsData!.desc)").frame(maxWidth: .infinity, alignment: .leading).padding(16)
+					Spacer()
+					NavigationLink(destination: RequestNewFeatureScreen()) {
+						Text("Help improve the App")
+					}
+					Spacer()
+				}
 			}
 		}
 		.navigationTitle("What's new")
+		.navigationBarTitleDisplayMode(.inline)
 		.onAppear{self.loadData()}
     }
 }

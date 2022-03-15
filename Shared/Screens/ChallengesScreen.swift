@@ -20,7 +20,7 @@ struct ChallengesScreen: View {
     var body: some View {
         ZStack {
 			if ((challenge) != nil) {
-				Feed(challenge: challenge)
+				Feed(challenge: challenge, sortMethod: SORTING.ALL)
 			}
 		}.onAppear(perform: {loadChallenge()})
     }

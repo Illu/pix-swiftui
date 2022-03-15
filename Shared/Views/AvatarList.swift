@@ -26,17 +26,19 @@ struct AvatarList: View {
     }
     
     var body: some View {
-        VStack {
-            List(categories, id: \.self) { category in
-                Section(header: Text(category + "s")) {
-                    ForEach(images.avatars.filter({ $0.name.contains(category) }), id: \.self) { avatar in
-                        HStack {
-                            RoundedAvatar(url: images.avatars.first(where: {$0.name == avatar.name})?.url ?? "", size: 75)
-                            Spacer()
-                            Button(action: {onSelectAvatar(avatar.name)}) { Image(systemName: "chevron.right").foregroundColor(ColorManager.secondaryText) }
-                        }
-                    }
-                }
+        ScrollView {
+            ForEach(categories, id: \.self) { category in
+				Text(category.capitalized + "s")
+					.fontWeight(.semibold)
+					.padding(16)
+					.frame(maxWidth: .infinity, alignment: .leading)
+				ScrollView (.horizontal, showsIndicators: false) {
+					HStack {
+						ForEach(images.avatars.filter({ $0.name.contains(category) }), id: \.self) { avatar in
+							RoundedAvatar(url: images.avatars.first(where: {$0.name == avatar.name})?.url ?? "", size: 75).onTapGesture { onSelectAvatar(avatar.name) }
+						}
+					}.padding(.horizontal, 16)
+				}
             }
         }.onAppear(perform: getCategories)
     }

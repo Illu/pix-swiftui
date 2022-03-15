@@ -131,9 +131,11 @@ struct ProfileData: View {
 								ForEach(userPosts, id: \.self.id) { post in
 									Menu {
 										Button(action: {app.showCommentsSheet(postId: post.id!)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
-										Menu("Delete Post...") {
-											Button(action: {}) { HStack {Text("Confirm"); Spacer(); Image(systemName: "trash") }}
-											Button(action: {}) { HStack {Text("Cancel"); Spacer(); Image(systemName: "arrow.uturn.left") }}
+										if (isCurrentSessionProfile) {
+											Menu("Delete Post...") {
+												Button(action: {}) { HStack {Text("Confirm"); Spacer(); Image(systemName: "trash") }}
+												Button(action: {}) { HStack {Text("Cancel"); Spacer(); Image(systemName: "arrow.uturn.left") }}
+											}
 										}
 										
 									} label: {
