@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503B165727F8D89D0026A6CC /* ChallengeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165627F8D89D0026A6CC /* ChallengeStore.swift */; };
+		503B165827F8D89D0026A6CC /* ChallengeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165627F8D89D0026A6CC /* ChallengeStore.swift */; };
+		503B165A27F8E6370026A6CC /* PublishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165927F8E6370026A6CC /* PublishViewModel.swift */; };
+		503B165B27F8E6370026A6CC /* PublishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165927F8E6370026A6CC /* PublishViewModel.swift */; };
 		BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD0D237127892584009017E1 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BD0D237027892584009017E1 /* AlertToast */; };
@@ -144,6 +148,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		503B165627F8D89D0026A6CC /* ChallengeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeStore.swift; sourceTree = "<group>"; };
+		503B165927F8E6370026A6CC /* PublishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewModel.swift; sourceTree = "<group>"; };
 		BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChallengeCard.swift; sourceTree = "<group>"; };
 		BD0D236B27892028009017E1 /* pix (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pix (iOS).entitlements"; sourceTree = "<group>"; };
 		BD0D237227892A8C009017E1 /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
@@ -274,6 +280,7 @@
 			children = (
 				BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */,
 				BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */,
+				503B165927F8E6370026A6CC /* PublishViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -427,6 +434,7 @@
 				BDDCE777277D5E9600CD62F0 /* SessionStore.swift */,
 				BD2520D72780B339004C3CDE /* ImagesStore.swift */,
 				BD29E8BF278207CC00335989 /* AppStore.swift */,
+				503B165627F8D89D0026A6CC /* ChallengeStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -633,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDDCE772277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */,
+				503B165727F8D89D0026A6CC /* ChallengeStore.swift in Sources */,
 				BD7B9D3427444E70005C5B4E /* Sidebar.swift in Sources */,
 				BD2520E02780C4FA004C3CDE /* Avatar.swift in Sources */,
 				BD29E8B12780E07F00335989 /* EditProfile.swift in Sources */,
@@ -651,6 +660,7 @@
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
 				BDD9BF7027D9978300F6D10E /* News.swift in Sources */,
+				503B165A27F8E6370026A6CC /* PublishViewModel.swift in Sources */,
 				BDDCE77F277E1C9C00CD62F0 /* Empty.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
 				BD2520CF277FAD77004C3CDE /* LargeButton.swift in Sources */,
@@ -714,6 +724,8 @@
 				BD29E8C72782541600335989 /* ProfileData.swift in Sources */,
 				BD2520CD277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */,
 				BDC10B1B273C4B390062AF1C /* HomeScreen.swift in Sources */,
+				503B165B27F8E6370026A6CC /* PublishViewModel.swift in Sources */,
+				503B165827F8D89D0026A6CC /* ChallengeStore.swift in Sources */,
 				BD29E8C42782151E00335989 /* EditorButton.swift in Sources */,
 				BD2520E42780D770004C3CDE /* RoundedAvatar.swift in Sources */,
 				BDDCE77D277E079600CD62F0 /* ChallengesScreen.swift in Sources */,

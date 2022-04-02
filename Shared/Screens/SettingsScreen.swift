@@ -24,17 +24,25 @@ struct SettingsScreen: View {
     
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var app: AppStore
+	@State private var showingLogoutAlert = false
 	
     var body: some View {
         VStack{
             List {
                 Section("Account") {
                     if (session.session != nil) {
-						Button(action: {
-							if (session.signOut()) {
-								app.showToast(toast: AlertToast(type: .regular, title: "See you later 👋", subTitle: "Logged out successfully."))
+						Button(action: { showingLogoutAlert = true }) {
+							HStack {SettingsIcon(iconName: "rectangle.portrait.and.arrow.right", color: .red); Text("Log me out"); Spacer() }.foregroundColor(ColorManager.primaryText)
+						}.alert("Do you really want to log out?", isPresented: $showingLogoutAlert) {
+							Button("Yes please") {
+								if (session.signOut()) {
+									app.showToast(toast: AlertToast(type: .regular, title: "See you later 👋", subTitle: "Logged out successfully."))
+								}
 							}
-						}) { HStack {SettingsIcon(iconName: "rectangle.portrait.and.arrow.right", color: .red); Text("Log me out"); Spacer() }.foregroundColor(ColorManager.primaryText)}
+							Button("Nope") {
+								showingLogoutAlert = false
+							}
+						}
                         NavigationLink(destination: EditProfile()) {
 							SettingsIcon(iconName: "person.circle", color: .blue)
                             Text("Account")

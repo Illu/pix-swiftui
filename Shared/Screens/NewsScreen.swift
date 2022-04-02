@@ -41,31 +41,35 @@ struct NewsScreen: View {
 
 	
     var body: some View {
-        VStack {
-			if (state == States.LOADING) {
-				ProgressView()
-			} else if (newsData == nil) {
-				Text("Something went wrong while retrieving the latest news 😥").padding(.bottom, 30)
-				Button(action: {self.loadData()}) {
-					LargeButton(title: "Try again", withBackground: true)
-				}
-			}
-			if (newsData != nil) {
-				VStack {
-					Text("\(newsData!.title)").frame(maxWidth: .infinity, alignment: .leading).padding(16).font(.title)
-					Text("\(newsData!.desc)").frame(maxWidth: .infinity, alignment: .leading).padding(16)
-					Spacer()
-					NavigationLink(destination: RequestNewFeatureScreen()) {
-						Text("Help improve the App")
+		ScrollView {
+			VStack {
+				if (state == States.LOADING) {
+					ProgressView()
+				} else if (newsData == nil) {
+					Text("Something went wrong while retrieving the latest news 😥").padding(.bottom, 30)
+					Button(action: {self.loadData()}) {
+						LargeButton(title: "Try again", withBackground: true)
 					}
-					Spacer()
+				}
+				if (newsData != nil) {
+					VStack {
+						Image("koala").padding(.vertical, 30)
+						Text("\(newsData!.title)").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding(16).font(.title)
+						Text("\(newsData!.desc)").frame(maxWidth: .infinity, alignment: .leading).padding(16)
+						Spacer()
+						NavigationLink(destination: RequestNewFeatureScreen()) {
+							Text("Help improve the App")
+						}
+						Spacer()
+					}
 				}
 			}
+			.navigationTitle("What's new")
+			.navigationBarTitleDisplayMode(.inline)
+			.onAppear{ self.loadData() }
+			.frame(maxWidth: 500)
 		}
-		.navigationTitle("What's new")
-		.navigationBarTitleDisplayMode(.inline)
-		.onAppear{self.loadData()}
-    }
+	}
 }
 
 struct NewsScreen_Previews: PreviewProvider {

@@ -18,7 +18,7 @@ struct CommentsScreen: View {
     @State var currentComment: String = ""
     @State var state: States = States.IDLE
     
-    var db = Firestore.firestore()
+	var db = Firestore.firestore()
     
     func loadData () {
         self.state = States.LOADING

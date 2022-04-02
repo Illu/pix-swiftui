@@ -22,7 +22,6 @@ struct Sidebar: View {
                     }
                 }
 				}.listStyle(.sidebar)
-				Image("birb")
             }
 			.background(ColorManager.screenBackground)
             .onAppear {

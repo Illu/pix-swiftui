@@ -142,12 +142,6 @@ struct PixelEditor: View {
 			}
 			ScrollView(.horizontal) {
 				HStack {
-					Image(systemName: "plus")
-						.frame(width: 50, height: 50)
-						.foregroundColor(ColorManager.primaryText)
-						.background(ColorManager.screenBackground)
-						.clipShape(Circle())
-						.overlay(ColorPicker("", selection: $currentColor, supportsOpacity: false).labelsHidden().opacity(0.1))
 					ForEach(currentColorPalette.colors, id: \.self) { color in
 						Circle()
 							.strokeBorder(color.lowercased() == "#ffffff" ? Color.black : .clear, lineWidth: 1)

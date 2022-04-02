@@ -53,7 +53,11 @@ struct Feed: View {
 					}
 				}
 				if (viewModel.state == States.LOADING && viewModel.posts.count == 0) {
-					ProgressView()
+					HStack {
+						Spacer()
+						ProgressView()
+						Spacer()
+					}
 				} else if (viewModel.posts.count == 0) {
 					Empty()
 				} else {
