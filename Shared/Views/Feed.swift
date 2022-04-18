@@ -70,8 +70,7 @@ struct Feed: View {
 									Spacer()
 									PostCard(
 										desc: viewModel.posts[index].desc,
-										username: viewModel.posts[index].user.displayName,
-										userId: viewModel.posts[index].user.id,
+										userRef: viewModel.posts[index].userRef,
 										likesCount: viewModel.posts[index].likes.count,
 										comments: viewModel.posts[index].comments ?? [],
 										id: viewModel.posts[index].id ?? "",

@@ -25,6 +25,7 @@ class FeedViewModel: ObservableObject {
         
         if (!nextPage) {
             self.lastSnapshot = nil
+			self.posts = []
         }
         
         var collection = byNew == true ? (

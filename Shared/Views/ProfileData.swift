@@ -12,7 +12,10 @@ import CachedAsyncImage
 
 struct ProfileData: View {
 	
-	var userId: String
+	// must be one or the other
+	var userRef: DocumentReference?
+	var userId: String?
+
 	var isCurrentSessionProfile = false
 	
 	@EnvironmentObject var app: AppStore
@@ -40,8 +43,8 @@ struct ProfileData: View {
 	}
 	
 	func loadUserData () {
-		let docRef = self.db.collection("Users").document(userId)
-		docRef.getDocument { document, error in
+		let docRef = (userId != nil) ? self.db.collection("Users").document(userId!) : userRef
+		docRef!.getDocument { document, error in
 			if let error = error as NSError? {
 				print ("error: \(error.localizedDescription)")
 			}
@@ -50,6 +53,9 @@ struct ProfileData: View {
 					do {
 						self.userData = try document.data(as: UserData.self)
 						loadUserBadges()
+						if (userPosts.count == 0) {
+							loadUserPosts()
+						}
 					}
 					catch {
 						print(error)
@@ -62,7 +68,7 @@ struct ProfileData: View {
 	func loadUserPosts () {
 		self.userPosts = []
 		self.db.collection("Posts")
-			.whereField("user.id", isEqualTo: userId)
+			.whereField("user.id", isEqualTo: userData?.id)
 			.order(by: "timestamp", descending: true)
 			.addSnapshotListener { (querySnapshot, error ) in
 				guard let documents = querySnapshot?.documents else {
@@ -150,11 +156,8 @@ struct ProfileData: View {
 					}.padding(16)
 				}
 		}
-	}.onAppear{
+	}.onAppear {
 		loadUserData()
-		if (userPosts.count == 0) {
-			loadUserPosts()
-		}
 	}
 	.navigationTitle(isCurrentSessionProfile ? "Your Profile" : "Profile")
 	.navigationBarTitleDisplayMode(.inline)
@@ -168,8 +171,8 @@ struct ProfileData: View {
 }
 }
 
-struct ProfileData_Previews: PreviewProvider {
-	static var previews: some View {
-		ProfileData(userId: "")
-	}
-}
+//struct ProfileData_Previews: PreviewProvider {
+//	static var previews: some View {
+//		ProfileData(userRef: "")
+//	}
+//}

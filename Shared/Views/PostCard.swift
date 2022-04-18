@@ -11,8 +11,7 @@ import FirebaseFirestore
 struct PostCard: View {
     
     var desc: String?
-    var username: String
-    var userId: String
+    var userRef: DocumentReference
     var likesCount: Int
     var comments: [Comment]
     var id: String
@@ -37,8 +36,7 @@ struct PostCard: View {
     }
     
     func loadUserData () {
-        let docRef = self.db.collection("Users").document(userId)
-        docRef.getDocument { document, error in
+        userRef.getDocument { document, error in
             if let error = error as NSError? {
                 print ("error: \(error.localizedDescription)")
             }
@@ -94,14 +92,14 @@ struct PostCard: View {
             HStack {
                 HStack {
                     RoundedAvatar(name: userData?.avatar ?? "", size: 40)
-                    Text(userData?.displayName ?? username)
+                    Text(userData?.displayName ?? "Unknown")
                 }.onTapGesture {
                     self.showUserProfile = true
                 }
                 Spacer()
                 Menu {
                     Button(action: {app.showCommentsSheet(postId: id)}) { HStack {Text("View comments"); Spacer(); Image(systemName: "text.bubble") }}
-                    Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? username) profile"); Spacer(); Image(systemName: "person") }}
+                    Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? "Unknown") profile"); Spacer(); Image(systemName: "person") }}
                     Button(action: {print("tap")}) { HStack {Text("Report this post"); Spacer(); Image(systemName: "exclamationmark.shield") }}
                 } label: {
                     Image(systemName: "ellipsis").foregroundColor(ColorManager.primaryText)
@@ -164,7 +162,7 @@ struct PostCard: View {
             loadUserData()
         }
         .background(
-            NavigationLink(destination: ProfileData(userId: userId), isActive: $showUserProfile){
+            NavigationLink(destination: ProfileData(userRef: userRef), isActive: $showUserProfile){
                EmptyView()
             }.hidden()
         )
@@ -177,33 +175,32 @@ struct PostCard_Previews: PreviewProvider {
         ScrollView {
             Color(.gray)
             VStack {
-                PostCard(
-                    username: "Test username",
-                    userId: "", likesCount: 2,
-                    comments: [],
-                    id: "", data: PostData(
-                        backgroundColor: "FF00FF",
-                        pixels: [
-                            Pixel(color: "#BADA55")
-                        ]
-                    ),
-                    likes: [],
-					timestamp: 0
-                )
-                PostCard(
-                    username: "Test username",
-                    userId: "",
-                    likesCount: 2,
-                    comments: [],
-                    id: "", data: PostData(
-                        backgroundColor: "FF00FF",
-                        pixels: [
-                            Pixel(color: "#BADA55")
-                        ]
-                    ),
-                    likes: [],
-					timestamp: 0
-                )
+//                PostCard(
+//					userRef: DocumentReference(),
+//                    likesCount: 2,
+//                    comments: [],
+//                    id: "", data: PostData(
+//                        backgroundColor: "FF00FF",
+//                        pixels: [
+//                            Pixel(color: "#BADA55")
+//                        ]
+//                    ),
+//                    likes: [],
+//					timestamp: 0
+//                )
+//                PostCard(
+//					userRef: DocumentReference(),
+//                    likesCount: 2,
+//                    comments: [],
+//                    id: "", data: PostData(
+//                        backgroundColor: "FF00FF",
+//                        pixels: [
+//                            Pixel(color: "#BADA55")
+//                        ]
+//                    ),
+//                    likes: [],
+//					timestamp: 0
+//                )
             }
         }
     }

@@ -19,12 +19,12 @@ struct Post: Identifiable, Codable {
     var comments: [Comment]?
     var userRef: DocumentReference
     var data: PostData
-    var user: User
+    var user: User?
 }
 
 struct PostData: Codable {
     var backgroundColor: String
-    var pixels: [Pixel]
+	var pixels: [Pixel]
 }
 
 struct Pixel: Codable {

@@ -78,9 +78,9 @@ struct SettingsScreen: View {
 							Text("Rate the App").foregroundColor(ColorManager.primaryText)
 						}
 					}
-					NavigationLink(destination: RequestNewFeatureScreen()) {
+					NavigationLink(destination: NewsScreen()) {
 						SettingsIcon(iconName: "sparkles", color: .yellow)
-						Text("Suggest new features")
+						Text("What's new")
 					}
 					Link(destination: URL(string: "https://www.github.com/illu/pix")!) {
 						HStack {
