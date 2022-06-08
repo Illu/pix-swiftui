@@ -57,9 +57,9 @@ struct NewsScreen: View {
 						Text("\(newsData!.title)").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding(16).font(.title)
 						Text("\(newsData!.desc)").frame(maxWidth: .infinity, alignment: .leading).padding(16)
 						Spacer()
-						NavigationLink(destination: RequestNewFeatureScreen()) {
-							Text("Help improve the App")
-						}
+//						NavigationLink(destination: RequestNewFeatureScreen()) {
+//							Text("Help improve the App")
+//						}
 						Spacer()
 					}
 				}

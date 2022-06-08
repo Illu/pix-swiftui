@@ -120,9 +120,11 @@ struct PixelEditor: View {
 					Button(action: {self.currentTool = TOOLS.PENCIL}) {
 						EditorButton(icon: "paintbrush.pointed", active: currentTool == TOOLS.PENCIL)
 					}.padding(.leading, 30)
+					Spacer()
 					Button(action: {self.currentTool = TOOLS.ERASER}) {
 						EditorButton(icon: "bandage", active: currentTool == TOOLS.ERASER)
 					}
+					Spacer()
 					Button(action: {
 						if (self.history.count > 0) {
 							self.pixelData = self.history.last!
@@ -131,6 +133,7 @@ struct PixelEditor: View {
 					}) {
 						EditorButton(icon: "arrow.uturn.backward", active: false, disabled: self.history.count <= 0)
 					}.disabled(self.history.count <= 0)
+					Spacer()
 					Button(action: {self.currentTool = TOOLS.BUCKET}) {
 						EditorButton(icon: "drop", active: currentTool == TOOLS.BUCKET)
 					}.padding(.trailing, 30)
@@ -148,17 +151,20 @@ struct PixelEditor: View {
 							.background(Circle().fill(Color(hex: color) ?? .clear))
 							.onTapGesture {
 								if (menuMode == MENU_MODES.DRAW) {
-									withAnimation(.easeInOut(duration: 0.2)) {
+									withAnimation(.easeInOut(duration: 0.1)) {
 										self.currentColor = Color(hex: color) ?? .clear
+										if (currentTool == TOOLS.ERASER) {
+											self.currentTool = TOOLS.PENCIL
+										}
 									}
 								} else {
-									withAnimation(.easeInOut(duration: 0.2)) {
+									withAnimation(.easeInOut(duration: 0.1)) {
 										self.backgroundColor = color
 									}
 								}
 							}
 							.frame(width: 50, height: 50)
-							.scaleEffect(currentColor == Color(hex: color.lowercased()) ? 1.2 : 1.0)
+							.scaleEffect((currentColor == Color(hex: color.lowercased()) && currentTool != TOOLS.ERASER) ? 1.2 : 1.0)
 					}
 				}.padding(.all, 16)
 			}

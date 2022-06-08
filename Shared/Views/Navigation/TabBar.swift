@@ -16,8 +16,8 @@ struct TabBar: View {
                 }
                 .background(ColorManager.screenBackground)
                 .tabItem{
+					Image(systemName: tab.systemImage)
                     Label(tab.name, systemImage: tab.systemImage)
-                        .environment(\.symbolVariants, .none)
                 }
             }
         }

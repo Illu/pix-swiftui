@@ -9,6 +9,7 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseStorage
 import CachedAsyncImage
+import AlertToast
 
 struct ProfileData: View {
 	
@@ -76,7 +77,7 @@ struct ProfileData: View {
 					self.userPosts = []
 					return
 				}
-				
+				self.userPosts = []
 				documents.forEach { (queryDocumentSnapshot) in
 					do {
 						let post = try queryDocumentSnapshot.data(as: Post.self)
@@ -88,6 +89,20 @@ struct ProfileData: View {
 					}
 				}
 			}
+	}
+	
+	func deletePost (id: String) {
+		self.db.collection("Posts")
+			.document(id)
+			.delete() { err in
+				if let err = err {
+					app.showToast(toast: AlertToast(type: .systemImage("exclamationmark.triangle", Color.orange), subTitle: "There was an error while trying to delete your post"))
+					print("Error removing document: \(err)")
+				} else {
+					app.showToast(toast: AlertToast(type: .complete(ColorManager.success), subTitle: "Post removed"))
+					print("Document successfully removed!")
+				}
+		}
 	}
 	
 	let columns = [
@@ -139,7 +154,9 @@ struct ProfileData: View {
 										Button(action: {app.showCommentsSheet(postId: post.id!)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
 										if (isCurrentSessionProfile) {
 											Menu("Delete Post...") {
-												Button(action: {}) { HStack {Text("Confirm"); Spacer(); Image(systemName: "trash") }}
+												Button(action: {
+													deletePost(id: post.id!)
+												}) { HStack {Text("Confirm"); Spacer(); Image(systemName: "trash") }}
 												Button(action: {}) { HStack {Text("Cancel"); Spacer(); Image(systemName: "arrow.uturn.left") }}
 											}
 										}

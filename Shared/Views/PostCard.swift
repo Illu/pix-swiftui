@@ -162,7 +162,7 @@ struct PostCard: View {
             loadUserData()
         }
         .background(
-            NavigationLink(destination: ProfileData(userRef: userRef), isActive: $showUserProfile){
+			NavigationLink(destination: ProfileData(userRef: userRef, isCurrentSessionProfile: session.session?.uid == userRef.documentID), isActive: $showUserProfile){
                EmptyView()
             }.hidden()
         )
