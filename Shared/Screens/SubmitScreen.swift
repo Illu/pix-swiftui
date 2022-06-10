@@ -7,19 +7,56 @@
 
 import SwiftUI
 import FirebaseFirestore
+import AlertToast
 
 struct SubmitScreen: View {
 	var postData: PostData
 	
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var challenge: ChallengeStore
-	@ObservedObject private var viewModel = PublishViewModel()
+	@EnvironmentObject var app: AppStore
+	
+	@Environment(\.presentationMode) var mode: Binding<PresentationMode>
 	
 	@State var description: String = ""
 	@State var addChallengeTag = false
 	@State var screenWidth: CGFloat = 0
+	@State var state = States.IDLE
 	
 	var db = Firestore.firestore()
+
+	func submitPost (userRef: DocumentReference, postData: PostData, description: String, tag: String?) {
+		if (state != States.LOADING) {
+			state = States.LOADING
+			db.collection("Posts").addDocument(data: [
+				"userRef": userRef,
+				"user": [
+					"avatar": "",
+					"id": userRef.documentID,
+					"displayName": ""
+				],
+				"data": [
+					"backgroundColor": postData.backgroundColor,
+					"pixels": postData.pixels.compactMap { ["color": $0.color] }
+				],
+				"desc": description,
+				"likes": [],
+				"likesCount": 0,
+				"tag": tag ?? "",
+				"timestamp": Int(Date.currentTimeStamp)
+			]) { err in
+				if err != nil {
+					self.state = States.ERROR
+					app.showToast(toast: AlertToast(type: .error(ColorManager.error), subTitle: "Could not post your art 😥"))
+			   } else {
+				   self.state = States.SUCCESS
+				   self.mode.wrappedValue.dismiss()
+				   app.showToast(toast: AlertToast(type: .complete(ColorManager.success), subTitle: "Post submitted! 🎉"))
+				   app.resetEditor()
+			   }
+			}
+		}
+	}
 	
 	var body: some View {
 		VStack {
@@ -35,7 +72,6 @@ struct SubmitScreen: View {
 						}
 						width = width - 32
 						self.screenWidth = width
-						
 					}
 				}
 				Spacer()
@@ -63,10 +99,10 @@ struct SubmitScreen: View {
 				.padding(.vertical, 16)
 				.toolbar {
 					Button(action: {
-						viewModel.submitPost(userRef: db.document("Users/\(self.session.session?.uid ?? "")"), postData: postData, description: description, tag: addChallengeTag ? challenge.challengeId : nil)
+						self.submitPost(userRef: db.document("Users/\(self.session.session?.uid ?? "")"), postData: postData, description: description, tag: addChallengeTag ? challenge.challengeId : nil)
 					}) {
 						HStack {
-							if (viewModel.state == States.LOADING) {
+							if (state == States.LOADING) {
 								ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .white)).padding(.horizontal, 20).padding(.vertical, 5)
 							} else {
 								Text("Publish").foregroundColor(.white).padding(.horizontal, 20).padding(.vertical, 5)

@@ -156,7 +156,7 @@ struct PostCard: View {
         }
         .cornerRadius(8)
 		.padding(5)
-        .frame(minHeight: 420)
+		.frame(minHeight: 420)
         .onAppear{
             setLocalVariables()
             loadUserData()

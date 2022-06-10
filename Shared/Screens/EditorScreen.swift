@@ -14,7 +14,7 @@ struct EditorScreen: View {
     var body: some View {
         VStack {
             if (session.session != nil) {
-                PixelEditor()
+				PixelEditor().id(app.currentEditorId)
             } else {
                 VStack {
                     Text("You must log in to create an artwork.")

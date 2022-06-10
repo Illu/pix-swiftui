@@ -19,6 +19,7 @@ class AppStore: ObservableObject {
     @Published var commentsSheetPostId = ""
     @Published var postDetailsVisible = false
 	@Published var postDetailsData: PostData? = nil
+	@Published var currentEditorId = UUID() // used to reset the editor contents by changing this id
 	
     private var haptic: UINotificationFeedbackGenerator
     
@@ -63,4 +64,8 @@ class AppStore: ObservableObject {
         self.commentsSheetVisible = false
         self.commentsSheetPostId = ""
     }
+	
+	func resetEditor () {
+		self.currentEditorId = UUID()
+	}
 }

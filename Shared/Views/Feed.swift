@@ -107,7 +107,7 @@ struct Feed: View {
 					Image(systemName: "arrow.up.arrow.down")
 				}
 				NavigationLink(destination: NewsScreen()) {
-					Image(systemName: "bell.badge")
+					Image(systemName: "sparkles")
 				}
 			}
 		}
