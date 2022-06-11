@@ -115,6 +115,13 @@ struct CommentsScreen: View {
                         addComment()
                     }
                     .disabled(session.session == nil)
+				Image(systemName: "paperplane")
+					.foregroundColor(currentComment != "" ? ColorManager.primaryText : ColorManager.secondaryText)
+					.padding(.horizontal, 8)
+					.disabled(session.session == nil || currentComment == "")
+					.onTapGesture {
+						addComment()
+					}
             }
             .background(ColorManager.inputBackground)
             .cornerRadius(4.0)
@@ -125,6 +132,7 @@ struct CommentsScreen: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
+		.background(ColorManager.screenBackground)
 		.navigationTitle(news ? "What's new" : "Comments")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {

@@ -65,7 +65,7 @@ struct CommentView: View {
                     .padding(.bottom, 16)
             }
         
-        .background(ColorManager.screenBackground)
+        .background(ColorManager.cardBackground)
         .cornerRadius(20)
         .padding(.horizontal, 16)
         .padding(.vertical, 8)

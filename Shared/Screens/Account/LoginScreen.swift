@@ -49,6 +49,7 @@ struct LoginScreen: View {
             HStack {
                 TextField("Email", text: $email)
                     .padding(10)
+					.keyboardType(.emailAddress)
             }
             .background(ColorManager.inputBackground)
             .cornerRadius(4.0)

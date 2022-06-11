@@ -71,7 +71,7 @@ struct NewsScreen: View {
 			.navigationBarTitleDisplayMode(.inline)
 			.onAppear{ self.loadData() }
 			.frame(maxWidth: 500)
-		}
+		}.background(ColorManager.screenBackground)
 	}
 }
 

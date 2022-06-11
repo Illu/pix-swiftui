@@ -18,7 +18,7 @@ struct ProfileScreen: View {
             } else {
                 ProfileData(userId: session.session?.uid ?? "", isCurrentSessionProfile: true)
             }
-        }
+        }.background(ColorManager.screenBackground)
     }
 }
 

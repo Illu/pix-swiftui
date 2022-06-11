@@ -60,7 +60,7 @@ struct SettingsScreen: View {
 							Text("Say hi").foregroundColor(ColorManager.primaryText)
 						}
                     }
-                    NavigationLink(destination: EditProfile()) {
+                    NavigationLink(destination: TipScreen()) {
 						SettingsIcon(iconName: "dollarsign.circle", color: .yellow)
                         Text("Leave a tip")
                     }

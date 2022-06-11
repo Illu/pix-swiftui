@@ -146,7 +146,7 @@ struct ProfileData: View {
 								Spacer()
 							}
 						}.padding(.bottom, 10)
-						Text(isCurrentSessionProfile ? "Your posts" : "Posts").font(.title2)
+//						Text(isCurrentSessionProfile ? "Your posts" : "Posts").font(.title2)
 						if (userPosts.count > 0) {
 							LazyVGrid(columns: columns, spacing: 20) {
 								ForEach(userPosts, id: \.self.id) { post in
