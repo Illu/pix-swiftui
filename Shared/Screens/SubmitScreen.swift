@@ -50,8 +50,15 @@ struct SubmitScreen: View {
 					app.showToast(toast: AlertToast(type: .error(ColorManager.error), subTitle: "Could not post your art 😥"))
 			   } else {
 				   self.state = States.SUCCESS
+				   if (tag != nil) {
+					   db.collection("Users").document(session.session!.uid).updateData([
+						"badges": FieldValue.arrayUnion([challenge.currentMonth.prefix(3)]),
+					  ])
+					   app.showToast(toast: AlertToast(type: .systemImage("rosette", ColorManager.accent), title: "Post submitted 🎉", subTitle: "Profile badge acquired"))
+				   } else {
+					   app.showToast(toast: AlertToast(type: .complete(ColorManager.success), title: "Post submitted! 🎉"))
+				   }
 				   self.mode.wrappedValue.dismiss()
-				   app.showToast(toast: AlertToast(type: .complete(ColorManager.success), subTitle: "Post submitted! 🎉"))
 				   app.resetEditor()
 			   }
 			}

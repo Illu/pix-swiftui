@@ -9,14 +9,14 @@ import SwiftUI
 
 struct Sidebar: View {
     
-    @State var selection: Int?
+    @State var selection: Int? = -1
     
     var body: some View {
         NavigationView {
 			VStack {
             List {
                 ForEach(Tabs.indices) { i in
-                    NavigationLink(destination: Tabs[i].view, tag: i, selection: self.$selection) {
+					NavigationLink(destination: Tabs[i].view, tag: i, selection: $selection) {
                         Label(Tabs[i].name, systemImage: Tabs[i].systemImage)
                             .environment(\.symbolVariants, .none)
                     }
