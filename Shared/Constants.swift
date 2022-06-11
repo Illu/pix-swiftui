@@ -56,8 +56,8 @@ let Tabs = [
 	Tab(name: "Home", systemImage: "house.fill", view: AnyView(HomeScreen())),
 	Tab(name: "Challenges", systemImage: "rosette", view: AnyView(ChallengesScreen())),
 	Tab(name: "Create", systemImage: "plus.square", view: AnyView(EditorScreen())),
-	Tab(name: "Profile", systemImage: "person", view: AnyView(ProfileScreen())),
-	Tab(name: "Settings", systemImage: "gearshape", view: AnyView(SettingsScreen()))
+	Tab(name: "Profile", systemImage: "person.fill", view: AnyView(ProfileScreen())),
+	Tab(name: "Settings", systemImage: "gearshape.fill", view: AnyView(SettingsScreen()))
 ]
 
 let MONTHS = [
