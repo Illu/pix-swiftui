@@ -20,6 +20,7 @@ struct EditProfile: View {
     @State var userName = ""
     @State var email = ""
     @State var password = "sneaky:)"
+	@State var willDeleteAccount = false
     @State var state: States = States.IDLE
     @State private var showAvatarSheet = false
     @State private var showAccountDeletionAlert = false
@@ -27,7 +28,7 @@ struct EditProfile: View {
 	
     private var db = Firestore.firestore()
     
-    func saveModifications () {
+	func saveModifications (logout: Bool = false) {
         self.state = States.LOADING
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = userName
@@ -45,11 +46,18 @@ struct EditProfile: View {
                     } else {
                         document?.reference.updateData([
                             "displayName": userName,
-                            "avatar": avatar
+                            "avatar": avatar,
+							"disabled": willDeleteAccount
                         ])
-                        session.loadUserData()
-                        self.state = States.SUCCESS
-                        app.showToast(toast: AlertToast(type: .complete(ColorManager.success), title: "Saved"))
+						if (logout) {
+							if (session.signOut()) {
+								app.showToast(toast: AlertToast(type: .regular, title: "Done 💥", subTitle: "Account removed"))
+							}
+						} else {
+							session.loadUserData()
+							self.state = States.SUCCESS
+							app.showToast(toast: AlertToast(type: .complete(ColorManager.success), title: "Saved"))
+						}
                     }
                 }
             }
@@ -58,6 +66,9 @@ struct EditProfile: View {
 	
 	func deleteAccount () {
 		print("GO")
+		self.willDeleteAccount = true
+		self.userName = "[Deleted Account]"
+		saveModifications(logout: true)
 	}
 	
 	func resetPassword () {
@@ -76,9 +87,7 @@ struct EditProfile: View {
 				UIApplication.shared.open(emailURL as URL, options: [:],completionHandler: nil)
 			}
 	}
-    
-    func formLabel (text: String) -> Text { return Text(text) }
-    
+	
     var body: some View {
         ScrollView {
         VStack {
@@ -86,39 +95,45 @@ struct EditProfile: View {
             Button(action: { showAvatarSheet.toggle()}) {
                 LargeButton(title: "Edit profile picture", width: 200)
             }
-            formLabel(text: "Username")
-            HStack {
-                TextField("Username", text: $userName)
-                    .padding(10)
-            }
-            .background(ColorManager.inputBackground)
-            .cornerRadius(4.0)
-            .frame(maxWidth: BUTTON_WIDTH)
-            formLabel(text: "Your email")
-            HStack {
-                TextField("Email", text: $email)
-                    .padding(10)
-                    .foregroundColor(ColorManager.secondaryText)
-                    .disabled(true)
-            }
-            .background(ColorManager.inputBackground)
-            .cornerRadius(4.0)
-            .frame(maxWidth: BUTTON_WIDTH)
-            formLabel(text: "Your password")
-            HStack {
-                SecureField("Password", text: $password)
-                    .padding(10)
-                    .foregroundColor(ColorManager.secondaryText)
-                    .disabled(true)
-            }
-            .background(ColorManager.inputBackground)
-            .cornerRadius(4.0)
-            .frame(maxWidth: BUTTON_WIDTH)
+			VStack(alignment: .leading) {
+				Text("Username").fontWeight(.semibold).padding([.top], 8)
+				HStack {
+					TextField("Username", text: $userName)
+						.padding(10)
+				}
+				.background(ColorManager.inputBackground)
+				.cornerRadius(4.0)
+				.frame(maxWidth: BUTTON_WIDTH)
+			}
+			VStack(alignment: .leading) {
+				Text("Your email").fontWeight(.semibold).padding([.top], 8)
+				HStack {
+					TextField("Email", text: $email)
+						.padding(10)
+						.foregroundColor(ColorManager.secondaryText)
+						.disabled(true)
+				}
+				.background(ColorManager.inputBackground)
+				.cornerRadius(4.0)
+				.frame(maxWidth: BUTTON_WIDTH)
+			}
+			VStack(alignment: .leading) {
+				Text("Your password").fontWeight(.semibold).padding([.top], 8)
+				HStack {
+					SecureField("Password", text: $password)
+						.padding(10)
+						.foregroundColor(ColorManager.secondaryText)
+						.disabled(true)
+				}
+				.background(ColorManager.inputBackground)
+				.cornerRadius(4.0)
+				.frame(maxWidth: BUTTON_WIDTH)
+			}
 			VStack {
 				Button(action: resetPassword) {
 					Text("Reset my password")
 				}
-				Button(action: saveModifications) {
+				Button(action: { saveModifications(logout: false) } ) {
 					LargeButton(title: "Save modifications", loading: self.state == States.LOADING, withBackground: true)
 				}
 				.padding(.vertical, 40)
@@ -170,7 +185,7 @@ struct EditProfile: View {
 					),
 					secondaryButton: .destructive(
 						Text("Yes, I know what I'm doing"),
-						action: deleteAccount
+						action: { deleteAccount() }
 					)
 				)
 			}
