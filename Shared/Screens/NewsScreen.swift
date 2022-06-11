@@ -63,6 +63,8 @@ struct NewsScreen: View {
 						Spacer()
 					}
 				}
+				Text("Comments").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding([.horizontal, .top], 16).font(.title)
+				CommentsScreen(postId: "current", news: true)
 			}
 			.navigationTitle("What's new")
 			.navigationBarTitleDisplayMode(.inline)

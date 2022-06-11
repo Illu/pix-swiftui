@@ -11,4 +11,5 @@ import FirebaseFirestore
 struct News: Codable, Hashable {
 	var desc: String
 	var title: String
+	var comments: [Comment]?
 }

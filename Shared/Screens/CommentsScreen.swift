@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct CommentsScreen: View {
     
     var postId: String
+	var news = false
     
     @EnvironmentObject var session: SessionStore
     
@@ -22,7 +23,7 @@ struct CommentsScreen: View {
     
     func loadData () {
         self.state = States.LOADING
-        let docRef = self.db.collection("Posts").document(postId)
+		let docRef = self.db.collection(news ? "News" : "Posts").document(postId)
         docRef.getDocument { document, error in
             if let error = error as NSError? {
                 print ("error: \(error.localizedDescription)")
@@ -30,15 +31,27 @@ struct CommentsScreen: View {
             }
             else {
                 if let document = document {
-                    do {
-                        let post = try document.data(as: Post.self)
-                        self.comments = post?.comments ?? []
-                        self.state = States.SUCCESS
-                    }
-                    catch {
-                        print(error)
-                        self.state = States.ERROR
-                    }
+					if (news) {
+						do {
+							let post = try document.data(as: News.self)
+							self.comments = post?.comments ?? []
+							self.state = States.SUCCESS
+						}
+						catch {
+							print(error)
+							self.state = States.ERROR
+						}
+					} else {
+						do {
+							let post = try document.data(as: Post.self)
+							self.comments = post?.comments ?? []
+							self.state = States.SUCCESS
+						}
+						catch {
+							print(error)
+							self.state = States.ERROR
+						}
+					}
                 }
             }
         }
@@ -48,7 +61,7 @@ struct CommentsScreen: View {
         if (self.currentComment != "" && session.session!.uid != "") {
             let textToSend = "\(self.currentComment)"
             self.currentComment = ""
-            let updateReference = self.db.collection("Posts").document(postId)
+			let updateReference = self.db.collection(news ? "News" : "Posts").document(postId)
             updateReference.updateData([
                 "comments": FieldValue.arrayUnion(
                     [
@@ -86,6 +99,10 @@ struct CommentsScreen: View {
                 ScrollView {
                     ForEach(comments, id: \.self) { comment in
                         CommentView(comment: comment, userRef: comment.userRef)
+							.contextMenu {
+								Button(action: { self.currentComment = "\"\(comment.text)\": \(currentComment)" }) { HStack {Text("Quote"); Spacer(); Image(systemName: "quote.bubble") }}
+								Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
+							}
                     }
                 }
             }

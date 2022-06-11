@@ -90,4 +90,8 @@ class SessionStore: ObservableObject {
                 Auth.auth().removeStateDidChangeListener(handle)
             }
         }
+	
+	func sendResetPasswordEmail () {
+		Auth.auth().sendPasswordReset(withEmail: (self.session?.email)!)
+	}
 }

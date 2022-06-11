@@ -17,6 +17,7 @@ struct PixelEditor: View {
 	
 	@EnvironmentObject var app: AppStore
 	
+	var SCREEN_CONTENT_MAX_WIDTH: CGFloat = 400
 	var pixelSize = 10.0
 	@State var history: [[Pixel]] = []
 	@State var showPalettesSheet = false
@@ -119,7 +120,7 @@ struct PixelEditor: View {
 						)
 				}.frame(width: geometry.size.width)
 			}
-			.frame(maxWidth: 400, maxHeight: 400)
+			.frame(maxWidth: SCREEN_CONTENT_MAX_WIDTH, maxHeight: SCREEN_CONTENT_MAX_WIDTH)
 			HStack {
 				Button(action: {self.menuMode = MENU_MODES.DRAW}) {
 					EditorButton(text: "Draw", active: self.menuMode == MENU_MODES.DRAW, width: 140, height: 30)
@@ -151,6 +152,7 @@ struct PixelEditor: View {
 						EditorButton(icon: "drop", active: currentTool == TOOLS.BUCKET)
 					}.padding(.trailing, 30)
 				}
+				.frame(maxWidth: SCREEN_CONTENT_MAX_WIDTH)
 			} else if (menuMode == MENU_MODES.BACKGROUND) {
 				Button(action: {self.showGrid.toggle()}) {
 					EditorButton(icon: "grid", active: showGrid)
@@ -163,7 +165,7 @@ struct PixelEditor: View {
 						.cornerRadius(10.0)
 						.overlay(Circle().fill(currentColor))
 						.overlay(Image(systemName: "plus").foregroundColor(currentColor.toHexString().lowercased() == "#fefefe" ? .black : .white))
-						.overlay(ColorPicker("", selection: $currentColor).labelsHidden().opacity(0.015))
+						.overlay(ColorPicker("", selection: $currentColor, supportsOpacity: false).labelsHidden().opacity(0.015))
 						.scaleEffect((!isCurrentColorInPalette() && currentTool != TOOLS.ERASER) ? 1.2 : 1.0)
 					ForEach(currentColorPalette.colors, id: \.self) { color in
 						Circle()

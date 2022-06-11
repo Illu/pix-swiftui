@@ -22,7 +22,9 @@ struct EditProfile: View {
     @State var password = "sneaky:)"
     @State var state: States = States.IDLE
     @State private var showAvatarSheet = false
-    
+    @State private var showAccountDeletionAlert = false
+	@State private var showResetEmailAlert = false
+	
     private var db = Firestore.firestore()
     
     func saveModifications () {
@@ -53,11 +55,27 @@ struct EditProfile: View {
             }
         }
     }
+	
+	func deleteAccount () {
+		print("GO")
+	}
+	
+	func resetPassword () {
+		session.sendResetPasswordEmail()
+		self.showResetEmailAlert = true
+	}
     
     func onSelectAvatar (name: String) {
         self.avatar = name
         self.showAvatarSheet = false
     }
+	
+	func openEmailApp () {
+		let emailURL = NSURL(string: "message://")!
+			if UIApplication.shared.canOpenURL(emailURL as URL) {
+				UIApplication.shared.open(emailURL as URL, options: [:],completionHandler: nil)
+			}
+	}
     
     func formLabel (text: String) -> Text { return Text(text) }
     
@@ -96,11 +114,15 @@ struct EditProfile: View {
             .background(ColorManager.inputBackground)
             .cornerRadius(4.0)
             .frame(maxWidth: BUTTON_WIDTH)
-            Button(action: saveModifications) {
-                LargeButton(title: "Save modifications", loading: self.state == States.LOADING, withBackground: true)
-            }
-            .padding(.vertical, 40)
-			
+			VStack {
+				Button(action: resetPassword) {
+					Text("Reset my password")
+				}
+				Button(action: saveModifications) {
+					LargeButton(title: "Save modifications", loading: self.state == States.LOADING, withBackground: true)
+				}
+				.padding(.vertical, 40)
+			}
             Text("ID - \(session.session?.uid ?? "??")")
                 .foregroundColor(ColorManager.secondaryText)
                 .opacity(0.2)
@@ -115,6 +137,43 @@ struct EditProfile: View {
         })
         .navigationTitle("Edit Profile")
         .navigationBarTitleDisplayMode(.inline)
+		.toolbar {
+			HStack {
+				Menu {
+					Button(action: { self.showAccountDeletionAlert = true }) { HStack {Text("Delete your account"); Spacer(); Image(systemName: "trash") }}
+				} label: {
+					Image(systemName: "ellipsis")
+				}
+			}
+			.alert(isPresented: $showResetEmailAlert) {
+					Alert(
+						title: Text("📬 Check your email"),
+						message: Text("An email with further instructions should arrive soon!"),
+						primaryButton: .default(
+							Text("Open my email App"),
+							action: openEmailApp
+						),
+						secondaryButton: .default(
+							Text("Close"),
+							action: {}
+						)
+					)
+				}
+		}
+		.alert(isPresented: $showAccountDeletionAlert) {
+				Alert(
+					title: Text("⚠️ Warning ⚠️"),
+					message: Text("Are you sure you want to delete your account data?\n\nThis action CANNOT be undone."),
+					primaryButton: .default(
+						Text("No, take me back"),
+						action: {}
+					),
+					secondaryButton: .destructive(
+						Text("Yes, I know what I'm doing"),
+						action: deleteAccount
+					)
+				)
+			}
         .sheet(
             isPresented: $showAvatarSheet,
             onDismiss: { self.showAvatarSheet = false }
