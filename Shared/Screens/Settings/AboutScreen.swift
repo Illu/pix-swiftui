@@ -13,9 +13,10 @@ struct AboutScreen: View {
 			List {
 				HStack {
 					Spacer()
-					RoundedRectangle(cornerRadius: 20)
-						.fill(ColorManager.primaryText)
+					Image(uiImage: UIImage(named: "AppIcon") ?? UIImage())
+						.resizable()
 						.frame(width: 100, height: 100)
+						.cornerRadius(20)
 					VStack(alignment: .leading) {
 						Text("Pix \(Bundle.main.releaseVersionNumber ?? "(Unknown version 🥸)")").fontWeight(.semibold)
 						Text("by Maxime Nory").foregroundColor(ColorManager.secondaryText)
