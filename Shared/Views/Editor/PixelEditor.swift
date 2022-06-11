@@ -59,6 +59,18 @@ struct PixelEditor: View {
 		}
 	}
 	
+	func addCustomColorToPalette() {
+		if (!isDrawing && !isCurrentColorInPalette()) {
+			let newColor = currentColor.toHexString()
+			self.currentColorPalette.colors.insert(newColor, at: 0)
+			self.currentColor = Color(hex: currentColorPalette.colors.first ?? "#FF0000") ?? .blue
+		}
+	}
+	
+	func isCurrentColorInPalette() -> Bool {
+		return currentColorPalette.colors.contains { Color(hex: $0) == currentColor || $0 == currentColor.toHexString() }
+	}
+	
 	var body: some View {
 		VStack {
 			NavigationLink(destination: SubmitScreen(postData: PostData(backgroundColor: backgroundColor, pixels: pixelData)), isActive: $showingPublishScreen) {
@@ -74,6 +86,7 @@ struct PixelEditor: View {
 						.gesture(
 							DragGesture(minimumDistance: 0)
 								.onChanged { value in
+									addCustomColorToPalette()
 									let px = trunc(value.location.x / getPixelSize(screenWidth: geometry.size.width))
 									let py = trunc(value.location.y / getPixelSize(screenWidth: geometry.size.width))
 									let arrayPosition = Int(py * ART_SIZE + px)
@@ -145,6 +158,13 @@ struct PixelEditor: View {
 			}
 			ScrollView(.horizontal) {
 				HStack {
+					Circle()
+						.frame(width: 50, height: 50, alignment: .center)
+						.cornerRadius(10.0)
+						.overlay(Circle().fill(currentColor))
+						.overlay(Image(systemName: "plus").foregroundColor(currentColor.toHexString().lowercased() == "#fefefe" ? .black : .white))
+						.overlay(ColorPicker("", selection: $currentColor).labelsHidden().opacity(0.015))
+						.scaleEffect((!isCurrentColorInPalette() && currentTool != TOOLS.ERASER) ? 1.2 : 1.0)
 					ForEach(currentColorPalette.colors, id: \.self) { color in
 						Circle()
 							.strokeBorder(color.lowercased() == "#ffffff" ? Color.black : .clear, lineWidth: 1)
