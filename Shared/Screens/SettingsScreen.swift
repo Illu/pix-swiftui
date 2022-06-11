@@ -32,7 +32,7 @@ struct SettingsScreen: View {
                 Section("Account") {
                     if (session.session != nil) {
 						Button(action: { showingLogoutAlert = true }) {
-							HStack {SettingsIcon(iconName: "rectangle.portrait.and.arrow.right", color: .red); Text("Log me out"); Spacer() }.foregroundColor(ColorManager.primaryText)
+							HStack {SettingsIcon(iconName: "rectangle.portrait.and.arrow.right", color: Color(hex: "#ED6A5A")); Text("Log me out"); Spacer() }.foregroundColor(ColorManager.primaryText)
 						}.alert("Do you really want to log out?", isPresented: $showingLogoutAlert) {
 							Button("Yes please") {
 								if (session.signOut()) {
@@ -44,47 +44,47 @@ struct SettingsScreen: View {
 							}
 						}
                         NavigationLink(destination: EditProfile()) {
-							SettingsIcon(iconName: "person.circle", color: .blue)
+							SettingsIcon(iconName: "person.circle", color: Color(hex: "#4DB3FF"))
                             Text("Account")
                         }
                     } else {
 						Button(action: {
 							app.showLoginSheet()
-						}) { HStack {SettingsIcon(iconName: "arrow.right.circle", color: .blue); Text("Log in"); Spacer() }.foregroundColor(ColorManager.primaryText)}
+						}) { HStack {SettingsIcon(iconName: "arrow.right.circle", color: Color(hex: "#35CE8D")); Text("Log in"); Spacer() }.foregroundColor(ColorManager.primaryText)}
                     }
                 }
                 Section("Contact") {
                     Link(destination: URL(string: "https://www.twitter.com/maximenory")!) {
 						HStack {
-							SettingsIcon(iconName: "message", color: .green)
+							SettingsIcon(iconName: "message", color: Color(hex: "#ED6A5A"))
 							Text("Say hi").foregroundColor(ColorManager.primaryText)
 						}
                     }
                     NavigationLink(destination: TipScreen()) {
-						SettingsIcon(iconName: "dollarsign.circle", color: .yellow)
+						SettingsIcon(iconName: "dollarsign.circle", color: Color(hex: "#FFB800"))
                         Text("Leave a tip")
                     }
                 }
                 Section("App") {
                     NavigationLink(destination: AboutScreen()) {
-						SettingsIcon(iconName: "info.circle", color: .orange)
+						SettingsIcon(iconName: "info.circle", color: Color(hex: "#35CE8D"))
                         Text("About Pix")
                     }
 					Button(action: {
 						SKStoreReviewController.requestReview()
 					}) {
 						HStack {
-							SettingsIcon(iconName: "star", color: .blue)
+							SettingsIcon(iconName: "star", color: Color(hex: "#4DB3FF"))
 							Text("Rate the App").foregroundColor(ColorManager.primaryText)
 						}
 					}
 					NavigationLink(destination: NewsScreen()) {
-						SettingsIcon(iconName: "sparkles", color: .yellow)
+						SettingsIcon(iconName: "sparkles", color: Color(hex: "#FFB800"))
 						Text("What's new")
 					}
 					Link(destination: URL(string: "https://www.github.com/illu/pix")!) {
 						HStack {
-							SettingsIcon(iconName: "chevron.left.forwardslash.chevron.right", color: .purple)
+							SettingsIcon(iconName: "chevron.left.forwardslash.chevron.right", color: Color(hex: "#4DB3FF"))
 							Text("Source Code").foregroundColor(ColorManager.primaryText)
 						}
 					}

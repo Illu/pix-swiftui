@@ -40,38 +40,41 @@ struct NewsScreen: View {
 	}
 	
     var body: some View {
-		ScrollView {
-			VStack {
-				if (state == States.LOADING) {
-					ProgressView()
-				} else if (newsData == nil) {
-					Text("Something went wrong while retrieving the latest news 😥").padding(.bottom, 30)
-					Button(action: {self.loadData()}) {
-						LargeButton(title: "Try again", withBackground: true)
-					}
-				}
-				if (newsData != nil) {
-					VStack {
-						Image("koala").padding(.vertical, 30)
-						Text("\(newsData!.title)").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding(16).font(.title)
-						ForEach(newsData!.desc, id: \.self) { paragraph in
-							Text("\(paragraph)").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading).padding(16).fixedSize(horizontal: false, vertical: true)
+		ZStack {
+			ColorManager.screenBackground
+			ScrollView {
+				VStack {
+					if (state == States.LOADING) {
+						ProgressView()
+					} else if (newsData == nil) {
+						Text("Something went wrong while retrieving the latest news 😥").padding(.bottom, 30)
+						Button(action: {self.loadData()}) {
+							LargeButton(title: "Try again", withBackground: true)
 						}
-						Spacer()
-//						NavigationLink(destination: RequestNewFeatureScreen()) {
-//							Text("Help improve the App")
-//						}
-						Spacer()
 					}
+					if (newsData != nil) {
+						VStack {
+							Image("koala").padding(.vertical, 30)
+							Text("\(newsData!.title)").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding(16).font(.title)
+							ForEach(newsData!.desc, id: \.self) { paragraph in
+								Text("\(paragraph)").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading).padding(16).fixedSize(horizontal: false, vertical: true)
+							}
+							Spacer()
+	//						NavigationLink(destination: RequestNewFeatureScreen()) {
+	//							Text("Help improve the App")
+	//						}
+							Spacer()
+						}
+					}
+					Text("Comments").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding([.horizontal, .top], 16).font(.title)
+					CommentsScreen(postId: "current", news: true)
 				}
-				Text("Comments").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding([.horizontal, .top], 16).font(.title)
-				CommentsScreen(postId: "current", news: true)
+				.navigationTitle("What's new")
+				.navigationBarTitleDisplayMode(.inline)
+				.onAppear{ self.loadData() }
+				.frame(maxWidth: 500)
 			}
-			.navigationTitle("What's new")
-			.navigationBarTitleDisplayMode(.inline)
-			.onAppear{ self.loadData() }
-			.frame(maxWidth: 500)
-		}.background(ColorManager.screenBackground)
+		}
 	}
 }
 

@@ -96,6 +96,10 @@ class SessionStore: ObservableObject {
 		Auth.auth().sendPasswordReset(withEmail: (self.session?.email)!)
 	}
 	
+	func sendResetPasswordEmailTo (email: String) {
+		Auth.auth().sendPasswordReset(withEmail: email)
+	}
+	
 	func enableAdmin () {
 		self.isAdmin = true
 	}

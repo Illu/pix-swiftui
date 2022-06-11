@@ -16,11 +16,11 @@ struct CurrentChallengeCard: View {
         ZStack {
 			CachedAsyncImage(url: challenge.challengeImageURL)
 			VStack {}
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(
-				LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
-					.padding(0)
-			)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.background(
+					LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+						.padding(0)
+				)
 			VStack(alignment: .leading) {
 				Text("\(challenge.currentMonth) Challenge").fontWeight(.semibold)
 				HStack {

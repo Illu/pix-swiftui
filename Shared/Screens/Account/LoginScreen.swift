@@ -13,12 +13,25 @@ struct LoginScreen: View {
     
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var app: AppStore
+	@State private var showResetEmailAlert = false
 
     @State var email = ""
     @State var password = ""
     @State var loading = false
     @State var error = false
     
+	func resetPassword () {
+		session.sendResetPasswordEmailTo(email: email)
+		self.showResetEmailAlert = true
+	}
+	
+	func openEmailApp () {
+		let emailURL = NSURL(string: "message://")!
+			if UIApplication.shared.canOpenURL(emailURL as URL) {
+				UIApplication.shared.open(emailURL as URL, options: [:],completionHandler: nil)
+			}
+	}
+	
     func signIn() {
         loading = true
         error = false
@@ -61,6 +74,24 @@ struct LoginScreen: View {
             .background(ColorManager.inputBackground)
             .cornerRadius(4.0)
             .frame(maxWidth: BUTTON_WIDTH)
+			Button(action: resetPassword) {
+				Text("Reset my password")
+			}
+			.disabled(email == "")
+			.alert(isPresented: $showResetEmailAlert) {
+					Alert(
+						title: Text("📬 Check your email"),
+						message: Text("An email with further instructions has been sent to \(email) and should arrive soon!"),
+						primaryButton: .default(
+							Text("Open my email App"),
+							action: openEmailApp
+						),
+						secondaryButton: .default(
+							Text("Close"),
+							action: {}
+						)
+					)
+				}
             Button(action: signIn) {
                 LargeButton(title: "Log in", loading: loading, disabled: (loading || (email == "" && password == "")))
 			}.disabled((loading || (email == "" && password == "")))

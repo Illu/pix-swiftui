@@ -12,13 +12,16 @@ struct ProfileScreen: View {
     @EnvironmentObject var session: SessionStore
     
     var body: some View {
-        VStack {
-            if (session.session == nil) {
-                LoginMenuScreen()
-            } else {
-                ProfileData(userId: session.session?.uid ?? "", isCurrentSessionProfile: true)
-            }
-        }.background(ColorManager.screenBackground)
+		ZStack {
+			ColorManager.screenBackground
+			VStack {
+				if (session.session == nil) {
+					LoginMenuScreen()
+				} else {
+					ProfileData(userId: session.session?.uid ?? "", isCurrentSessionProfile: true)
+				}
+			}
+        }
     }
 }
 
