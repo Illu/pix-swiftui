@@ -14,6 +14,8 @@
 		50E2C972285448DA00781696 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E2C971285448DA00781696 /* StoreKit.framework */; };
 		50E2C9742854491400781696 /* TipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C9732854491400781696 /* TipViewModel.swift */; };
 		50E2C9752854491400781696 /* TipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C9732854491400781696 /* TipViewModel.swift */; };
+		50E2C97B2854F0DE00781696 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C97A2854F0DE00781696 /* Admin.swift */; };
+		50E2C97C2854F0DE00781696 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C97A2854F0DE00781696 /* Admin.swift */; };
 		BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD0D237127892584009017E1 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BD0D237027892584009017E1 /* AlertToast */; };
@@ -155,6 +157,7 @@
 		50E2C96E2854489700781696 /* TipScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipScreen.swift; sourceTree = "<group>"; };
 		50E2C971285448DA00781696 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		50E2C9732854491400781696 /* TipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewModel.swift; sourceTree = "<group>"; };
+		50E2C97A2854F0DE00781696 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChallengeCard.swift; sourceTree = "<group>"; };
 		BD0D236B27892028009017E1 /* pix (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pix (iOS).entitlements"; sourceTree = "<group>"; };
 		BD0D237227892A8C009017E1 /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
@@ -402,6 +405,7 @@
 				BD2520E52780D9D1004C3CDE /* UserData.swift */,
 				BD74070B2797BA1F0069D990 /* Challenge.swift */,
 				BDD9BF6F27D9978300F6D10E /* News.swift */,
+				50E2C97A2854F0DE00781696 /* Admin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -667,6 +671,7 @@
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
+				50E2C97B2854F0DE00781696 /* Admin.swift in Sources */,
 				BDD9BF7027D9978300F6D10E /* News.swift in Sources */,
 				BDDCE77F277E1C9C00CD62F0 /* Empty.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
@@ -715,6 +720,7 @@
 				BDDCE776277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
 				BDDCE773277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */,
 				BD7B2FB1273C43FB0032B055 /* ContentView.swift in Sources */,
+				50E2C97C2854F0DE00781696 /* Admin.swift in Sources */,
 				BDDCE787277E469200CD62F0 /* PixelEditor.swift in Sources */,
 				BD2520D92780B33A004C3CDE /* ImagesStore.swift in Sources */,
 				BD2520E12780C4FA004C3CDE /* Avatar.swift in Sources */,

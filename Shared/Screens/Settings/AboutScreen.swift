@@ -6,8 +6,36 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import AlertToast
 
 struct AboutScreen: View {
+	
+	private var db = Firestore.firestore()
+	@EnvironmentObject var session: SessionStore
+	@EnvironmentObject var app: AppStore
+
+	func checkRights () {
+		db.collection("Admins").getDocuments() { (querySnapshot, error ) in
+			guard let documents = querySnapshot?.documents else {
+				print("No documents found")
+				return
+			}
+			documents.forEach { (queryDocumentSnapshot) in
+				do {
+					let user = try queryDocumentSnapshot.data(as: Admin.self)
+					if (user?.id == session.session?.uid ?? "??" && !session.isAdmin) {
+						session.enableAdmin()
+						app.showToast(toast: AlertToast(type: .systemImage("hammer", .red), title: "Welcome back 🤖", subTitle: "Your hammer is ready"))
+					}
+				}
+				catch {
+					print(error)
+				}
+			}
+		}
+	}
+	
 	var body: some View {
 		VStack {
 			List {
@@ -32,7 +60,7 @@ struct AboutScreen: View {
 					}
 				}
 			}
-		}
+		}.onAppear(perform: checkRights)
 	}
 }
 

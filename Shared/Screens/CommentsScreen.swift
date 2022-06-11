@@ -85,6 +85,21 @@ struct CommentsScreen: View {
         }
         return "Add your comment..."
     }
+	
+	func deleteComment (comment: Comment) {
+		let updateReference = self.db.collection(news ? "News" : "Posts").document(postId)
+		updateReference.updateData([
+			"comments": FieldValue.arrayRemove(
+				[
+					["text": comment.text,
+					 "timestamp": comment.timestamp,
+					 "userRef": comment.userRef
+					]
+				]
+			)
+		])
+		self.loadData()
+	}
     
     var body: some View {
         VStack {
@@ -102,6 +117,9 @@ struct CommentsScreen: View {
 							.contextMenu {
 								Button(action: { self.currentComment = "\"\(comment.text)\": \(currentComment)" }) { HStack {Text("Quote"); Spacer(); Image(systemName: "quote.bubble") }}
 								Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
+								if (session.isAdmin || db.document("Users/\(self.session.session?.uid ?? "")") == comment.userRef) {
+									Button(action: { deleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
+								}
 							}
                     }
                 }

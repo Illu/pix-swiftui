@@ -97,6 +97,9 @@ struct PostCard: View {
                     self.showUserProfile = true
                 }
                 Spacer()
+				if (session.isAdmin) {
+					Text("🔨")
+				}
                 Menu {
                     Button(action: {app.showCommentsSheet(postId: id)}) { HStack {Text("View comments"); Spacer(); Image(systemName: "text.bubble") }}
                     Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? "Unknown") profile"); Spacer(); Image(systemName: "person") }}

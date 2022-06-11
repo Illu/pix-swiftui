@@ -79,7 +79,6 @@ struct Feed: View {
 										timestamp: viewModel.posts[index].timestamp
 									)
 									.contextMenu {
-										Button(action: { }) { HStack {Text("See in fullscreen"); Spacer(); Image(systemName: "arrow.up.left.and.arrow.down.right") }}
 										Button(action: {UIPasteboard.general.string = viewModel.posts[index].id ?? ""}) { HStack {Text("Copy post ID"); Spacer(); Image(systemName: "doc.on.doc")}}
 									}
 									.frame(maxWidth: 350)

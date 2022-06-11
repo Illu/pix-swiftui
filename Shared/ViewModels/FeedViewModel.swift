@@ -50,27 +50,27 @@ class FeedViewModel: ObservableObject {
         collection
             .limit(to: PAGE_ITEMS)
             .getDocuments() { (querySnapshot, error ) in
-            guard let documents = querySnapshot?.documents else {
-                print("No documents in Posts")
-                self.state = States.SUCCESS
-                return
-            }
-                
-            self.lastSnapshot = querySnapshot?.documents.last
-            if (!nextPage) {
-                self.emptyList()
-            }
-            documents.forEach { (queryDocumentSnapshot) in
-                do {
-                    let post = try queryDocumentSnapshot.data(as: Post.self)
-                    self.posts.append(post!)
-                }
-                catch {
-                    print(error)
-                    self.state = States.ERROR
-                }
-            }
-            self.state = States.SUCCESS
+				guard let documents = querySnapshot?.documents else {
+					print("No documents in Posts")
+					self.state = States.SUCCESS
+					return
+				}
+					
+				self.lastSnapshot = querySnapshot?.documents.last
+				if (!nextPage) {
+					self.emptyList()
+				}
+				documents.forEach { (queryDocumentSnapshot) in
+					do {
+						let post = try queryDocumentSnapshot.data(as: Post.self)
+						self.posts.append(post!)
+					}
+					catch {
+						print(error)
+						self.state = States.ERROR
+					}
+				}
+				self.state = States.SUCCESS
         }
     }
     

@@ -20,6 +20,7 @@ struct ProfileData: View {
 	var isCurrentSessionProfile = false
 	
 	@EnvironmentObject var app: AppStore
+	@EnvironmentObject var session: SessionStore
 	
 	@State var userData: UserData? = nil
 	@State var badgesUrls = [URL]()
@@ -147,12 +148,15 @@ struct ProfileData: View {
 							}
 						}.padding(.bottom, 10)
 //						Text(isCurrentSessionProfile ? "Your posts" : "Posts").font(.title2)
+						if (session.isAdmin) {
+							Text("🔨 ADMIN MODE 👀").font(.title2)
+						}
 						if (userPosts.count > 0) {
 							LazyVGrid(columns: columns, spacing: 20) {
 								ForEach(userPosts, id: \.self.id) { post in
 									Menu {
 										Button(action: {app.showCommentsSheet(postId: post.id!)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
-										if (isCurrentSessionProfile) {
+										if (isCurrentSessionProfile || session.isAdmin) {
 											Menu("Delete Post...") {
 												Button(action: {
 													deletePost(id: post.id!)

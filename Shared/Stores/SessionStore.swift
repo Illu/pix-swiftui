@@ -16,6 +16,7 @@ class SessionStore: ObservableObject {
     
     @Published var session: SessionUser? { didSet { self.didChange.send(self) }}
     @Published var userData: UserData?
+	@Published var isAdmin: Bool = false
     
     var handle: AuthStateDidChangeListenerHandle?
     
@@ -93,5 +94,9 @@ class SessionStore: ObservableObject {
 	
 	func sendResetPasswordEmail () {
 		Auth.auth().sendPasswordReset(withEmail: (self.session?.email)!)
+	}
+	
+	func enableAdmin () {
+		self.isAdmin = true
 	}
 }
