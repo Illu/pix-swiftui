@@ -103,6 +103,7 @@ struct AccountCreation: View {
                         .frame(maxWidth: BUTTON_WIDTH, alignment: .leading)
                     HStack {
                         TextField("Your email", text: $email)
+							.keyboardType(.emailAddress)
                             .padding(10)
                     }
                     .background(ColorManager.inputBackground)

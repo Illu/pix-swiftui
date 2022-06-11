@@ -38,7 +38,6 @@ struct NewsScreen: View {
 			}
 		}
 	}
-
 	
     var body: some View {
 		ScrollView {
@@ -55,7 +54,9 @@ struct NewsScreen: View {
 					VStack {
 						Image("koala").padding(.vertical, 30)
 						Text("\(newsData!.title)").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding(16).font(.title)
-						Text("\(newsData!.desc)").frame(maxWidth: .infinity, alignment: .leading).padding(16)
+						ForEach(newsData!.desc, id: \.self) { paragraph in
+							Text("\(paragraph)").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading).padding(16).fixedSize(horizontal: false, vertical: true)
+						}
 						Spacer()
 //						NavigationLink(destination: RequestNewFeatureScreen()) {
 //							Text("Help improve the App")

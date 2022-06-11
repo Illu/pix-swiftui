@@ -125,7 +125,7 @@ struct CommentsScreen: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
-        .navigationTitle("Comments")
+		.navigationTitle(news ? "What's new" : "Comments")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             loadData()

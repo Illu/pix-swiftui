@@ -19,13 +19,17 @@ struct EditorScreen: View {
                 VStack {
                     Text("You must log in to create an artwork.")
 						.font(.title)
-                    Text("Don't worry, it only takes a few seconds")
+						.multilineTextAlignment(.center)
+                    Text("If you aren't registered yet, creating an account only takes a few seconds")
+						.multilineTextAlignment(.center)
                         .foregroundColor(ColorManager.secondaryText)
 						.font(.subheadline)
+						.padding([.vertical], 16)
 					Button(action: {app.showLoginSheet()}) {
-						LargeButton(title: "Log in", withBackground: true).padding(.top, 10)
+						LargeButton(title: "Sign in", withBackground: true).padding(.top, 10)
 					}
 				}
+				.padding(16)
             }
         }
         .navigationTitle("Create")
