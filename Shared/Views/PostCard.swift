@@ -116,13 +116,21 @@ struct PostCard: View {
             }
             PixelArt(data: data, pixelSize: cardWidth / ART_SIZE)
                 .frame(width: cardWidth, height: cardWidth)
-				.onTapGesture {
+				.onTapGesture(count: 2) {
+					self.onLikePost()
+				}
+				.onTapGesture(count: 1) {
 					app.showCommentsSheet(postId: id)
 				}
             HStack {
                 HStack {
-                    Image(systemName: isLiked() ? "heart.fill" : "heart")
-                        .foregroundColor(isLiked() ? .red : ColorManager.primaryText)
+					ZStack {
+						Image(systemName: "heart.fill")
+							.opacity(isLiked() ? 1 : 0)
+							.scaleEffect(isLiked() ? 1.0 : 0.1)
+							.animation(.linear(duration: 0.2), value: isLiked() ? 1 : 0)
+						Image(systemName: "heart")
+					}.foregroundColor(isLiked() ? .red : ColorManager.primaryText)
                     Text("\(localLikesCount)")
                 }
                 .padding(.trailing, 5)
