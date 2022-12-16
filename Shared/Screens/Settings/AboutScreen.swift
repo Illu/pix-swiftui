@@ -41,7 +41,7 @@ struct AboutScreen: View {
 			List {
 				HStack {
 					Spacer()
-					Image(uiImage: UIImage(named: "AppIcon") ?? UIImage())
+					Image("pix")
 						.resizable()
 						.frame(width: 100, height: 100)
 						.cornerRadius(20)

@@ -136,7 +136,7 @@ struct PixelEditor: View {
 					}.padding(.leading, 30)
 					Spacer()
 					Button(action: {self.currentTool = TOOLS.ERASER}) {
-						EditorButton(icon: "bandage", active: currentTool == TOOLS.ERASER)
+						EditorButton(icon: "eraser", active: currentTool == TOOLS.ERASER)
 					}
 					Spacer()
 					Button(action: {
