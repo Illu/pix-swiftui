@@ -682,10 +682,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(PROJECT_DIR)/GoogleService-Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Create the GoogleService-Info.plist file from the environment secret\necho \"$GOOGLESERVICE_INFO\" > ./GoogleService-Info.plist\n";
+			shellScript = "# Create the GoogleService-Info.plist file from the environment secret\necho \"Creating the GoogleService-Info.plist file...\"\necho \"${GOOGLESERVICE_INFO}\" > \"${PROJECT_DIR}/GoogleService-Info.plist\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
