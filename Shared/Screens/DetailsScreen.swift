@@ -130,7 +130,7 @@ struct DetailsScreen: View {
 											.font(.system(size: 14))
 											.foregroundColor(ColorManager.primaryText)
 									}
-									.padding(.bottom, 5)
+									.padding(.bottom, 2)
 								}
 								if (self.postData!.desc.count > 0) {
 									Text(self.postData!.desc)
@@ -138,6 +138,7 @@ struct DetailsScreen: View {
 										.foregroundColor(ColorManager.primaryText)
 										.multilineTextAlignment(.leading)
 										.fixedSize(horizontal: false, vertical: true)
+										.padding(.bottom, 2)
 								}
 								Text(generateReadableDate(time: self.postData!.timestamp))
 									.fontWeight(.light)

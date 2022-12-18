@@ -73,6 +73,7 @@ struct CommentTextInput: View {
 			TextField(getPlaceholderText(), text: $currentComment)
 				.padding(.horizontal, 16)
 				.padding(.vertical, 10)
+				.font(.system(size: 16))
 				.submitLabel(.send)
 				.onSubmit {
 					addComment()
