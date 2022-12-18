@@ -164,6 +164,7 @@
 
 /* Begin PBXFileReference section */
 		503B165627F8D89D0026A6CC /* ChallengeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeStore.swift; sourceTree = "<group>"; };
+		503B37CF294EC9DC006F05C3 /* pix--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "pix--iOS--Info.plist"; sourceTree = "<group>"; };
 		50E2C96E2854489700781696 /* TipScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipScreen.swift; sourceTree = "<group>"; };
 		50E2C971285448DA00781696 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		50E2C9732854491400781696 /* TipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewModel.swift; sourceTree = "<group>"; };
@@ -323,6 +324,7 @@
 		BD7B2F80273C43F90032B055 = {
 			isa = PBXGroup;
 			children = (
+				503B37CF294EC9DC006F05C3 /* pix--iOS--Info.plist */,
 				BD0D236B27892028009017E1 /* pix (iOS).entitlements */,
 				BDC10B2A273C637E0062AF1C /* GoogleService-Info.plist */,
 				BD7B2F85273C43F90032B055 /* Shared */,
@@ -977,6 +979,7 @@
 				DEVELOPMENT_TEAM = 6WD2C784QG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "pix--iOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1011,6 +1014,7 @@
 				DEVELOPMENT_TEAM = 6WD2C784QG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "pix--iOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
