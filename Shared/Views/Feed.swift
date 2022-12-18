@@ -18,17 +18,19 @@ struct Feed: View {
 	
 	@ObservedObject private var viewModel = FeedViewModel()
 	
+	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var app: AppStore
 	
 	func refresh (nextPage: Bool = false) {
 		switch(self.sortMethod) {
-		case SORTING.NEW :
+		case SORTING.NEW:
 			viewModel.fetchData(byNew: true, nextPage: nextPage, challenge: challenge ?? nil)
 			break;
 		case SORTING.ALL:
 			viewModel.fetchData(maxTimestamp: 0, nextPage: nextPage, challenge: challenge ?? nil)
 			break;
 		}
+		session.loadNotifications()
 	}
 	
 	func setNewSorting (_ newSort: SORTING) {
@@ -97,7 +99,12 @@ struct Feed: View {
 		}
 		.navigationTitle(self.sortMethod == SORTING.NEW ? "Latest" : "Top Posts")
 		.toolbar {
-			HStack {
+			ToolbarItem(placement: .navigationBarLeading) {
+				NavigationLink(destination: NewsScreen()) {
+					Image(systemName: "sparkles")
+				}
+			}
+			ToolbarItemGroup(placement: .navigationBarTrailing) {
 				Menu {
 					Text("Sort by")
 					Button(action: {setNewSorting(SORTING.NEW)}) { HStack {Text("New posts"); Spacer(); if sortMethod == SORTING.NEW { Image(systemName: "checkmark") } }}
@@ -105,12 +112,12 @@ struct Feed: View {
 				} label: {
 					Image(systemName: "arrow.up.arrow.down")
 				}
-				NavigationLink(destination: NewsScreen()) {
-					Image(systemName: "sparkles")
+				NavigationLink(destination: NotificationsScreen()) {
+					Image(systemName: session.notifications.count > 0 ? "bell.badge" : "bell")
 				}
 			}
 		}
-		//        .searchable(text: $searchText, prompt: "Search for anything")
+		//.searchable(text: $searchText, prompt: "Search for anything")
 		.onAppear {
 			if (viewModel.posts.isEmpty && viewModel.state == States.IDLE) {
 				self.setNewSorting(SORTING.NEW)

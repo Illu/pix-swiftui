@@ -11,12 +11,12 @@ import FirebaseFirestore
 struct CommentsScreen: View {
     
     var postId: String
+	var authorId: String?
 	var news = false
     
     @EnvironmentObject var session: SessionStore
     
     @State var comments: [Comment] = []
-    @State var currentComment: String = ""
     @State var state: States = States.IDLE
     
 	var db = Firestore.firestore()
@@ -56,35 +56,6 @@ struct CommentsScreen: View {
             }
         }
     }
-    
-    func addComment () {
-        if (self.currentComment != "" && session.session!.uid != "") {
-            let textToSend = "\(self.currentComment)"
-            self.currentComment = ""
-			let updateReference = self.db.collection(news ? "News" : "Posts").document(postId)
-            updateReference.updateData([
-                "comments": FieldValue.arrayUnion(
-                    [
-                        ["text": textToSend,
-                         "timestamp": Int(Date.currentTimeStamp),
-                         "userRef": db.document("Users/\(self.session.session?.uid ?? "")")
-                        ]
-                    ]
-                )
-            ])
-            self.loadData()
-        }
-    }
-    
-    func getPlaceholderText () -> String {
-        if (session.session == nil) {
-            return "You must login to comment"
-        }
-        if ($comments.count == 0) {
-            return "Add the first comment..."
-        }
-        return "Add your comment..."
-    }
 	
 	func deleteComment (comment: Comment) {
 		let updateReference = self.db.collection(news ? "News" : "Posts").document(postId)
@@ -119,43 +90,25 @@ struct CommentsScreen: View {
                 Spacer()
             } else {
                 ScrollView {
-                    ForEach(comments, id: \.self) { comment in
-                        CommentView(comment: comment, userRef: comment.userRef)
-							.contextMenu {
-								Button(action: { self.currentComment = "\"\(comment.text)\": \(currentComment)" }) { HStack {Text("Quote"); Spacer(); Image(systemName: "quote.bubble") }}
-								Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
-								if (session.isAdmin || isCommentFromCurrentUser(comment: comment) ) {
-									Button(action: { deleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
+					VStack {
+						ForEach(comments, id: \.self) { comment in
+							CommentView(comment: comment, userRef: comment.userRef)
+								.padding(.horizontal, 16)
+								.contextMenu {
+									Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
+									if (session.isAdmin || isCommentFromCurrentUser(comment: comment) ) {
+										Button(action: { deleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
+									}
 								}
-							}
-                    }
+						}
+					}
+					.background(ColorManager.cardBackground)
+					.cornerRadius(20.0)
+					.padding(.all)
                 }
             }
-            HStack {
-                TextField(getPlaceholderText(), text: $currentComment)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .submitLabel(.send)
-                    .onSubmit {
-                        addComment()
-                    }
-                    .disabled(session.session == nil)
-				Image(systemName: "paperplane")
-					.foregroundColor(currentComment != "" ? ColorManager.primaryText : ColorManager.secondaryText)
-					.padding(.horizontal, 8)
-					.disabled(session.session == nil || currentComment == "")
-					.onTapGesture {
-						addComment()
-					}
-            }
-            .background(ColorManager.inputBackground)
-            .cornerRadius(4.0)
-            .overlay(
-                RoundedRectangle(cornerRadius: 4.0)
-                    .stroke(ColorManager.secondaryText, lineWidth: 1)
-            )
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
+			CommentTextInput(postId: postId, news: news, authorId: authorId, commentsCount: comments.count, loadData: self.loadData)
+				.padding(.horizontal, 16)
         }
 		.background(ColorManager.screenBackground)
 		.navigationTitle(news ? "What's new" : "Comments")
@@ -168,6 +121,6 @@ struct CommentsScreen: View {
 
 struct CommentsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CommentsScreen(postId: "")
+		CommentsScreen(postId: "")
     }
 }

@@ -16,7 +16,9 @@ class SessionStore: ObservableObject {
     
     @Published var session: SessionUser? { didSet { self.didChange.send(self) }}
     @Published var userData: UserData?
+	@Published var notifications: [Notification] = []
 	@Published var isAdmin: Bool = false
+	@Published var state = States.IDLE
     
     var handle: AuthStateDidChangeListenerHandle?
     
@@ -57,6 +59,7 @@ class SessionStore: ObservableObject {
                 }
             }
         }
+		self.loadNotifications()
     }
     
     func signUp(
@@ -102,5 +105,37 @@ class SessionStore: ObservableObject {
 	
 	func enableAdmin () {
 		self.isAdmin = true
+	}
+	
+	func loadNotifications () {
+		print("Loading notifications")
+		if (self.session != nil) {
+			self.state = States.LOADING
+			let docRef = self.db.collection("Inboxes").document(self.session!.uid)
+			docRef.getDocument { document, error in
+				if let error = error as NSError? {
+					print ("error: \(error.localizedDescription)")
+					self.state = States.SUCCESS
+				}
+				else {
+					if let document = document {
+						do {
+							let inbox = try document.data(as: Inbox.self)
+							self.notifications = inbox?.notifications ?? []
+							print("Loaded notifications!")
+							self.state = States.SUCCESS
+						}
+						catch {
+							print(error)
+							self.state = States.ERROR
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	func clearNotifications () {
+		self.notifications = []
 	}
 }

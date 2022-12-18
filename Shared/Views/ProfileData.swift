@@ -155,7 +155,7 @@ struct ProfileData: View {
 							LazyVGrid(columns: columns, spacing: 20) {
 								ForEach(userPosts, id: \.self.id) { post in
 									Menu {
-										Button(action: {app.showCommentsSheet(postId: post.id!)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
+										Button(action: {app.showCommentsSheet(postId: post.id!, authorId: userId != nil ? userId! : userRef!.documentID)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
 										if (isCurrentSessionProfile || session.isAdmin) {
 											Menu("Delete Post...") {
 												Button(action: {

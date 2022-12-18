@@ -46,7 +46,7 @@ struct CommentView: View {
     var body: some View {
             VStack {
                 HStack {
-                    RoundedAvatar(name: userData?.avatar ?? nil)
+					RoundedAvatar(name: userData?.avatar ?? nil, size: 36)
                     VStack {
                         Text(userData?.displayName ?? "")
                             .fontWeight(.semibold)
@@ -57,18 +57,14 @@ struct CommentView: View {
                     }
                     Spacer()
                 }
-                .padding(.all, 16)
                 Text(comment.text)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 16)
             }
         
-        .background(ColorManager.cardBackground)
-        .cornerRadius(20)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 8)
+//        .background(ColorManager.cardBackground)
+//        .cornerRadius(20)
+		.padding(.vertical)
         .onAppear {
             loadUser()
         }

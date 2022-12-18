@@ -17,6 +17,7 @@ class AppStore: ObservableObject {
     @Published var toast: AlertToast = AlertToast(type: .regular, title: "")
     @Published var commentsSheetVisible = false
     @Published var commentsSheetPostId = ""
+	@Published var commentsSheetAuthorId = ""
     @Published var postDetailsVisible = false
 	@Published var postDetailsData: PostData? = nil
 	@Published var currentEditorId = UUID() // used to reset the editor contents by changing this id
@@ -55,14 +56,16 @@ class AppStore: ObservableObject {
         self.toast = toast
     }
     
-    func showCommentsSheet (postId: String) {
+	func showCommentsSheet (postId: String, authorId: String) {
         self.commentsSheetVisible = true
         self.commentsSheetPostId = postId
+		self.commentsSheetAuthorId = authorId
     }
     
     func hideCommentsSheet () {
         self.commentsSheetVisible = false
         self.commentsSheetPostId = ""
+		self.commentsSheetAuthorId = ""
     }
 	
 	func resetEditor () {

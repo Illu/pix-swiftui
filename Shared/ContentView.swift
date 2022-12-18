@@ -65,7 +65,7 @@ struct ContentView: View {
             onDismiss: { app.hideCommentsSheet() }
         ) {
             NavigationView {
-                CommentsScreen(postId: app.commentsSheetPostId)
+				CommentsScreen(postId: app.commentsSheetPostId, authorId: app.commentsSheetAuthorId)
                     .toolbar {
                         HStack {
                             Button(action: {app.hideCommentsSheet()}) { Text("Close") }

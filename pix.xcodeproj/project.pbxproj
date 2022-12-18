@@ -16,6 +16,16 @@
 		50E2C9752854491400781696 /* TipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C9732854491400781696 /* TipViewModel.swift */; };
 		50E2C97B2854F0DE00781696 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C97A2854F0DE00781696 /* Admin.swift */; };
 		50E2C97C2854F0DE00781696 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C97A2854F0DE00781696 /* Admin.swift */; };
+		50EEF495294CF779002F7ECE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF494294CF779002F7ECE /* Notification.swift */; };
+		50EEF496294CF779002F7ECE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF494294CF779002F7ECE /* Notification.swift */; };
+		50EEF498294CFB23002F7ECE /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF497294CFB23002F7ECE /* Inbox.swift */; };
+		50EEF499294CFB23002F7ECE /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF497294CFB23002F7ECE /* Inbox.swift */; };
+		50EEF49B294D01B7002F7ECE /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF49A294D01B7002F7ECE /* NotificationItem.swift */; };
+		50EEF49C294D01B7002F7ECE /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF49A294D01B7002F7ECE /* NotificationItem.swift */; };
+		50EEF49E294D0B5E002F7ECE /* DetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF49D294D0B5E002F7ECE /* DetailsScreen.swift */; };
+		50EEF49F294D0B5E002F7ECE /* DetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF49D294D0B5E002F7ECE /* DetailsScreen.swift */; };
+		50EEF4A1294E69AD002F7ECE /* CommentTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF4A0294E69AD002F7ECE /* CommentTextInput.swift */; };
+		50EEF4A2294E69AD002F7ECE /* CommentTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF4A0294E69AD002F7ECE /* CommentTextInput.swift */; };
 		BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */; };
 		BD0D237127892584009017E1 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BD0D237027892584009017E1 /* AlertToast */; };
@@ -158,6 +168,11 @@
 		50E2C971285448DA00781696 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		50E2C9732854491400781696 /* TipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewModel.swift; sourceTree = "<group>"; };
 		50E2C97A2854F0DE00781696 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		50EEF494294CF779002F7ECE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		50EEF497294CFB23002F7ECE /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
+		50EEF49A294D01B7002F7ECE /* NotificationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItem.swift; sourceTree = "<group>"; };
+		50EEF49D294D0B5E002F7ECE /* DetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreen.swift; sourceTree = "<group>"; };
+		50EEF4A0294E69AD002F7ECE /* CommentTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextInput.swift; sourceTree = "<group>"; };
 		BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChallengeCard.swift; sourceTree = "<group>"; };
 		BD0D236B27892028009017E1 /* pix (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pix (iOS).entitlements"; sourceTree = "<group>"; };
 		BD0D237227892A8C009017E1 /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
@@ -390,6 +405,7 @@
 				BD29E8B92781414A00335989 /* CommentsScreen.swift */,
 				BD0D237227892A8C009017E1 /* NewsScreen.swift */,
 				BDCB0E80279DFEC600133DDF /* SubmitScreen.swift */,
+				50EEF49D294D0B5E002F7ECE /* DetailsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -406,6 +422,8 @@
 				BD74070B2797BA1F0069D990 /* Challenge.swift */,
 				BDD9BF6F27D9978300F6D10E /* News.swift */,
 				50E2C97A2854F0DE00781696 /* Admin.swift */,
+				50EEF494294CF779002F7ECE /* Notification.swift */,
+				50EEF497294CFB23002F7ECE /* Inbox.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,6 +454,8 @@
 				BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */,
 				BD0D237C278B829A009017E1 /* Detail.swift */,
 				BD0D237F278B8AAA009017E1 /* Feed.swift */,
+				50EEF49A294D01B7002F7ECE /* NotificationItem.swift */,
+				50EEF4A0294E69AD002F7ECE /* CommentTextInput.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -672,7 +692,9 @@
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
 				50E2C97B2854F0DE00781696 /* Admin.swift in Sources */,
+				50EEF49B294D01B7002F7ECE /* NotificationItem.swift in Sources */,
 				BDD9BF7027D9978300F6D10E /* News.swift in Sources */,
+				50EEF49E294D0B5E002F7ECE /* DetailsScreen.swift in Sources */,
 				BDDCE77F277E1C9C00CD62F0 /* Empty.swift in Sources */,
 				BD7B2FAE273C43FB0032B055 /* pixApp.swift in Sources */,
 				BD2520CF277FAD77004C3CDE /* LargeButton.swift in Sources */,
@@ -687,12 +709,15 @@
 				BD29E8B42780FBCA00335989 /* AvatarList.swift in Sources */,
 				BDDCE786277E469200CD62F0 /* PixelEditor.swift in Sources */,
 				BD29E8BA2781414A00335989 /* CommentsScreen.swift in Sources */,
+				50EEF4A1294E69AD002F7ECE /* CommentTextInput.swift in Sources */,
 				50E2C9742854491400781696 /* TipViewModel.swift in Sources */,
 				BDC10B2E273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BD2520E32780D770004C3CDE /* RoundedAvatar.swift in Sources */,
+				50EEF498294CFB23002F7ECE /* Inbox.swift in Sources */,
 				BD2520E62780D9D1004C3CDE /* UserData.swift in Sources */,
 				BDA2A581277BE06B00E5D680 /* Utils.swift in Sources */,
 				BDF4AFFA273F29D100622F85 /* ColorManager.swift in Sources */,
+				50EEF495294CF779002F7ECE /* Notification.swift in Sources */,
 				BD2520D82780B339004C3CDE /* ImagesStore.swift in Sources */,
 				BDB6760A278662DA0049FE62 /* AccountCreation.swift in Sources */,
 				BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */,
@@ -719,6 +744,7 @@
 				BDD9BF7127D9978300F6D10E /* News.swift in Sources */,
 				BDDCE776277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
 				BDDCE773277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */,
+				50EEF499294CFB23002F7ECE /* Inbox.swift in Sources */,
 				BD7B2FB1273C43FB0032B055 /* ContentView.swift in Sources */,
 				50E2C97C2854F0DE00781696 /* Admin.swift in Sources */,
 				BDDCE787277E469200CD62F0 /* PixelEditor.swift in Sources */,
@@ -729,6 +755,7 @@
 				BD29E8B22780E07F00335989 /* EditProfile.swift in Sources */,
 				BD4910B027851D35006B3FF2 /* Palettes.swift in Sources */,
 				BDDCE783277E411100CD62F0 /* EditorScreen.swift in Sources */,
+				50EEF496294CF779002F7ECE /* Notification.swift in Sources */,
 				BDC10B1F273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD2520D0277FAD77004C3CDE /* LargeButton.swift in Sources */,
 				BD74070D2797BA1F0069D990 /* Challenge.swift in Sources */,
@@ -746,6 +773,7 @@
 				BD2520E42780D770004C3CDE /* RoundedAvatar.swift in Sources */,
 				BDDCE77D277E079600CD62F0 /* ChallengesScreen.swift in Sources */,
 				BD7315E327965B2500E04686 /* RequestNewFeatureScreen.swift in Sources */,
+				50EEF49F294D0B5E002F7ECE /* DetailsScreen.swift in Sources */,
 				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				BD0D237E278B829A009017E1 /* Detail.swift in Sources */,
@@ -754,6 +782,8 @@
 				BDF4AFFB273F29D100622F85 /* ColorManager.swift in Sources */,
 				BD7B9D3827444E9E005C5B4E /* TabBar.swift in Sources */,
 				BDC10B29273C5C880062AF1C /* LoginScreen.swift in Sources */,
+				50EEF49C294D01B7002F7ECE /* NotificationItem.swift in Sources */,
+				50EEF4A2294E69AD002F7ECE /* CommentTextInput.swift in Sources */,
 				BD06BC312783F181005E8A8A /* CurrentChallengeCard.swift in Sources */,
 				BDC10B36273C992A0062AF1C /* Constants.swift in Sources */,
 				BDB6760B278662DA0049FE62 /* AccountCreation.swift in Sources */,

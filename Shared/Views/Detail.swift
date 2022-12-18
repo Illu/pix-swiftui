@@ -32,7 +32,7 @@ struct Detail: View {
 						.frame(height: geometry.size.width)
 					Text(post.desc)
 						.foregroundColor(.white)
-					CommentsScreen(postId: post.id!)
+					CommentsScreen(postId: post.id!, authorId: post.user!.id)
 				}
 			}
 			

@@ -86,6 +86,10 @@ struct PostCard: View {
 		formatter.dateFormat = "MMM d, yyyy"
 		return formatter.string(from: NSDate(timeIntervalSince1970: TimeInterval(time / 1000)) as Date)
 	}
+	
+	func openComments () {
+		app.showCommentsSheet(postId: id, authorId: userRef.documentID)
+	}
     
     var body: some View {
         VStack(spacing: 0) {
@@ -101,7 +105,7 @@ struct PostCard: View {
 					Text("🔨")
 				}
                 Menu {
-                    Button(action: {app.showCommentsSheet(postId: id)}) { HStack {Text("View comments"); Spacer(); Image(systemName: "text.bubble") }}
+					Button(action: {self.openComments()}) { HStack {Text("View comments"); Spacer(); Image(systemName: "text.bubble") }}
                     Button(action: {self.showUserProfile = true}) { HStack {Text("\(userData?.displayName ?? "Unknown") profile"); Spacer(); Image(systemName: "person") }}
                     Button(action: {print("tap")}) { HStack {Text("Report this post"); Spacer(); Image(systemName: "exclamationmark.shield") }}
                 } label: {
@@ -120,7 +124,7 @@ struct PostCard: View {
 					self.onLikePost()
 				}
 				.onTapGesture(count: 1) {
-					app.showCommentsSheet(postId: id)
+					self.openComments()
 				}
             HStack {
                 HStack {
@@ -142,7 +146,7 @@ struct PostCard: View {
                         .foregroundColor(ColorManager.primaryText)
                     Text("\(comments.count)")
                 }.onTapGesture {
-                    app.showCommentsSheet(postId: id)
+					self.openComments()
                 }
                 Spacer()
             }
