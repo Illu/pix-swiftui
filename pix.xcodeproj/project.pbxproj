@@ -498,6 +498,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD7B2FB6273C43FB0032B055 /* Build configuration list for PBXNativeTarget "pix (iOS)" */;
 			buildPhases = (
+				50EEF4A4294EB011002F7ECE /* ShellScript */,
 				BD7B2F89273C43FB0032B055 /* Sources */,
 				BD7B2F8A273C43FB0032B055 /* Frameworks */,
 				BD7B2F8B273C43FB0032B055 /* Resources */,
@@ -666,6 +667,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50EEF4A4294EB011002F7ECE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Create the GoogleService-Info.plist file from the environment secret\necho \"$GOOGLESERVICE_INFO\" > ./GoogleService-Info.plist\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BD7B2F89273C43FB0032B055 /* Sources */ = {
@@ -949,7 +972,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pix (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2000;
+				CURRENT_PROJECT_VERSION = 2200;
 				DEVELOPMENT_TEAM = 6WD2C784QG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -965,7 +988,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximenory.pix;
 				PRODUCT_NAME = Pix;
 				SDKROOT = iphoneos;
@@ -983,7 +1006,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pix (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2000;
+				CURRENT_PROJECT_VERSION = 2200;
 				DEVELOPMENT_TEAM = 6WD2C784QG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -999,7 +1022,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximenory.pix;
 				PRODUCT_NAME = Pix;
 				SDKROOT = iphoneos;
