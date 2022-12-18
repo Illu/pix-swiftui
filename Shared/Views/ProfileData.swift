@@ -16,7 +16,7 @@ struct ProfileData: View {
 	// must be one or the other
 	var userRef: DocumentReference?
 	var userId: String?
-
+	
 	var isCurrentSessionProfile = false
 	
 	@EnvironmentObject var app: AppStore
@@ -103,7 +103,7 @@ struct ProfileData: View {
 					app.showToast(toast: AlertToast(type: .complete(ColorManager.success), subTitle: "Post removed"))
 					print("Document successfully removed!")
 				}
-		}
+			}
 	}
 	
 	let columns = [
@@ -147,27 +147,27 @@ struct ProfileData: View {
 								Spacer()
 							}
 						}.padding(.bottom, 10)
-//						Text(isCurrentSessionProfile ? "Your posts" : "Posts").font(.title2)
+						//						Text(isCurrentSessionProfile ? "Your posts" : "Posts").font(.title2)
 						if (session.isAdmin) {
 							Text("🔨 ADMIN MODE 👀").font(.title2)
 						}
 						if (userPosts.count > 0) {
 							LazyVGrid(columns: columns, spacing: 20) {
 								ForEach(userPosts, id: \.self.id) { post in
-									Menu {
-										Button(action: {app.showCommentsSheet(postId: post.id!, authorId: userId != nil ? userId! : userRef!.documentID)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
-										if (isCurrentSessionProfile || session.isAdmin) {
-											Menu("Delete Post...") {
-												Button(action: {
-													deletePost(id: post.id!)
-												}) { HStack {Text("Confirm"); Spacer(); Image(systemName: "trash") }}
-												Button(action: {}) { HStack {Text("Cancel"); Spacer(); Image(systemName: "arrow.uturn.left") }}
-											}
-										}
-										
-									} label: {
+									NavigationLink(destination: DetailsScreen(postId: post.id!)) {
 										PixelArt(data: post.data)
 											.cornerRadius(4)
+											.contextMenu {
+												Button(action: {app.showCommentsSheet(postId: post.id!, authorId: userId != nil ? userId! : userRef!.documentID)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
+												if (isCurrentSessionProfile || session.isAdmin) {
+													Menu("Delete Post...") {
+														Button(action: {
+															deletePost(id: post.id!)
+														}) { HStack {Text("Confirm"); Spacer(); Image(systemName: "trash") }}
+														Button(action: {}) { HStack {Text("Cancel"); Spacer(); Image(systemName: "arrow.uturn.left") }}
+													}
+												}
+											}
 									}
 								}
 							}
@@ -176,20 +176,20 @@ struct ProfileData: View {
 						}
 					}.padding(16)
 				}
+			}
+		}.onAppear {
+			loadUserData()
 		}
-	}.onAppear {
-		loadUserData()
-	}
-	.navigationTitle(isCurrentSessionProfile ? "Your Profile" : "Profile")
-	.navigationBarTitleDisplayMode(.inline)
-	.toolbar {
-		if (isCurrentSessionProfile) {
-			NavigationLink(destination: EditProfile()) {
-				Image(systemName: "square.and.pencil")
+		.navigationTitle(isCurrentSessionProfile ? "Your Profile" : "Profile")
+		.navigationBarTitleDisplayMode(.inline)
+		.toolbar {
+			if (isCurrentSessionProfile) {
+				NavigationLink(destination: EditProfile()) {
+					Image(systemName: "square.and.pencil")
+				}
 			}
 		}
 	}
-}
 }
 
 //struct ProfileData_Previews: PreviewProvider {
