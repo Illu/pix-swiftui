@@ -92,5 +92,6 @@ struct CommentTextInput: View {
 			RoundedRectangle(cornerRadius: 4.0)
 				.stroke(ColorManager.secondaryText, lineWidth: 1)
 		)
+		.padding(.bottom, 5.0)
     }
 }

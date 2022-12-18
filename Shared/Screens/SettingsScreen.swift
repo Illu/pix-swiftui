@@ -90,7 +90,7 @@ struct SettingsScreen: View {
 					}
                 }
 				VStack {
-					Text("2022 - Maxime Nory")
+					Text(verbatim: "\(Calendar(identifier: .gregorian).dateComponents([.year], from: .now).year ?? 2023) - Maxime Nory")
 						.font(.footnote)
 						.foregroundColor(ColorManager.secondaryText)
 						.frame(maxWidth: .infinity)
