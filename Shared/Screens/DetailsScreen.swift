@@ -125,14 +125,19 @@ struct DetailsScreen: View {
 									HStack {
 										Image(systemName: "heart.fill")
 											.foregroundColor(.red)
-										Text("Liked by \(self.postData!.likesCount) user\(self.postData!.likesCount > 1 ? "s" : "")")
-											.padding(.bottom, 5)
+											.font(.system(size: 20))
+										Text("Liked by \(self.postData!.likes.count) user\(self.postData!.likes.count > 1 ? "s" : "")")
+											.font(.system(size: 14))
+											.foregroundColor(ColorManager.primaryText)
 									}
+									.padding(.bottom, 5)
 								}
 								if (self.postData!.desc.count > 0) {
 									Text(self.postData!.desc)
+										.font(.system(size: 14))
 										.foregroundColor(ColorManager.primaryText)
-										.font(.system(size: 20))
+										.multilineTextAlignment(.leading)
+										.fixedSize(horizontal: false, vertical: true)
 								}
 								Text(generateReadableDate(time: self.postData!.timestamp))
 									.fontWeight(.light)

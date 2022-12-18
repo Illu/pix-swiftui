@@ -64,7 +64,7 @@ let Palettes: [Palette] = [
 	Palette(
 		name: "Summer",
 		colors: [
-			"#48B9A82",
+			"#48B9A8",
 			"#BAF1E4",
 			"#FA3C5A",
 			"#FA990D",
