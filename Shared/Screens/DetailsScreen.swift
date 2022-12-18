@@ -148,6 +148,7 @@ struct DetailsScreen: View {
 								CommentTextInput(postId: postId, news: false, authorId: self.postData!.userRef.documentID, commentsCount: comments.count, loadData: self.loadComments)
 									.padding(.top)
 									.padding(.horizontal)
+									.padding(.bottom, 11.0)
 								if (state == States.LOADING) {
 									ProgressView()
 								} else {
