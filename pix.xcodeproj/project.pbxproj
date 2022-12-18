@@ -688,7 +688,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Create the GoogleService-Info.plist file from the environment secret\necho \"Creating the GoogleService-Info.plist file...\"\necho \"${GOOGLESERVICE_INFO}\" > \"${PROJECT_DIR}/GoogleService-Info.plist\"\n";
+			shellScript = "# Create the GoogleService-Info.plist file from the environment secret if it is provided\nif [[ ! -z \"${GOOGLESERVICE_INFO}\" ]]; then\n    echo \"Creating the GoogleService-Info.plist file...\"\n    echo \"${GOOGLESERVICE_INFO}\" > \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
