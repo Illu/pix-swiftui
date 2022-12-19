@@ -51,15 +51,18 @@ struct CommentView: View {
                         Text(userData?.displayName ?? "")
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity, alignment: .leading)
+							.font(.system(size: 14))
                         Text(generateReadableDate())
                             .foregroundColor(ColorManager.secondaryText)
                             .frame(maxWidth: .infinity, alignment: .leading)
+							.font(.system(size: 14))
                     }
                     Spacer()
                 }
                 Text(comment.text)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)
+					.font(.system(size: 14))
             }
         
 //        .background(ColorManager.cardBackground)
