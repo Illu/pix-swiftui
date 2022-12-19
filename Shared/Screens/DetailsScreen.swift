@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import AlertToast
 
 struct DetailsScreen: View {
 	
@@ -20,6 +21,7 @@ struct DetailsScreen: View {
 	var db = Firestore.firestore()
 	
 	@EnvironmentObject var session: SessionStore
+	@EnvironmentObject var app: AppStore
 
 	func generateReadableDate (time: Int) -> String {
 		let formatter = DateFormatter()
@@ -39,8 +41,13 @@ struct DetailsScreen: View {
 				if let document = document {
 					do {
 						let post = try document.data(as: Post.self)
-						self.postData = post!
-						self.state = States.SUCCESS
+						if (post != nil) {
+							self.postData = post!
+							self.state = States.SUCCESS
+						} else {
+							self.state = States.ERROR
+							app.showToast(toast: AlertToast(type: .systemImage("exclamationmark.triangle", Color.red), subTitle: "This post doesn't exist"))
+						}
 					}
 					catch {
 						print(error)
