@@ -45,9 +45,7 @@ class ProfileStore: ObservableObject {
 					do {
 						self.userData = try document.data(as: UserData.self)
 						self.loadUserBadges()
-						if (self.userPosts.count == 0) {
-							self.loadUserPosts()
-						}
+						self.loadUserPosts()
 					}
 					catch {
 						print(error)
@@ -86,5 +84,10 @@ class ProfileStore: ObservableObject {
 		try await self.db.collection("Posts")
 			.document(id)
 			.delete()
+	}
+	
+	func clear () {
+		self.userData = nil
+		self.userPosts = []
 	}
 }

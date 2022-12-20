@@ -104,8 +104,13 @@ struct ProfileData: View {
 					}.padding(16)
 				}
 			}
-		}.onAppear {
-			profile.loadUserData(userId: userId, userRef: userRef)
+		}
+		.refreshable(action: { profile.loadUserData(userId: userId, userRef: userRef) })
+		.onAppear {
+			if ((userId != nil && profile.userData?.id != userId) || (userRef != nil && profile.userData?.id != userRef?.documentID)) {
+				profile.clear()
+				profile.loadUserData(userId: userId, userRef: userRef)
+			}
 		}
 		.navigationTitle(isCurrentSessionProfile ? "Your Profile" : "Profile")
 		.navigationBarTitleDisplayMode(.inline)
