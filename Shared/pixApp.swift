@@ -21,6 +21,7 @@ struct pixApp: App {
                 .environmentObject(SessionStore())
                 .environmentObject(ImagesStore())
                 .environmentObject(ChallengeStore())
+				.environmentObject(ProfileStore())
                 .environmentObject(AppStore())
         }
     }

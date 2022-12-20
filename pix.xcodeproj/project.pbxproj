@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		503B165727F8D89D0026A6CC /* ChallengeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165627F8D89D0026A6CC /* ChallengeStore.swift */; };
 		503B165827F8D89D0026A6CC /* ChallengeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165627F8D89D0026A6CC /* ChallengeStore.swift */; };
+		503E2A092951289F00D1A038 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A082951289F00D1A038 /* ProfileStore.swift */; };
+		503E2A0A2951289F00D1A038 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A082951289F00D1A038 /* ProfileStore.swift */; };
 		50E2C96F2854489700781696 /* TipScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C96E2854489700781696 /* TipScreen.swift */; };
 		50E2C9702854489700781696 /* TipScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C96E2854489700781696 /* TipScreen.swift */; };
 		50E2C972285448DA00781696 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E2C971285448DA00781696 /* StoreKit.framework */; };
@@ -122,7 +124,6 @@
 		BDCB0E82279DFEC600133DDF /* SubmitScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB0E80279DFEC600133DDF /* SubmitScreen.swift */; };
 		BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B45277BC4F900ABE649 /* Comment.swift */; };
 		BDD00B48277BC61600ABE649 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B47277BC61600ABE649 /* User.swift */; };
-		BDD00B4A277BCB2000ABE649 /* PostCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */; };
 		BDD9BF7027D9978300F6D10E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD9BF6F27D9978300F6D10E /* News.swift */; };
 		BDD9BF7127D9978300F6D10E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD9BF6F27D9978300F6D10E /* News.swift */; };
 		BDDCE772277D5D4800CD62F0 /* NotificationsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */; };
@@ -165,6 +166,7 @@
 /* Begin PBXFileReference section */
 		503B165627F8D89D0026A6CC /* ChallengeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeStore.swift; sourceTree = "<group>"; };
 		503B37CF294EC9DC006F05C3 /* pix--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "pix--iOS--Info.plist"; sourceTree = "<group>"; };
+		503E2A082951289F00D1A038 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		50E2C96E2854489700781696 /* TipScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipScreen.swift; sourceTree = "<group>"; };
 		50E2C971285448DA00781696 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		50E2C9732854491400781696 /* TipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewModel.swift; sourceTree = "<group>"; };
@@ -226,7 +228,6 @@
 		BDCB0E80279DFEC600133DDF /* SubmitScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitScreen.swift; sourceTree = "<group>"; };
 		BDD00B45277BC4F900ABE649 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		BDD00B47277BC61600ABE649 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardViewModel.swift; sourceTree = "<group>"; };
 		BDD9BF6F27D9978300F6D10E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		BDDCE771277D5D4800CD62F0 /* NotificationsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsScreen.swift; sourceTree = "<group>"; };
 		BDDCE774277D5DE200CD62F0 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
@@ -306,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */,
-				BDD00B49277BCB2000ABE649 /* PostCardViewModel.swift */,
 				50E2C9732854491400781696 /* TipViewModel.swift */,
 			);
 			path = ViewModels;
@@ -469,6 +469,7 @@
 				BD2520D72780B339004C3CDE /* ImagesStore.swift */,
 				BD29E8BF278207CC00335989 /* AppStore.swift */,
 				503B165627F8D89D0026A6CC /* ChallengeStore.swift */,
+				503E2A082951289F00D1A038 /* ProfileStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -709,6 +710,7 @@
 				BDDCE775277D5DE200CD62F0 /* ProfileScreen.swift in Sources */,
 				BDDCE782277E411100CD62F0 /* EditorScreen.swift in Sources */,
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
+				503E2A092951289F00D1A038 /* ProfileStore.swift in Sources */,
 				BD29E8C62782541600335989 /* ProfileData.swift in Sources */,
 				BD0D237D278B829A009017E1 /* Detail.swift in Sources */,
 				BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */,
@@ -753,7 +755,6 @@
 				BDC10B28273C5C880062AF1C /* LoginScreen.swift in Sources */,
 				BDC10B35273C992A0062AF1C /* Constants.swift in Sources */,
 				BD2520D2277FC21F004C3CDE /* SessionUser.swift in Sources */,
-				BDD00B4A277BCB2000ABE649 /* PostCardViewModel.swift in Sources */,
 				BD0D2380278B8AAA009017E1 /* Feed.swift in Sources */,
 				BD374FE1277BBACE00D56C0A /* FeedViewModel.swift in Sources */,
 				BD06BC302783F181005E8A8A /* CurrentChallengeCard.swift in Sources */,
@@ -765,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD0D2381278B8AAA009017E1 /* Feed.swift in Sources */,
+				503E2A0A2951289F00D1A038 /* ProfileStore.swift in Sources */,
 				BD2520E72780D9D1004C3CDE /* UserData.swift in Sources */,
 				BD7B9D3527444E70005C5B4E /* Sidebar.swift in Sources */,
 				BDD9BF7127D9978300F6D10E /* News.swift in Sources */,
