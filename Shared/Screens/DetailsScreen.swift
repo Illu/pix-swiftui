@@ -107,7 +107,7 @@ struct DetailsScreen: View {
 	
     var body: some View {
 		ZStack {
-			ColorManager.screenBackground
+			ColorManager.screenBackground.ignoresSafeArea()
 			ScrollView{
 				VStack {
 					GeometryReader { geometry in

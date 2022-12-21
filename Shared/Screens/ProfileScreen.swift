@@ -13,7 +13,6 @@ struct ProfileScreen: View {
     
     var body: some View {
 		ZStack {
-			ColorManager.screenBackground
 			VStack {
 				if (session.session == nil) {
 					LoginMenuScreen()

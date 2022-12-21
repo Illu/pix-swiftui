@@ -15,12 +15,12 @@ class ProfileStore: ObservableObject {
 	
 	@Published var state = States.IDLE
 	@Published var userData: UserData? = nil
-	@Published var badgesUrls = [URL]()
+	@Published var badges = [Badge]()
 	@Published var userPosts = [Post]()
 	
 	func loadUserBadges () {
 		let badges = userData?.badges ?? []
-		self.badgesUrls = []
+		self.badges = []
 		badges.forEach { badge in
 			Storage.storage()
 				.reference(withPath: "badges/\(badge.lowercased()).png")
@@ -28,7 +28,7 @@ class ProfileStore: ObservableObject {
 					if let error = error {
 						print("Error retriving challenge image URL: \(error)")
 					} else {
-						self.badgesUrls.append(url!)
+						self.badges.append(Badge(imageUrl: url!, id: badge.lowercased()))
 					}
 				}
 		}

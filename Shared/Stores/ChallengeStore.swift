@@ -29,6 +29,21 @@ class ChallengeStore: ObservableObject {
 		return dateFormatter.string(from: now)
 	}
 	
+	func getAllChallenges() async -> [Challenge] {
+		do {
+			let querySnapshot = try await Firestore.firestore().collection("Challenges").getDocuments()
+			var result = [Challenge]()
+			try querySnapshot.documents.forEach { challenge in
+				let challengeData = try challenge.data(as: Challenge.self)
+				result.append(Challenge(id: challengeData?.id ?? "", title: challengeData?.title ?? "Error"))
+			}
+			return result
+		} catch {
+			print("Error while retrieving challenge data")
+		}
+		return []
+	}
+	
 	func loadChallengeData() {
 		let currentMonth = getCurrentMonth().lowercased()
 		Storage.storage()
