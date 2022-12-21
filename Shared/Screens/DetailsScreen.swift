@@ -178,6 +178,7 @@ struct DetailsScreen: View {
 								}
 							}
 							.background(ColorManager.cardBackground)
+							.frame(maxWidth: 400.0)
 							.cornerRadius(20)
 						}
 					}

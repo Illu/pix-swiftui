@@ -22,10 +22,14 @@ struct ProfileData: View {
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var profile: ProfileStore
 	
-	let columns = [
-		GridItem(.flexible()),
-		GridItem(.flexible())
-	]
+	@State var screenWidth = 0.0
+	
+	var POST_WIDTH = 105.0
+	
+	func getColumns () -> [GridItem] {
+		let numberOfColumns = screenWidth / (POST_WIDTH + 8)
+		return [GridItem](repeating: GridItem(.flexible()), count: Int(numberOfColumns))
+	}
 	
 	func getBadgeCount () -> Int {
 		return (profile.userData?.badges ?? []).count
@@ -45,6 +49,9 @@ struct ProfileData: View {
 	var body: some View {
 		ZStack {
 			ColorManager.screenBackground.ignoresSafeArea()
+			GeometryReader { geometry in
+				HStack{}.onAppear{ self.screenWidth = geometry.size.width }
+			}
 			ScrollView {
 				VStack {
 					if (profile.userData == nil) {
@@ -105,10 +112,10 @@ struct ProfileData: View {
 							.cornerRadius(16)
 							.padding(.bottom, 10)
 							if (profile.userPosts.count > 0) {
-								LazyVGrid(columns: columns, spacing: 20) {
+								LazyVGrid(columns: getColumns(), spacing: 20) {
 									ForEach(profile.userPosts, id: \.self.id) { post in
 										NavigationLink(destination: DetailsScreen(postId: post.id!)) {
-											PixelArt(data: post.data)
+											PixelArt(data: post.data, pixelSize: POST_WIDTH / ART_SIZE)
 												.cornerRadius(4)
 												.contextMenu {
 													Button(action: {app.showCommentsSheet(postId: post.id!, authorId: userId != nil ? userId! : userRef!.documentID)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
