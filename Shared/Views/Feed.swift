@@ -31,7 +31,9 @@ struct Feed: View {
 			viewModel.fetchData(maxTimestamp: 0, nextPage: nextPage, challenge: challenge ?? nil)
 			break;
 		}
-		session.loadNotifications()
+		if (nextPage == false) {
+			session.loadNotifications()
+		}
 	}
 	
 	func setNewSorting (_ newSort: SORTING) {
