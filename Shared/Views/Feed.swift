@@ -15,7 +15,8 @@ struct Feed: View {
 	
 	@State private var searchText = ""
 	@State var sortMethod = SORTING.NEW
-	
+	@State var screenWidth = 0.0
+
 	@ObservedObject private var viewModel = FeedViewModel()
 	
 	@EnvironmentObject var session: SessionStore
@@ -40,87 +41,97 @@ struct Feed: View {
 	}
 	
 	func onPostAppear (_ index: Int) {
-		if (index == viewModel.posts.count - 1) {
+		if (index == viewModel.posts.count - 1 && viewModel.state != States.LOADING) {
 			self.refresh(nextPage: true)
 		}
 	}
 	
+	func getColumns () -> [GridItem] {
+		let postWidth = 350.0
+		let numberOfColumns = screenWidth / (postWidth + 8)
+		return [GridItem](repeating: GridItem(.flexible()), count: Int(numberOfColumns))
+	}
+	
 	var body: some View {
-		VStack {
-			List {
-				if ((challenge) != nil) {
-					Section {
-						CurrentChallengeCard()
-							.listRowInsets(EdgeInsets())
-					}
-				}
-				if (viewModel.state == States.LOADING && viewModel.posts.count == 0) {
-					HStack {
-						Spacer()
-						ProgressView()
-						Spacer()
-					}
-				} else if (viewModel.posts.count == 0) {
-					Empty()
-				} else {
-					ForEach(viewModel.posts.indices, id: \.self) { index in
+		ZStack {
+			GeometryReader { geometry in
+				HStack{}.onAppear{ self.screenWidth = geometry.size.width }
+			}
+			ColorManager.screenBackground.ignoresSafeArea()
+			VStack {
+				
+				ScrollView {
+					if ((challenge) != nil) {
 						Section {
-							ZStack {
-								// "fake" button to disable onTap on items of the list.
-								Button(action: {}){}.buttonStyle(PlainButtonStyle())
-								HStack {
-									Spacer()
-									PostCard(
-										desc: viewModel.posts[index].desc,
-										userRef: viewModel.posts[index].userRef,
-										likesCount: viewModel.posts[index].likes.count,
-										comments: viewModel.posts[index].comments ?? [],
-										id: viewModel.posts[index].id ?? "",
-										data: viewModel.posts[index].data,
-										likes: viewModel.posts[index].likes,
-										timestamp: viewModel.posts[index].timestamp
-									)
-									.contextMenu {
-										Button(action: {UIPasteboard.general.string = viewModel.posts[index].id ?? ""}) { HStack {Text("Copy post ID"); Spacer(); Image(systemName: "doc.on.doc")}}
+							CurrentChallengeCard()
+								.listRowInsets(EdgeInsets())
+						}
+					}
+					if (viewModel.state == States.LOADING && viewModel.posts.count == 0) {
+						HStack {
+							Spacer()
+							ProgressView()
+							Spacer()
+						}
+					} else if (viewModel.posts.count == 0) {
+						Empty()
+					} else {
+						LazyVGrid(columns: getColumns(), spacing: 20) {
+							ForEach(viewModel.posts.indices, id: \.self) { index in
+								ZStack {
+									// "fake" button to disable onTap on items of the list.
+									Button(action: {}){}.buttonStyle(PlainButtonStyle())
+									HStack {
+										PostCard(
+											desc: viewModel.posts[index].desc,
+											userRef: viewModel.posts[index].userRef,
+											likesCount: viewModel.posts[index].likes.count,
+											comments: viewModel.posts[index].comments ?? [],
+											id: viewModel.posts[index].id ?? "",
+											data: viewModel.posts[index].data,
+											likes: viewModel.posts[index].likes,
+											timestamp: viewModel.posts[index].timestamp
+										)
+										.contextMenu {
+											Button(action: {UIPasteboard.general.string = viewModel.posts[index].id ?? ""}) { HStack {Text("Copy post ID"); Spacer(); Image(systemName: "doc.on.doc")}}
+										}
+										.frame(maxWidth: screenWidth < 350 ? screenWidth : 350)
+										.frame(height: 500)
 									}
-									.frame(maxWidth: 350)
-									Spacer()
 								}
+								.listRowInsets(EdgeInsets())
+								.onAppear { onPostAppear(index) }
 							}
-							.listRowInsets(EdgeInsets())
-							.onAppear { onPostAppear(index) }
-						}.listSectionSeparator(.hidden) // TODO: this doesn't seem to work, try something else to reduce space between posts
+						}
+					}
+				}
+				.refreshable(action: {refresh()})
+			}
+			.navigationTitle(self.sortMethod == SORTING.NEW ? "Latest" : "Top Posts")
+			.toolbar {
+				ToolbarItem(placement: .navigationBarLeading) {
+					NavigationLink(destination: NewsScreen()) {
+						Image(systemName: "sparkles")
+					}
+				}
+				ToolbarItemGroup(placement: .navigationBarTrailing) {
+					Menu {
+						Text("Sort by")
+						Button(action: {setNewSorting(SORTING.NEW)}) { HStack {Text("New posts"); Spacer(); if sortMethod == SORTING.NEW { Image(systemName: "checkmark") } }}
+						Button(action: {setNewSorting(SORTING.ALL)}) { HStack {Text("Top of all time"); Spacer(); if sortMethod == SORTING.ALL { Image(systemName: "checkmark") } }}
+					} label: {
+						Image(systemName: "arrow.up.arrow.down")
+					}
+					NavigationLink(destination: NotificationsScreen()) {
+						Image(systemName: session.notifications.count > 0 ? "bell.badge" : "bell")
 					}
 				}
 			}
-			.refreshable(action: {refresh()})
-//			.listStyle(PlainListStyle()) Which one looks better ? 🤔
-			.listStyle(InsetGroupedListStyle())
-		}
-		.navigationTitle(self.sortMethod == SORTING.NEW ? "Latest" : "Top Posts")
-		.toolbar {
-			ToolbarItem(placement: .navigationBarLeading) {
-				NavigationLink(destination: NewsScreen()) {
-					Image(systemName: "sparkles")
+			//.searchable(text: $searchText, prompt: "Search for anything")
+			.onAppear {
+				if (viewModel.posts.isEmpty && viewModel.state == States.IDLE) {
+					self.setNewSorting(SORTING.NEW)
 				}
-			}
-			ToolbarItemGroup(placement: .navigationBarTrailing) {
-				Menu {
-					Text("Sort by")
-					Button(action: {setNewSorting(SORTING.NEW)}) { HStack {Text("New posts"); Spacer(); if sortMethod == SORTING.NEW { Image(systemName: "checkmark") } }}
-					Button(action: {setNewSorting(SORTING.ALL)}) { HStack {Text("Top of all time"); Spacer(); if sortMethod == SORTING.ALL { Image(systemName: "checkmark") } }}
-				} label: {
-					Image(systemName: "arrow.up.arrow.down")
-				}
-				NavigationLink(destination: NotificationsScreen()) {
-					Image(systemName: session.notifications.count > 0 ? "bell.badge" : "bell")
-				}
-			}
-		}
-		//.searchable(text: $searchText, prompt: "Search for anything")
-		.onAppear {
-			if (viewModel.posts.isEmpty && viewModel.state == States.IDLE) {
-				self.setNewSorting(SORTING.NEW)
 			}
 		}
 	}

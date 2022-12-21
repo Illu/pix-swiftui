@@ -113,13 +113,10 @@ struct PostCard: View {
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 10))
                 }
             }
-            .frame(height: 40)
-            .padding(.top, 10)
             GeometryReader { geometry in
-                HStack{}.onAppear{ self.cardWidth = geometry.size.width}
+				HStack{}.onAppear{ self.cardWidth = geometry.size.width}
             }
             PixelArt(data: data, pixelSize: cardWidth / ART_SIZE)
-                .frame(width: cardWidth, height: cardWidth)
 				.onTapGesture(count: 2) {
 					self.onLikePost()
 				}
@@ -157,8 +154,7 @@ struct PostCard: View {
                     .foregroundColor(ColorManager.primaryText)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
-                    
-                Spacer()
+				Spacer()
             }
             .padding(.vertical, 5)
             HStack {
@@ -169,9 +165,9 @@ struct PostCard: View {
                 Spacer()
             }.padding(.bottom, 10)
         }
+		.padding(.all)
+		.background(ColorManager.cardBackground)
         .cornerRadius(8)
-		.padding(5)
-		.frame(minHeight: 420)
         .onAppear{
             setLocalVariables()
             loadUserData()
