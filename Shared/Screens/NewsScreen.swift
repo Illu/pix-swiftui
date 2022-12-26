@@ -41,7 +41,7 @@ struct NewsScreen: View {
 	
     var body: some View {
 		ZStack {
-			ColorManager.screenBackground
+			ColorManager.screenBackground.ignoresSafeArea()
 			ScrollView {
 				VStack {
 					if (state == States.LOADING) {

@@ -107,7 +107,7 @@ struct DetailsScreen: View {
 	
     var body: some View {
 		ZStack {
-			ColorManager.screenBackground
+			ColorManager.screenBackground.ignoresSafeArea()
 			ScrollView{
 				VStack {
 					GeometryReader { geometry in
@@ -178,6 +178,7 @@ struct DetailsScreen: View {
 								}
 							}
 							.background(ColorManager.cardBackground)
+							.frame(maxWidth: 400.0)
 							.cornerRadius(20)
 						}
 					}
@@ -187,6 +188,7 @@ struct DetailsScreen: View {
 			}
 			.refreshable(action: {self.loadPostData()})
 			.navigationTitle("Post details")
+			.navigationBarTitleDisplayMode(.inline)
 			.onAppear(perform: self.loadPostData)
 		}
     }

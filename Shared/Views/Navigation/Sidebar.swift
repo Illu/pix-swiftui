@@ -25,7 +25,7 @@ struct Sidebar: View {
             }
 			.background(ColorManager.screenBackground)
             .onAppear {
-                if self.selection == nil {
+                if self.selection == -1 {
                     self.selection = 0
                 }
             }

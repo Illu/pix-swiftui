@@ -22,6 +22,7 @@ struct PostCard: View {
     var db = Firestore.firestore()
 
     @State private var showUserProfile = false
+	@State private var showPostDetails = false
     @State private var cardWidth: Double = 0.0
     @State private var userData: UserData?
     @State private var localLikesCount: Int = 0
@@ -113,18 +114,15 @@ struct PostCard: View {
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 10))
                 }
             }
-            .frame(height: 40)
-            .padding(.top, 10)
             GeometryReader { geometry in
-                HStack{}.onAppear{ self.cardWidth = geometry.size.width}
+				HStack{}.onAppear{ self.cardWidth = geometry.size.width}
             }
             PixelArt(data: data, pixelSize: cardWidth / ART_SIZE)
-                .frame(width: cardWidth, height: cardWidth)
 				.onTapGesture(count: 2) {
 					self.onLikePost()
 				}
 				.onTapGesture(count: 1) {
-					self.openComments()
+					self.showPostDetails = true
 				}
             HStack {
                 HStack {
@@ -156,9 +154,9 @@ struct PostCard: View {
 					.font(.system(size: 14))
                     .foregroundColor(ColorManager.primaryText)
                     .multilineTextAlignment(.leading)
+					.lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
-                    
-                Spacer()
+				Spacer()
             }
             .padding(.vertical, 5)
             HStack {
@@ -167,19 +165,24 @@ struct PostCard: View {
                     .font(.footnote)
                     .foregroundColor(ColorManager.secondaryText)
                 Spacer()
-            }.padding(.bottom, 10)
+            }
         }
+		.padding(.all)
+		.background(ColorManager.cardBackground)
         .cornerRadius(8)
-		.padding(5)
-		.frame(minHeight: 420)
         .onAppear{
             setLocalVariables()
             loadUserData()
         }
         .background(
-			NavigationLink(destination: ProfileData(userRef: userRef, isCurrentSessionProfile: session.session?.uid == userRef.documentID), isActive: $showUserProfile){
-               EmptyView()
-            }.hidden()
+			ZStack {
+				NavigationLink(destination: ProfileData(userRef: userRef, isCurrentSessionProfile: session.session?.uid == userRef.documentID), isActive: $showUserProfile){
+					EmptyView()
+				}.hidden()
+				NavigationLink(destination: DetailsScreen(postId: id), isActive: $showPostDetails){
+					EmptyView()
+				}.hidden()
+			}
         )
     }
 }

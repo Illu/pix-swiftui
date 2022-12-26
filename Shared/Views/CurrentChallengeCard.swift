@@ -16,7 +16,7 @@ struct CurrentChallengeCard: View {
         ZStack {
 			CachedAsyncImage(url: challenge.challengeImageURL)
 			VStack {}
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.frame(maxWidth: 350, maxHeight: .infinity)
 				.background(
 					LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
 						.padding(0)
@@ -30,7 +30,12 @@ struct CurrentChallengeCard: View {
 			}
 			.padding(15)
 			.foregroundColor(.white)
+			.frame(maxWidth: 350)
         }
+		.frame(maxWidth: 350)
+		.cornerRadius(8)
+		.clipped()
+		.padding(.bottom, 12)
 		.onAppear(perform: challenge.loadChallengeData)
     }
 }
