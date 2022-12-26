@@ -22,6 +22,7 @@ struct PostCard: View {
     var db = Firestore.firestore()
 
     @State private var showUserProfile = false
+	@State private var showPostDetails = false
     @State private var cardWidth: Double = 0.0
     @State private var userData: UserData?
     @State private var localLikesCount: Int = 0
@@ -121,7 +122,7 @@ struct PostCard: View {
 					self.onLikePost()
 				}
 				.onTapGesture(count: 1) {
-					self.openComments()
+					self.showPostDetails = true
 				}
             HStack {
                 HStack {
@@ -153,6 +154,7 @@ struct PostCard: View {
 					.font(.system(size: 14))
                     .foregroundColor(ColorManager.primaryText)
                     .multilineTextAlignment(.leading)
+					.lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
 				Spacer()
             }
@@ -163,7 +165,7 @@ struct PostCard: View {
                     .font(.footnote)
                     .foregroundColor(ColorManager.secondaryText)
                 Spacer()
-            }.padding(.bottom, 10)
+            }
         }
 		.padding(.all)
 		.background(ColorManager.cardBackground)
@@ -173,9 +175,14 @@ struct PostCard: View {
             loadUserData()
         }
         .background(
-			NavigationLink(destination: ProfileData(userRef: userRef, isCurrentSessionProfile: session.session?.uid == userRef.documentID), isActive: $showUserProfile){
-               EmptyView()
-            }.hidden()
+			ZStack {
+				NavigationLink(destination: ProfileData(userRef: userRef, isCurrentSessionProfile: session.session?.uid == userRef.documentID), isActive: $showUserProfile){
+					EmptyView()
+				}.hidden()
+				NavigationLink(destination: DetailsScreen(postId: id), isActive: $showPostDetails){
+					EmptyView()
+				}.hidden()
+			}
         )
     }
 }

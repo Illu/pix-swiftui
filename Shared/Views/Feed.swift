@@ -81,8 +81,6 @@ struct Feed: View {
 						LazyVGrid(columns: getColumns(), spacing: 20) {
 							ForEach(viewModel.posts.indices, id: \.self) { index in
 								ZStack {
-									// "fake" button to disable onTap on items of the list.
-									Button(action: {}){}.buttonStyle(PlainButtonStyle())
 									HStack {
 										PostCard(
 											desc: viewModel.posts[index].desc,

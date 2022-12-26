@@ -188,6 +188,7 @@ struct DetailsScreen: View {
 			}
 			.refreshable(action: {self.loadPostData()})
 			.navigationTitle("Post details")
+			.navigationBarTitleDisplayMode(.inline)
 			.onAppear(perform: self.loadPostData)
 		}
     }
