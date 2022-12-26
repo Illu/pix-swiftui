@@ -24,10 +24,10 @@ struct PixelEditor: View {
 	@State private var showingPublishScreen = false
 	@State private var pixelData = [Pixel](repeating: Pixel(color: "none"), count: Int(ART_SIZE * ART_SIZE))
 	@State var currentTool: TOOLS = TOOLS.PENCIL
-	@State var showGrid: Bool = true
+	@State var showGrid: Bool = !UserDefaults.standard.bool(forKey: "hideGrid")
 	@State var menuMode: MENU_MODES = MENU_MODES.DRAW
 	@State var backgroundColor: String = DEFAULT_EDITOR_BACKGROUND_COLOR
-	@State var currentColorPalette: Palette = Palettes[0]
+	@State var currentColorPalette: Palette = Palettes[UserDefaults.standard.integer(forKey: "palette")]
 	@State var currentColor = Color(.clear)
 	
 	@State private var isDrawing = false // if the user is currently drawing (holding its finger on the canvas)

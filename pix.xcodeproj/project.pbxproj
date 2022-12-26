@@ -15,6 +15,8 @@
 		503E2A11295225F400D1A038 /* AchievementsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A0F295225F400D1A038 /* AchievementsScreen.swift */; };
 		503E2A1329522A5C00D1A038 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A1229522A5C00D1A038 /* Badge.swift */; };
 		503E2A1429522A5C00D1A038 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A1229522A5C00D1A038 /* Badge.swift */; };
+		503E2A1629592F3B00D1A038 /* EditorSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A1529592F3B00D1A038 /* EditorSettingsScreen.swift */; };
+		503E2A1729592F3B00D1A038 /* EditorSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A1529592F3B00D1A038 /* EditorSettingsScreen.swift */; };
 		50E2C96F2854489700781696 /* TipScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C96E2854489700781696 /* TipScreen.swift */; };
 		50E2C9702854489700781696 /* TipScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C96E2854489700781696 /* TipScreen.swift */; };
 		50E2C972285448DA00781696 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E2C971285448DA00781696 /* StoreKit.framework */; };
@@ -173,6 +175,7 @@
 		503E2A082951289F00D1A038 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		503E2A0F295225F400D1A038 /* AchievementsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsScreen.swift; sourceTree = "<group>"; };
 		503E2A1229522A5C00D1A038 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		503E2A1529592F3B00D1A038 /* EditorSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSettingsScreen.swift; sourceTree = "<group>"; };
 		50E2C96E2854489700781696 /* TipScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipScreen.swift; sourceTree = "<group>"; };
 		50E2C971285448DA00781696 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		50E2C9732854491400781696 /* TipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewModel.swift; sourceTree = "<group>"; };
@@ -305,6 +308,7 @@
 				BD0D2379278B4CA2009017E1 /* AboutScreen.swift */,
 				BD7315E127965B2500E04686 /* RequestNewFeatureScreen.swift */,
 				50E2C96E2854489700781696 /* TipScreen.swift */,
+				503E2A1529592F3B00D1A038 /* EditorSettingsScreen.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -732,6 +736,7 @@
 				BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */,
 				BD74070C2797BA1F0069D990 /* Challenge.swift in Sources */,
 				BDCB0E81279DFEC600133DDF /* SubmitScreen.swift in Sources */,
+				503E2A1629592F3B00D1A038 /* EditorSettingsScreen.swift in Sources */,
 				BDC10B1E273C4F300062AF1C /* PostCard.swift in Sources */,
 				BD29E8BD278146F700335989 /* CommentView.swift in Sources */,
 				BD374FE3277BBB3800D56C0A /* Post.swift in Sources */,
@@ -824,6 +829,7 @@
 				50EEF49F294D0B5E002F7ECE /* DetailsScreen.swift in Sources */,
 				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */,
+				503E2A1729592F3B00D1A038 /* EditorSettingsScreen.swift in Sources */,
 				BD0D237E278B829A009017E1 /* Detail.swift in Sources */,
 				BDDCE779277D5E9600CD62F0 /* SessionStore.swift in Sources */,
 				BD2520D3277FC21F004C3CDE /* SessionUser.swift in Sources */,

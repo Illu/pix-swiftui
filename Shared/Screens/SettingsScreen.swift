@@ -53,6 +53,12 @@ struct SettingsScreen: View {
 						}) { HStack {SettingsIcon(iconName: "arrow.right.circle", color: Color(hex: "#35CE8D")); Text("Log in"); Spacer() }.foregroundColor(ColorManager.primaryText)}
                     }
                 }
+				Section("Preferences") {
+					NavigationLink(destination: EditorSettingsScreen()) {
+						SettingsIcon(iconName: "paintpalette", color: Color(hex: "#4DB3FF"))
+						Text("Editor")
+					}
+				}
                 Section("Contact") {
                     Link(destination: URL(string: "https://www.twitter.com/maximenory")!) {
 						HStack {
