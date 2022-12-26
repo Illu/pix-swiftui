@@ -18,9 +18,12 @@ struct ProfileData: View {
 	
 	var isCurrentSessionProfile = false
 	
+	var db = Firestore.firestore()
+	
 	@EnvironmentObject var app: AppStore
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var profile: ProfileStore
+	@EnvironmentObject var images: ImagesStore
 	
 	@State var screenWidth = 0.0
 	
@@ -46,6 +49,38 @@ struct ProfileData: View {
 		}
 	}
 	
+	func setProfilePicture (imageUrl: String) {
+		let updateReference = db.collection("Users").document(session.session!.uid)
+		updateReference.getDocument{ (document, err) in
+			if let err = err {
+				print(err.localizedDescription)
+				app.showToast(toast: AlertToast(type: .error(ColorManager.error), subTitle: err.localizedDescription))
+			} else {
+				document?.reference.updateData([
+					"customAvatar": imageUrl
+				])
+				session.loadUserData()
+				app.showToast(toast: AlertToast(type: .complete(ColorManager.success), title: "New profile picture set"))
+			}
+		}
+	}
+	
+	func generatePicture (data: PostData) {
+		print("generating picture...")
+		if #available(iOS 16.0, *) {
+			let renderer = ImageRenderer(content: PixelArt(data: data, pixelSize: POST_WIDTH / ART_SIZE))
+			if let uiImage = renderer.uiImage {
+				print("Image acquired, creating reference...")
+				images.createImageReference(name: session.session!.uid, data: uiImage.jpegData(compressionQuality: 1.0)!) { imageUrl in
+					self.setProfilePicture(imageUrl: imageUrl!)
+				}
+			}
+		} else {
+			print("generate pricture Not available!")
+			// Fallback on earlier versions
+		}
+	}
+	
 	var body: some View {
 		ZStack {
 			ColorManager.screenBackground.ignoresSafeArea()
@@ -60,7 +95,7 @@ struct ProfileData: View {
 						VStack(alignment: .leading){
 							HStack {
 								HStack {
-									RoundedAvatar(name: profile.userData?.avatar, size: 100)
+									RoundedAvatar(name: profile.userData?.avatar, url: profile.userData?.customAvatar, size: 100)
 									VStack(alignment: .leading) {
 										Spacer()
 										Text(profile.userData?.displayName ?? "Username Error 😭")
@@ -118,6 +153,9 @@ struct ProfileData: View {
 											PixelArt(data: post.data, pixelSize: POST_WIDTH / ART_SIZE)
 												.cornerRadius(4)
 												.contextMenu {
+													if (isCurrentSessionProfile) {
+														Button(action: { generatePicture(data: post.data) }) { HStack {Image(systemName: "person.circle"); Text("Use as profile picture"); Spacer()}}
+													}
 													Button(action: {app.showCommentsSheet(postId: post.id!, authorId: userId != nil ? userId! : userRef!.documentID)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
 													if (isCurrentSessionProfile || session.isAdmin) {
 														Menu("Delete Post...") {

@@ -95,7 +95,7 @@ struct PostCard: View {
         VStack(spacing: 0) {
             HStack {
                 HStack {
-                    RoundedAvatar(name: userData?.avatar ?? "", size: 40)
+					RoundedAvatar(name: userData?.avatar ?? "", url: userData?.customAvatar, size: 40)
                     Text(userData?.displayName ?? "Unknown")
                 }.onTapGesture {
                     self.showUserProfile = true

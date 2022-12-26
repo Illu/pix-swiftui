@@ -46,7 +46,7 @@ struct CommentView: View {
     var body: some View {
             VStack {
                 HStack {
-					RoundedAvatar(name: userData?.avatar ?? nil, size: 36)
+					RoundedAvatar(name: userData?.avatar ?? nil, url: userData?.customAvatar, size: 36)
                     VStack {
                         Text(userData?.displayName ?? "")
                             .fontWeight(.semibold)

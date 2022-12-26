@@ -13,6 +13,45 @@ class ImagesStore: ObservableObject {
     @Published var state = States.IDLE
     @Published var avatars = [Avatar]()
     
+	func createImageReference (name: String, data: Data, completion: @escaping((String?) -> () )) {
+		do {
+			let storage = Storage.storage()
+			let storageRef = storage.reference()
+			let imageRef = storageRef.child("custom-avatars/\(name).jpg")
+			
+			imageRef.putData(data, metadata: nil) { (metadata, error) in
+				guard metadata != nil else {
+						return
+					}
+
+					storageRef.downloadURL { (url, error) in
+						guard let urlStr = url else {
+							completion(nil)
+							return
+						}
+						let downloadUrl = (urlStr.absoluteString)
+						completion(downloadUrl)
+					}
+				}
+		}
+//		let storage = Storage.storage()
+//		let storageRef = storage.reference()
+//
+//		let imageRef = storageRef.child("custom-avatars/\(name).jpg")
+//
+//		let uploadTask = imageRef.putData(data, metadata: nil) { (metadata, error) in
+//		  imageRef.downloadURL { (url, error) in
+//			guard let downloadURL = url else {
+//				print("get downloadurl error!")
+//			  return
+//			}
+//			  print("Done!, download URL is \(downloadURL)")
+//			  return downloadURL
+//		  }
+//		}
+		
+	}
+	
     func loadAvatarsURLs () {
         let storage = Storage.storage()
         let storageRef = storage.reference()
