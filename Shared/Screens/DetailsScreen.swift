@@ -16,13 +16,12 @@ struct DetailsScreen: View {
 	@State var postData: Post? = nil
 	@State var state = States.IDLE
 	@State var screenWidth: CGFloat = 0
-	@State var comments: [Comment] = []
 
 	var db = Firestore.firestore()
 	
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var app: AppStore
-
+	
 	func generateReadableDate (time: Int) -> String {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "MMM d, yyyy"
@@ -56,55 +55,8 @@ struct DetailsScreen: View {
 				}
 			}
 		}
-		self.loadComments()
 	}
-	
-	func loadComments () {
-		self.state = States.LOADING
-		let docRef = self.db.collection("Posts").document(postId)
-		docRef.getDocument { document, error in
-			if let error = error as NSError? {
-				print ("error: \(error.localizedDescription)")
-				self.state = States.SUCCESS
-			}
-			else {
-				if let document = document {
-					do {
-						let post = try document.data(as: Post.self)
-						self.comments = post?.comments ?? []
-						self.state = States.SUCCESS
-					}
-					catch {
-						print(error)
-						self.state = States.ERROR
-					}
-				}
-			}
-		}
-	}
-	
-	func deleteComment (comment: Comment) {
-		let updateReference = self.db.collection("Posts").document(postId)
-		updateReference.updateData([
-			"comments": FieldValue.arrayRemove(
-				[
-					["text": comment.text,
-					 "timestamp": comment.timestamp,
-					 "userRef": comment.userRef
-					]
-				]
-			)
-		])
-		self.loadComments()
-	}
-	
-	func isCommentFromCurrentUser (comment: Comment) -> Bool {
-		if (session.session != nil) {
-			return db.document("Users/\(self.session.session?.uid ?? "")") == comment.userRef
-		}
-		return false
-	}
-	
+
     var body: some View {
 		ZStack {
 			ColorManager.screenBackground.ignoresSafeArea()
@@ -157,29 +109,30 @@ struct DetailsScreen: View {
 							.background(ColorManager.cardBackground)
 							.cornerRadius(20.0)
 							
-							VStack {
-								CommentTextInput(postId: postId, news: false, authorId: self.postData!.userRef.documentID, commentsCount: comments.count, loadData: self.loadComments)
-									.padding(.top)
-									.padding(.horizontal)
-									.padding(.bottom, 11.0)
-								if (state == States.LOADING) {
-									ProgressView()
-								} else {
-									ForEach(comments, id: \.self) { comment in
-										CommentView(comment: comment, userRef: comment.userRef)
-											.padding(.horizontal)
-											.contextMenu {
-												Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
-												if (session.isAdmin || isCommentFromCurrentUser(comment: comment) ) {
-													Button(action: { deleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
-												}
-											}
-									}
-								}
-							}
-							.background(ColorManager.cardBackground)
-							.frame(maxWidth: 400.0)
-							.cornerRadius(20)
+							CommentsView(postId: postId, authorId: postData?.userRef.documentID)
+//							VStack {
+//								CommentTextInput(postId: postId, news: false, authorId: self.postData!.userRef.documentID, commentsCount: comments.comments.count, loadData: comments.loadData)
+//									.padding(.top)
+//									.padding(.horizontal)
+//									.padding(.bottom, 11.0)
+//								if (comments.state == States.LOADING) {
+//									ProgressView()
+//								} else {
+//									ForEach(comments.comments, id: \.self) { comment in
+//										CommentView(comment: comment, userRef: comment.userRef)
+//											.padding(.horizontal)
+//											.contextMenu {
+//												Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
+//												if (session.isAdmin || isCommentFromCurrentUser(comment: comment) ) {
+//													Button(action: { comments.deleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
+//												}
+//											}
+//									}
+//								}
+//							}
+//							.background(ColorManager.cardBackground)
+//							.frame(maxWidth: 400.0)
+//							.cornerRadius(20)
 						}
 					}
 				}

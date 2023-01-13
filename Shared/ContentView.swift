@@ -11,8 +11,6 @@ import AlertToast
 
 struct ContentView: View {
     
-    @State private var showLoginSheet = false
-    
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var images: ImagesStore
     @EnvironmentObject var app: AppStore
@@ -56,19 +54,6 @@ struct ContentView: View {
                     .toolbar {
                         HStack {
                             Button(action: {app.hideLoginSheet()}) { Text("Cancel") }
-                        }
-                    }
-            }
-        }
-        .sheet(
-            isPresented: $app.commentsSheetVisible,
-            onDismiss: { app.hideCommentsSheet() }
-        ) {
-            NavigationView {
-				CommentsScreen(postId: app.commentsSheetPostId, authorId: app.commentsSheetAuthorId)
-                    .toolbar {
-                        HStack {
-                            Button(action: {app.hideCommentsSheet()}) { Text("Close") }
                         }
                     }
             }

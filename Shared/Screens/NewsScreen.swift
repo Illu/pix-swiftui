@@ -12,10 +12,9 @@ struct NewsScreen: View {
 	
 	@State var newsData: News? = nil
 	@State var state: States = States.IDLE
-	@State var comments: [Comment] = []
 
 	@EnvironmentObject var session: SessionStore
-
+	
 	var db = Firestore.firestore()
 	
 	func loadData () {
@@ -39,54 +38,7 @@ struct NewsScreen: View {
 					}
 				}
 			}
-			self.loadComments()
 		}
-	}
-	
-	func loadComments () {
-		self.state = States.LOADING
-		let docRef = self.db.collection("News").document("current")
-		docRef.getDocument { document, error in
-			if let error = error as NSError? {
-				print ("error: \(error.localizedDescription)")
-				self.state = States.SUCCESS
-			}
-			else {
-				if let document = document {
-					do {
-						let post = try document.data(as: News.self)
-						self.comments = post?.comments ?? []
-						self.state = States.SUCCESS
-					}
-					catch {
-						print(error)
-						self.state = States.ERROR
-					}
-				}
-			}
-		}
-	}
-	
-	func deleteComment (comment: Comment) {
-		let updateReference = self.db.collection("News").document("current")
-		updateReference.updateData([
-			"comments": FieldValue.arrayRemove(
-				[
-					["text": comment.text,
-					 "timestamp": comment.timestamp,
-					 "userRef": comment.userRef
-					]
-				]
-			)
-		])
-		self.loadComments()
-	}
-	
-	func isCommentFromCurrentUser (comment: Comment) -> Bool {
-		if (session.session != nil) {
-			return db.document("Users/\(self.session.session?.uid ?? "")") == comment.userRef
-		}
-		return false
 	}
 	
     var body: some View {
@@ -118,31 +70,8 @@ struct NewsScreen: View {
 					}
 					Text("Comments").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding([.horizontal, .top], 16).font(.title)
 					
-					VStack {
-						if (state == States.LOADING) {
-							ProgressView()
-						} else {
-							ForEach(comments, id: \.self) { comment in
-								CommentView(comment: comment, userRef: comment.userRef)
-									.padding(.horizontal)
-									.contextMenu {
-										Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
-										if (session.isAdmin || isCommentFromCurrentUser(comment: comment) ) {
-											Button(action: { deleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
-										}
-									}
-							}
-						}
-						CommentTextInput(postId: "current", news: true, authorId: nil, commentsCount: comments.count, loadData: self.loadComments)
-							.padding(.top)
-							.padding(.horizontal)
-							.padding(.bottom, 11.0)
-					}
-					.background(ColorManager.cardBackground)
-					.frame(maxWidth: 400.0)
-					.cornerRadius(20)
-					.padding(.horizontal)
-					.padding(.bottom)
+					CommentsView(postId: "current", authorId: nil, news: true)
+						.padding(.horizontal)
 				}
 				.navigationTitle("What's new")
 				.navigationBarTitleDisplayMode(.inline)
