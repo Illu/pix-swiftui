@@ -17,6 +17,12 @@ struct CommentsView: View {
 		_viewModel = StateObject(wrappedValue: CommentsViewModel(postId: postId, authorId: authorId, news: news))
 	}
 	
+	func onTapDeleteComment (comment: Comment) {
+		Task {
+			await viewModel.deleteComment(comment: comment)
+		}
+	}
+	
 	var body: some View {
 		VStack {
 			CommentTextInput(addComment: viewModel.addComment, placeholder: viewModel.getPlaceholderText(session: session.session!), authorId: viewModel.authorId)
@@ -32,7 +38,7 @@ struct CommentsView: View {
 						.contextMenu {
 							Button(action: { UIPasteboard.general.string = comment.text }) { HStack {Text("Copy comment"); Spacer(); Image(systemName: "doc.on.doc")}}
 							if (session.isAdmin || viewModel.isCommentFromCurrentUser(comment: comment, session: session.session) ) {
-								Button(action: { viewModel.deleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
+								Button(action: { onTapDeleteComment(comment: comment) }) { HStack {Text("Delete comment"); Spacer(); Image(systemName: "trash")}}
 							}
 						}
 				}

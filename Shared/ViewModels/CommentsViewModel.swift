@@ -68,18 +68,22 @@ extension CommentsView {
 			}
 		}
 		
-		func deleteComment (comment: Comment) {
+		func deleteComment (comment: Comment) async {
 			let updateReference = self.db.collection(news ? "News" : "Posts").document(postId)
-			updateReference.updateData([
-				"comments": FieldValue.arrayRemove(
-					[
-						["text": comment.text,
-						 "timestamp": comment.timestamp,
-						 "userRef": comment.userRef
+			do {
+				try await updateReference.updateData([
+					"comments": FieldValue.arrayRemove(
+						[
+							["text": comment.text,
+							 "timestamp": comment.timestamp,
+							 "userRef": comment.userRef
+							]
 						]
-					]
-				)
-			])
+					)
+				])
+			} catch {
+				print("error deleting comment")
+			}
 			// TODO: make this async / await
 			self.loadData()
 		}
