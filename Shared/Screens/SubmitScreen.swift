@@ -26,7 +26,7 @@ struct SubmitScreen: View {
 	var db = Firestore.firestore()
 
 	func submitPost (userRef: DocumentReference, postData: PostData, description: String, tag: String?) {
-		if (state != States.LOADING) {
+		if (state != States.LOADING && state != States.SUCCESS) {
 			state = States.LOADING
 			db.collection("Posts").addDocument(data: [
 				"userRef": userRef,

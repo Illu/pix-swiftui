@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503595DB29660DDE0003C0B5 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503595DA29660DDE0003C0B5 /* CommentsViewModel.swift */; };
+		503595DE29676B3B0003C0B5 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503595DD29676B3B0003C0B5 /* CommentsView.swift */; };
 		503B165727F8D89D0026A6CC /* ChallengeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165627F8D89D0026A6CC /* ChallengeStore.swift */; };
 		503B165827F8D89D0026A6CC /* ChallengeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B165627F8D89D0026A6CC /* ChallengeStore.swift */; };
 		503E2A092951289F00D1A038 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E2A082951289F00D1A038 /* ProfileStore.swift */; };
@@ -41,8 +43,6 @@
 		BD0D237427892A8C009017E1 /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237227892A8C009017E1 /* NewsScreen.swift */; };
 		BD0D237A278B4CA2009017E1 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D2379278B4CA2009017E1 /* AboutScreen.swift */; };
 		BD0D237B278B4CA2009017E1 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D2379278B4CA2009017E1 /* AboutScreen.swift */; };
-		BD0D237D278B829A009017E1 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237C278B829A009017E1 /* Detail.swift */; };
-		BD0D237E278B829A009017E1 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237C278B829A009017E1 /* Detail.swift */; };
 		BD0D2380278B8AAA009017E1 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237F278B8AAA009017E1 /* Feed.swift */; };
 		BD0D2381278B8AAA009017E1 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D237F278B8AAA009017E1 /* Feed.swift */; };
 		BD2520CC277FAC6B004C3CDE /* LoginMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */; };
@@ -170,6 +170,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		503595DA29660DDE0003C0B5 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		503595DD29676B3B0003C0B5 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		503B165627F8D89D0026A6CC /* ChallengeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeStore.swift; sourceTree = "<group>"; };
 		503B37CF294EC9DC006F05C3 /* pix--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "pix--iOS--Info.plist"; sourceTree = "<group>"; };
 		503E2A082951289F00D1A038 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
@@ -189,7 +191,6 @@
 		BD0D236B27892028009017E1 /* pix (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pix (iOS).entitlements"; sourceTree = "<group>"; };
 		BD0D237227892A8C009017E1 /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
 		BD0D2379278B4CA2009017E1 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
-		BD0D237C278B829A009017E1 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		BD0D237F278B8AAA009017E1 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		BD2520CB277FAC6B004C3CDE /* LoginMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMenuScreen.swift; sourceTree = "<group>"; };
 		BD2520CE277FAD77004C3CDE /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
@@ -294,6 +295,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503595DC29676B280003C0B5 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				50EEF4A0294E69AD002F7ECE /* CommentTextInput.swift */,
+				BD29E8BC278146F700335989 /* CommentView.swift */,
+				503595DD29676B3B0003C0B5 /* CommentsView.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 		503E2A0B2952257C00D1A038 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +337,7 @@
 			children = (
 				BD374FE0277BBACE00D56C0A /* FeedViewModel.swift */,
 				50E2C9732854491400781696 /* TipViewModel.swift */,
+				503595DA29660DDE0003C0B5 /* CommentsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -463,6 +475,7 @@
 		BDC10B1C273C4F210062AF1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				503595DC29676B280003C0B5 /* Comments */,
 				503E2A0B2952257C00D1A038 /* Profile */,
 				BDDCE784277E467E00CD62F0 /* Editor */,
 				BD374FE5277BBBCC00D56C0A /* Navigation */,
@@ -472,12 +485,9 @@
 				BD2520CE277FAD77004C3CDE /* LargeButton.swift */,
 				BD2520E22780D770004C3CDE /* RoundedAvatar.swift */,
 				BD29E8B32780FBCA00335989 /* AvatarList.swift */,
-				BD29E8BC278146F700335989 /* CommentView.swift */,
 				BD06BC2F2783F181005E8A8A /* CurrentChallengeCard.swift */,
-				BD0D237C278B829A009017E1 /* Detail.swift */,
 				BD0D237F278B8AAA009017E1 /* Feed.swift */,
 				50EEF49A294D01B7002F7ECE /* NotificationItem.swift */,
-				50EEF4A0294E69AD002F7ECE /* CommentTextInput.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -732,7 +742,7 @@
 				BDA2A57E277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				503E2A092951289F00D1A038 /* ProfileStore.swift in Sources */,
 				BD29E8C62782541600335989 /* ProfileData.swift in Sources */,
-				BD0D237D278B829A009017E1 /* Detail.swift in Sources */,
+				503595DE29676B3B0003C0B5 /* CommentsView.swift in Sources */,
 				BD4910B227851F73006B3FF2 /* PaletteList.swift in Sources */,
 				BD74070C2797BA1F0069D990 /* Challenge.swift in Sources */,
 				BDCB0E81279DFEC600133DDF /* SubmitScreen.swift in Sources */,
@@ -773,6 +783,7 @@
 				BDB6760A278662DA0049FE62 /* AccountCreation.swift in Sources */,
 				BDD00B46277BC4F900ABE649 /* Comment.swift in Sources */,
 				BDDCE778277D5E9600CD62F0 /* SessionStore.swift in Sources */,
+				503595DB29660DDE0003C0B5 /* CommentsViewModel.swift in Sources */,
 				50E2C96F2854489700781696 /* TipScreen.swift in Sources */,
 				BD7B9D3727444E9E005C5B4E /* TabBar.swift in Sources */,
 				BDC10B28273C5C880062AF1C /* LoginScreen.swift in Sources */,
@@ -830,7 +841,6 @@
 				BDC10B2F273C7C1F0062AF1C /* SettingsScreen.swift in Sources */,
 				BDA2A57F277BDAB200E5D680 /* PixelArt.swift in Sources */,
 				503E2A1729592F3B00D1A038 /* EditorSettingsScreen.swift in Sources */,
-				BD0D237E278B829A009017E1 /* Detail.swift in Sources */,
 				BDDCE779277D5E9600CD62F0 /* SessionStore.swift in Sources */,
 				BD2520D3277FC21F004C3CDE /* SessionUser.swift in Sources */,
 				BDF4AFFB273F29D100622F85 /* ColorManager.swift in Sources */,
@@ -1003,11 +1013,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pix (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2300;
+				CURRENT_PROJECT_VERSION = 2400;
 				DEVELOPMENT_TEAM = 6WD2C784QG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "pix--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Pix;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1020,11 +1031,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximenory.pix;
 				PRODUCT_NAME = Pix;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1038,11 +1051,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pix (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2300;
+				CURRENT_PROJECT_VERSION = 2400;
 				DEVELOPMENT_TEAM = 6WD2C784QG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "pix--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Pix;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1055,11 +1069,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximenory.pix;
 				PRODUCT_NAME = Pix;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

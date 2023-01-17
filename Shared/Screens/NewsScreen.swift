@@ -12,6 +12,8 @@ struct NewsScreen: View {
 	
 	@State var newsData: News? = nil
 	@State var state: States = States.IDLE
+
+	@EnvironmentObject var session: SessionStore
 	
 	var db = Firestore.firestore()
 	
@@ -67,7 +69,9 @@ struct NewsScreen: View {
 						}
 					}
 					Text("Comments").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading).padding([.horizontal, .top], 16).font(.title)
-					CommentsScreen(postId: "current", news: true)
+					
+					CommentsView(postId: "current", authorId: nil, news: true)
+						.padding(.horizontal)
 				}
 				.navigationTitle("What's new")
 				.navigationBarTitleDisplayMode(.inline)

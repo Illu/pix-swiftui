@@ -118,7 +118,6 @@ struct ProfileData: View {
 											PixelArt(data: post.data, pixelSize: POST_WIDTH / ART_SIZE)
 												.cornerRadius(4)
 												.contextMenu {
-													Button(action: {app.showCommentsSheet(postId: post.id!, authorId: userId != nil ? userId! : userRef!.documentID)}) { HStack {Image(systemName: "text.bubble"); Text("View comments"); Spacer()  }}
 													if (isCurrentSessionProfile || session.isAdmin) {
 														Menu("Delete Post...") {
 															Button(action: {

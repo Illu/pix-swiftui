@@ -73,8 +73,4 @@ class FeedViewModel: ObservableObject {
 				self.state = States.SUCCESS
         }
     }
-    
-    /* TODO: Write a search function that store data in a new Published var "previewItems", that will contain both users and posts
-     * The search results should be displayed on top of the homescreen, and on tap it should bring to the detail view for the post or the user
-     */
 }
