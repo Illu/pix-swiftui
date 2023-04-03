@@ -25,7 +25,7 @@ struct CommentsView: View {
 	
 	var body: some View {
 		VStack {
-			CommentTextInput(addComment: viewModel.addComment, placeholder: viewModel.getPlaceholderText(session: session.session!), authorId: viewModel.authorId)
+			CommentTextInput(addComment: viewModel.addComment, placeholder: viewModel.getPlaceholderText(session: session.session), authorId: viewModel.authorId)
 				.padding(.top)
 				.padding(.horizontal)
 				.padding(.bottom, 11.0)
